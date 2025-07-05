@@ -4,17 +4,35 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
+import topLevelAwait from 'vite-plugin-top-level-await';
+import wasm from 'vite-plugin-wasm';
 
 export default defineConfig({
-  // Replace with your website URL (required for sitemap generation)
-  site: 'https://example.com',
+  // Used for sitemap generation
+  site: 'https://portfolio.plemons.dev',
 
   // URL configuration
   trailingSlash: 'never', // Removes trailing slashes from URLs
 
   // Vite configuration
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      wasm(),
+      topLevelAwait(),
+    ],
+    optimizeDeps: {
+      exclude: ['pyodide'],
+    },
+    server: {
+      headers: {
+        'Cross-Origin-Embedder-Policy': 'require-corp',
+        'Cross-Origin-Opener-Policy': 'same-origin',
+      },
+    },
+    worker: {
+      format: 'es',
+    }
   },
 
   // Required integrations

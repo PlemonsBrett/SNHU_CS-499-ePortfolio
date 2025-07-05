@@ -4,6 +4,8 @@ dist/
 # generated types
 .astro/
 
+.sonarlint/
+
 # dependencies
 node_modules/
 
@@ -26,10 +28,10 @@ pnpm-debug.log*
 # vscode setting folder
 .vscode/
 
-# vercel setting folder
-.vercel/
-
-
-.vercel
-
+# user config
 src/config/userConfig.ts
+
+# Test Output
+coverage/
+playwright-report/
+test-results/
