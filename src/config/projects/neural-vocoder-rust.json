@@ -1,0 +1,38 @@
+{
+  "id": "neural-vocoder-rust",
+  "title": "Neural Vocoder Implementation (Rust)",
+  "description": "High-performance WaveNet vocoder implementation in Rust with WebAssembly compilation. Features real-time mel-spectrogram to audio conversion with GPU acceleration.",
+  "repoUrl": "https://github.com/PlemonsBrett/neural-vocoder-rust",
+  "liveUrl": "https://portfolio.plemons.dev/projects/neural-vocoder",
+  "techStack": ["Rust", "WebAssembly", "PyTorch C++", "WASM-pack", "Web Audio API"],
+  "structure": {
+    "root": "neural-vocoder-rust",
+    "children": [
+      { "name": "src", "type": "directory", "children": [
+        { "name": "lib.rs", "type": "file" },
+        { "name": "vocoder.rs", "type": "file" },
+        { "name": "mel_spectrogram.rs", "type": "file" },
+        { "name": "neural_net.rs", "type": "file" }
+      ]},
+      { "name": "www", "type": "directory", "children": [
+        { "name": "index.html", "type": "file" },
+        { "name": "index.js", "type": "file" }  
+      ]},
+      { "name": "Cargo.toml", "type": "file" },
+      { "name": "README.md", "type": "file" }
+    ]
+  },
+  "executableCode": {
+    "language": "rust",
+    "code": "lib.rs",
+    "description": "Interactive WaveNet vocoder showing real-time mel-spectrogram to audio conversion using neural synthesis techniques."
+  },
+  "demoFeatures": ["Real-time Audio Generation", "Mel-Spectrogram Visualization", "WebAssembly Performance", "Neural Network Inference"],
+  "images": [
+    {
+      "url": "https://placehold.co/800x400/1a1a2e/eee?text=Neural+Vocoder+Demo",
+      "alt": "Neural Vocoder Interface",
+      "description": "Real-time neural vocoder with mel-spectrogram visualization"
+    }
+  ]
+}

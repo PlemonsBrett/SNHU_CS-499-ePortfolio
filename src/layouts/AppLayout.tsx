@@ -19,7 +19,7 @@ type TutorialStep = {
   buttonText?: string;
 };
 
-export default function Desktop({ initialBg, backgroundMap }: AppLayoutProps) {
+export default function Desktop({ initialBg, backgroundMap }: Readonly<AppLayoutProps>) {
   const [currentBg, setCurrentBg] = useState<string>(initialBg);
   const [showTerminal, setShowTerminal] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
@@ -55,7 +55,7 @@ export default function Desktop({ initialBg, backgroundMap }: AppLayoutProps) {
     }
 
     localStorage.setItem('lastBackground', currentBg);
-  }, [initialBg, backgroundMap]);
+  }, [initialBg, backgroundMap, currentBg]);
 
   // Add this function to reset tutorial
   const resetTutorial = () => {
@@ -108,8 +108,9 @@ export default function Desktop({ initialBg, backgroundMap }: AppLayoutProps) {
   ];
 
   const handleTutorialAction = () => {
-    if (tutorialSteps[currentTutorialStep].action) {
-      tutorialSteps[currentTutorialStep].action!();
+    const currentStep = tutorialSteps[currentTutorialStep];
+    if (currentStep.action) {
+      currentStep.action();
     }
 
     if (currentTutorialStep < tutorialSteps.length - 1) {
@@ -213,6 +214,7 @@ export default function Desktop({ initialBg, backgroundMap }: AppLayoutProps) {
                 {currentTutorialStep + 1} of {tutorialSteps.length}
               </span>
               <button
+                type="button"
                 onClick={handleTutorialAction}
                 className="text-sm text-blue-400 hover:text-blue-300"
               >

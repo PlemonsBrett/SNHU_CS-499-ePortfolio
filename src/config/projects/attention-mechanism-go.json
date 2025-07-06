@@ -1,0 +1,37 @@
+{
+	"id": "attention-mechanism-go",
+	"title": "Transformer Attention Visualization (Go)",
+	"description": "Interactive visualization of multi-head attention mechanisms used in Transformer-based speech synthesis models like Tacotron 2. Built with Go and compiled to WebAssembly.",
+	"repoUrl": "https://github.com/PlemonsBrett/attention-visualization-go",
+	"liveUrl": "https://portfolio.plemons.dev/projects/attention-viz",
+	"techStack": ["Go", "WebAssembly", "Canvas API", "Linear Algebra", "SVG"],
+	"structure": {
+		"root": "attention-visualization-go",
+		"children": [
+			{ "name": "main.go", "type": "file" },
+			{ "name": "attention.go", "type": "file" },
+			{ "name": "transformer.go", "type": "file" },
+			{ "name": "visualization.go", "type": "file" },
+
+			{ "name": "index.html", "type": "file" }
+		]
+	},
+	"executableCode": {
+		"language": "go",
+		"code": "main.go",
+		"description": "Visualize how multi-head attention mechanisms work in Transformer models for speech synthesis, showing attention patterns across sequence positions."
+	},
+	"demoFeatures": [
+		"Multi-head Attention Visualization",
+		"Real-time Computation",
+		"Attention Heatmaps",
+		"Transformer Architecture"
+	],
+	"images": [
+		{
+			"url": "https://placehold.co/800x400/2d1b69/eee?text=Attention+Visualization",
+			"alt": "Attention Mechanism Visualization",
+			"description": "Multi-head attention patterns in neural speech synthesis"
+		}
+	]
+}

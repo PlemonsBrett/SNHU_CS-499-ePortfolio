@@ -1,0 +1,70 @@
+{
+	"id": "voice-conversion-typescript",
+	"title": "Real-time Voice Conversion (TypeScript)",
+	"description": "Browser-based real-time voice conversion system using Web Audio API and neural networks. Demonstrates cross-lingual voice synthesis and speaker adaptation techniques.",
+	"repoUrl": "https://github.com/plemonsBrett/voice-conversion-ts",
+	"liveUrl": "https://portfolio.plemons.dev/voice-conversion",
+	"techStack": [
+		"TypeScript",
+		"Web Audio API",
+		"TensorFlow.js",
+		"WebRTC",
+		"Canvas API"
+	],
+	"structure": {
+		"root": "voice-conversion-typescript",
+		"children": [
+			{
+				"name": "src",
+				"type": "directory",
+				"children": [
+					{
+						"name": "audio",
+						"type": "directory",
+						"children": [
+							{ "name": "AudioProcessor.ts", "type": "file" },
+							{ "name": "VoiceConverter.ts", "type": "file" },
+							{ "name": "FeatureExtractor.ts", "type": "file" }
+						]
+					},
+					{
+						"name": "models",
+						"type": "directory",
+						"children": [
+							{ "name": "NeuralVocoder.ts", "type": "file" },
+							{ "name": "SpeakerEncoder.ts", "type": "file" }
+						]
+					},
+					{
+						"name": "ui",
+						"type": "directory",
+						"children": [
+							{ "name": "VoiceConversionUI.ts", "type": "file" },
+							{ "name": "Visualizer.ts", "type": "file" }
+						]
+					}
+				]
+			},
+			{ "name": "package.json", "type": "file" },
+			{ "name": "tsconfig.json", "type": "file" }
+		]
+	},
+	"executableCode": {
+		"language": "typescript",
+		"code": "voice-conversion.ts",
+		"description": "Real-time voice conversion system demonstrating neural speech synthesis, speaker adaptation, and cross-lingual voice transformation in the browser."
+	},
+	"demoFeatures": [
+		"Real-time Processing",
+		"Voice Conversion",
+		"Speaker Adaptation",
+		"Neural Vocoder"
+	],
+	"images": [
+		{
+			"url": "https://placehold.co/800x400/ff6b6b/eee?text=Voice+Conversion+Interface",
+			"alt": "Voice Conversion System",
+			"description": "Real-time voice conversion with neural synthesis and speaker adaptation"
+		}
+	]
+}

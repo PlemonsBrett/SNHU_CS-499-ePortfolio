@@ -1,354 +1,54 @@
 {
-    "id": "portfolio",
-    "title": "Portfolio (This Website)",
-    "description": "An open source interactive portfolio website, with a clean and modern design, sections for education, experience, skills, competitions, and more. Built with Astro.js, Tailwind CSS, TypeScript, React, and Vercel.",
-    "repoUrl": "https://github.com/plemonsbrett/SNHU_CS-499_ePortfolio",
-    "liveUrl": "https://portfolio.plemons.dev",
-    "techStack": [
-        "Astro.js",
-        "Tailwind CSS",
-        "TypeScript",
-        "React",
-        "Vercel",
-        "Vitest",
-        "Playwright",
-        "WebAssembly"
-    ],
-    "structure": {
-        "root": "portfolio",
-        "children": [
-            {
-                "name": ".gitignore",
-                "type": "file"
-            },
-            {
-                "name": "_config.yaml",
-                "type": "file"
-            },
-            {
-                "name": "astro.config.mjs",
-                "type": "file"
-            },
-            {
-                "name": "biome.json",
-                "type": "file"
-            },
-            {
-                "name": "CLAUDE.md",
-                "type": "file"
-            },
-            {
-                "name": "CNAME",
-                "type": "file"
-            },
-            {
-                "name": "LICENSE",
-                "type": "file"
-            },
-            {
-                "name": "package.json",
-                "type": "file"
-            },
-            {
-                "name": "playwright.config.ts",
-                "type": "file"
-            },
-            {
-                "name": "pnpm-lock.yaml",
-                "type": "file"
-            },
-            {
-                "name": "README.md",
-                "type": "file"
-            },
-            {
-                "name": "tailwind.config.js",
-                "type": "file"
-            },
-            {
-                "name": "tsconfig.json",
-                "type": "file"
-            },
-            {
-                "name": "vitest.config.ts",
-                "type": "file"
-            },
-            {
-                "name": ".vscode",
-                "type": "directory",
-                "children": [
-                    {
-                        "name": "extensions.json",
-                        "type": "file"
-                    },
-                    {
-                        "name": "launch.json",
-                        "type": "file"
-                    }
-                ]
-            },
-            {
-                "name": "public",
-                "type": "directory",
-                "children": [
-                    {
-                        "name": "resume.pdf",
-                        "type": "file"
-                    },
-                    {
-                        "name": "wasm",
-                        "type": "directory"
-                    }
-                ]
-            },
-            {
-                "name": "src",
-                "type": "directory",
-                "children": [
-                    {
-                        "name": "assets",
-                        "type": "directory",
-                        "children": [
-                            {
-                                "name": "images",
-                                "type": "directory",
-                                "children": [
-                                    {
-                                        "name": "mac-background1.jpg",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "mac-background2.jpg",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "mac-background3.jpg",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "me.svg",
-                                        "type": "file"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "name": "components",
-                        "type": "directory",
-                        "children": [
-                            {
-                                "name": "global",
-                                "type": "directory",
-                                "children": [
-                                    {
-                                        "name": "BaseHead.astro",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "DesktopDock.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "DraggableWindow.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "GitHubViewer.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "HelpModal.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "MacTerminal.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "MacToolbar.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "MobileDock.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "MultiLanguageRunner.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "NotesApp.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "ResumeViewer.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "SpotifyPlayer.tsx",
-                                        "type": "file"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "LandingPage.astro",
-                                "type": "file"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "config",
-                        "type": "directory",
-                        "children": [
-                            {
-                                "name": "projects",
-                                "type": "directory",
-                                "children": [
-                                    {
-                                        "name": "portfolio.json",
-                                        "type": "file"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "name": "layouts",
-                        "type": "directory",
-                        "children": [
-                            {
-                                "name": "AppLayout.tsx",
-                                "type": "file"
-                            },
-                            {
-                                "name": "Layout.astro",
-                                "type": "file"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "pages",
-                        "type": "directory",
-                        "children": [
-                            {
-                                "name": "api",
-                                "type": "directory",
-                                "children": [
-                                    {
-                                        "name": "chat.ts",
-                                        "type": "file"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "index.astro",
-                                "type": "file"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "styles",
-                        "type": "directory",
-                        "children": [
-                            {
-                                "name": "global.css",
-                                "type": "file"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "test",
-                        "type": "directory",
-                        "children": [
-                            {
-                                "name": "e2e",
-                                "type": "directory",
-                                "children": [
-                                    {
-                                        "name": "desktop-flow.spec.ts",
-                                        "type": "file"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "integration",
-                                "type": "directory",
-                                "children": [
-                                    {
-                                        "name": "desktop-interaction.test.tsx",
-                                        "type": "file"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "unit",
-                                "type": "directory",
-                                "children": [
-                                    {
-                                        "name": "AppLayout.test.tsx",
-                                        "type": "file"
-                                    },
-                                    {
-                                        "name": "userConfig.test.ts",
-                                        "type": "file"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "utils",
-                                "type": "directory",
-                                "children": [
-                                    {
-                                        "name": "functional-test-utils.ts",
-                                        "type": "file"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "setup.ts",
-                                "type": "file"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "util",
-                "type": "directory",
-                "children": [
-                    {
-                        "name": "github_repo_parser.py",
-                        "type": "file"
-                    },
-                    {
-                        "name": "requirements.txt",
-                        "type": "file"
-                    }
-                ]
-            }
-        ]
-    },
-    "images": [
-        {
-            "url": "https://i.ibb.co/gbNxMqmP/B5-BE581-F-2-C7-C-48-A8-9-E7-C-77073-BEB66-AF.png",
-            "alt": "Portfolio",
-            "description": "Portfolio"
-        },
-        {
-            "url": "https://i.ibb.co/FdTHqhM/68-D528-EE-07-BF-4406-8363-08-B2-CFB7-A381.png",
-            "alt": "Portfolio",
-            "description": "Projects Page"
-        },
-        {
-            "url": "https://i.ibb.co/TBDmDtX8/495-DAF06-BC3-D-424-B-A8-FA-7-BEE852-B5012.png",
-            "alt": "Portfolio",
-            "description": "Project Page"
-        },
-        {
-            "url": "https://i.ibb.co/qFNw99gR/D1-CD7826-84-EF-42-AC-BA40-55766-D792771.png",
-            "alt": "Portfolio",
-            "description": "Notes App"
-        }
-    ]
+	"id": "portfolio-site",
+	"title": "Portfolio (This Website)",
+	"description": "macOS-inspired interactive portfolio with comprehensive testing using functional programming principles. Features AI terminal, WebAssembly demos, and multi-language code runners.",
+	"repoUrl": "https://github.com/PlemonsBrett/SNHU_CS-499_ePortfolio",
+	"liveUrl": "https://portfolio.plemons.dev",
+	"techStack": [
+		"Astro",
+		"TypeScript",
+		"React",
+		"Tailwind CSS",
+		"WebAssembly",
+		"fp-ts",
+		"oxide.ts",
+		"Vitest",
+		"Playwright"
+	],
+	"structure": {
+		"root": "portfolio",
+		"children": [
+			{
+				"name": "src",
+				"type": "directory",
+				"children": [
+					{ "name": "components", "type": "directory" },
+					{ "name": "layouts", "type": "directory" },
+					{ "name": "pages", "type": "directory" },
+					{ "name": "config", "type": "directory" },
+					{ "name": "test", "type": "directory" }
+				]
+			},
+			{ "name": "public", "type": "directory" },
+			{ "name": "package.json", "type": "file" },
+			{ "name": "astro.config.mjs", "type": "file" }
+		]
+	},
+	"images": [
+		{
+			"url": "https://placehold.co/800x400/1a1a2e/eee?text=Portfolio+Desktop",
+			"alt": "Portfolio Desktop Interface",
+			"description": "macOS-inspired portfolio with interactive desktop environment"
+		},
+		{
+			"url": "https://placehold.co/800x400/2d1b69/eee?text=AI+Terminal",
+			"alt": "AI Terminal Interface",
+			"description": "Interactive AI-powered terminal for portfolio exploration"
+		},
+		{
+			"url": "https://placehold.co/800x400/0f4c75/eee?text=WebAssembly+Demos",
+			"alt": "WebAssembly Code Runners",
+			"description": "Multi-language WebAssembly demos for AI/ML algorithms"
+		}
+	]
 }

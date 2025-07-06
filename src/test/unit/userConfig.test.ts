@@ -43,13 +43,13 @@ const validateNonEmptyString = (str: string, fieldName: string): Result<string, 
     : Err(`${fieldName} cannot be empty`);
 };
 
-const validateSkills = (skills: string[]): Result<string[], string> => {
+const _validateSkills = (skills: string[]): Result<string[], string> => {
   return isValidArray(skills) 
     ? Ok(skills)
     : Err('Skills array cannot be empty');
 };
 
-const validateProjects = (projects: unknown[]): Result<unknown[], string> => {
+const _validateProjects = (projects: unknown[]): Result<unknown[], string> => {
   return isValidArray(projects) 
     ? Ok(projects)
     : Err('Projects array cannot be empty');
@@ -131,22 +131,30 @@ describe('userConfig', () => {
     });
 
     it('should have valid education entries', () => {
-      const educationResults = userConfig.education.map(edu => {
-        const degreeResult = edu.degree ? Ok(edu.degree) : Err('Missing degree');
-        const institutionResult = edu.institution ? Ok(edu.institution) : Err('Missing institution');
-        const yearResult = edu.year ? Ok(edu.year) : Err('Missing year');
-
+      const createValidationPipe = (degreeResult: Result<string, string>, institutionResult: Result<string, string>, yearResult: Result<string, string>) => {
         return pipe(
           E.Do,
           E.bind('degree', () => fromResult(degreeResult)),
           E.bind('institution', () => fromResult(institutionResult)),
           E.bind('year', () => fromResult(yearResult))
         );
-      });
+      };
 
-      educationResults.forEach(result => {
+      const validateEducationEntry = (edu: any) => {
+        const degreeResult = edu.degree ? Ok(edu.degree) : Err('Missing degree');
+        const institutionResult = edu.institution ? Ok(edu.institution) : Err('Missing institution');
+        const yearResult = edu.year ? Ok(edu.year) : Err('Missing year');
+
+        return createValidationPipe(degreeResult, institutionResult, yearResult);
+      };
+
+      const educationResults = userConfig.education.map(validateEducationEntry);
+
+      const assertResult = (result: any) => {
         expect(E.isRight(result)).toBe(true);
-      });
+      };
+
+      educationResults.forEach(assertResult);
     });
   });
 

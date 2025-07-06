@@ -1,0 +1,34 @@
+{
+  "id": "mel-spectrogram-elixir",
+  "title": "Real-time Mel-Spectrogram Processing (Elixir)",
+  "description": "High-concurrency Elixir application for real-time mel-spectrogram computation and streaming. Demonstrates Actor model for audio processing pipelines used in speech synthesis.",
+  "repoUrl": "https://github.com/PlemonsBrett/mel-spectrogram-elixir",
+  "liveUrl": "https://portfolio.plemons.dev/projects/mel-processing",
+  "techStack": ["Elixir", "Phoenix LiveView", "GenServer", "OTP", "Phoenix Channels"],
+  "structure": {
+    "root": "mel-spectrogram-elixir",
+    "children": [
+      { "name": "lib", "type": "directory", "children": [
+        { "name": "mel_processor.ex", "type": "file" },
+        { "name": "audio_stream.ex", "type": "file" },
+        { "name": "spectrogram_server.ex", "type": "file" }
+      ]},
+      { "name": "test", "type": "directory" },
+      { "name": "mix.exs", "type": "file" },
+      { "name": "README.md", "type": "file" }
+    ]
+  },
+  "executableCode": {
+    "language": "elixir",
+    "code": "mel_processor.ex",
+    "description": "Real-time mel-spectrogram processing using Elixir's Actor model for high-concurrency audio pipeline processing."
+  },
+  "demoFeatures": ["Actor Model Concurrency", "Real-time Audio Processing", "Mel-Spectrogram Computation", "Stream Processing"],
+  "images": [
+    {
+			"url": "https://placehold.co/800x400/1a1a2e/eee?text=Elixir+Audio+Pipeline",
+			"alt": "Elixir Audio Processing Pipeline",
+			"description": "Real-time mel-spectrogram processing with Actor model concurrency"
+		}
+	]
+}

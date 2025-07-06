@@ -1,0 +1,33 @@
+{
+  "id": "acoustic-modeling-scala",
+  "title": "Distributed Acoustic Modeling (Scala)",
+  "description": "Functional programming approach to distributed acoustic feature extraction for speech synthesis using Scala and Akka. Demonstrates functional composition in ML pipelines.",
+  "repoUrl": "https://github.com/PlemonsBrett/acoustic-modeling-scala",
+  "liveUrl": "https://portfolio.plemons.dev/projects/acoustic-modeling",
+  "techStack": ["Scala", "Akka", "Cats", "Functional Programming", "Apache Spark"],
+  "structure": {
+    "root": "acoustic-modeling-scala",
+    "children": [
+      { "name": "src/main/scala", "type": "directory", "children": [
+        { "name": "AcousticFeatures.scala", "type": "file" },
+        { "name": "FeatureExtractor.scala", "type": "file" },
+        { "name": "ModelingPipeline.scala", "type": "file" }
+      ]},
+      { "name": "build.sbt", "type": "file" },
+      { "name": "README.md", "type": "file" }
+    ]
+  },
+  "executableCode": {
+    "language": "scala",
+    "code": "AcousticFeatures.scala",
+    "description": "Functional programming approach to distributed acoustic feature extraction for speech synthesis using Scala and Akka."
+  },
+  "demoFeatures": ["Functional Programming", "Distributed Processing", "MFCC Extraction", "Spectral Analysis"],
+  "images": [
+    {
+      "url": "https://placehold.co/800x400/dc143c/eee?text=Scala+Acoustic+Modeling",
+      "alt": "Scala Acoustic Feature Extraction",
+      "description": "Functional approach to distributed acoustic modeling for speech synthesis"
+    }
+  ]
+}

@@ -1,9 +1,8 @@
 /** biome-ignore-all lint/suspicious/noExplicitAny: Test File needs any for bad path */
-import { test, expect } from '@playwright/test';
-import { pipe } from 'fp-ts/lib/function.js';
+import { expect, test } from '@playwright/test';
 import * as E from 'fp-ts/lib/Either.js';
+import { pipe } from 'fp-ts/lib/function.js';
 import * as TE from 'fp-ts/lib/TaskEither.js';
-import { Result, Ok, Err } from 'oxide.ts';
 
 // Functional error handling for E2E tests
 type E2EError =

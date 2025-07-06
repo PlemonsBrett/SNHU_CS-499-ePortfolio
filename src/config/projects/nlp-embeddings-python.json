@@ -1,0 +1,35 @@
+{
+  "id": "nlp-embeddings-python",
+  "title": "Neural Text-to-Speech Embeddings (Python)",
+  "description": "Complete text preprocessing and phoneme embedding pipeline for neural speech synthesis. Includes attention alignment visualization and prosody prediction using transformers.",
+  "repoUrl": "https://github.com/PlemonsBrett/tts-embeddings-python",
+  "liveUrl": "https://portfolio.plemons.dev/projects/tts-embeddings",
+  "techStack": ["Python", "PyTorch", "Transformers", "NumPy", "Matplotlib", "Phonemizer"],
+  "structure": {
+    "root": "tts-embeddings-python",
+    "children": [
+      { "name": "src", "type": "directory", "children": [
+        { "name": "text_processor.py", "type": "file" },
+        { "name": "phoneme_encoder.py", "type": "file" },
+        { "name": "attention_model.py", "type": "file" },
+        { "name": "prosody_predictor.py", "type": "file" }
+      ]},
+      { "name": "models", "type": "directory" },
+      { "name": "requirements.txt", "type": "file" }, 
+      { "name": "train.py", "type": "file" }
+    ]
+  },
+  "executableCode": {
+    "language": "python",
+    "code": "text_processor.py",
+    "description": "Complete text-to-speech preprocessing pipeline showing phoneme encoding, attention alignment, and prosody prediction for neural speech synthesis."
+  },
+  "demoFeatures": ["Phoneme Encoding", "Attention Visualization", "Prosody Prediction", "Text Processing Pipeline"],
+  "images": [
+    {
+      "url": "https://placehold.co/800x400/0f4c75/eee?text=TTS+Pipeline+Visualization",
+      "alt": "TTS Processing Pipeline",
+      "description": "Neural text-to-speech pipeline with attention alignment and prosody features"
+    }
+  ]
+}

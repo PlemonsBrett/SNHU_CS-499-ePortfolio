@@ -29,10 +29,14 @@ export default defineConfig({
         'Cross-Origin-Embedder-Policy': 'require-corp',
         'Cross-Origin-Opener-Policy': 'same-origin',
       },
+      fs: {
+        allow: ['..'] // Allow access to WASM files
+      }
     },
     worker: {
       format: 'es',
-    }
+    },
+    assetsInclude: ['**/*.wasm'], // Include .wasm files as assets.
   },
 
   // Required integrations
