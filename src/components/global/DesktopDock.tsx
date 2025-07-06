@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { BsGithub, BsSpotify, BsFilePdf, BsStickyFill, BsLinkedin, BsCalendar } from 'react-icons/bs';
+import { BsGithub, BsSpotify, BsFilePdf, BsLinkedin, BsCalendar, BsTwitch, BsStackOverflow, BsJournalText } from 'react-icons/bs';
 import { IoIosCall, IoIosMail } from 'react-icons/io';
-import { FaLink, FaEnvelope } from 'react-icons/fa';
+import { FaLink, FaEnvelope, FaUser, FaCloud } from 'react-icons/fa';
 import ResumeViewer from './ResumeViewer';
 import SpotifyPlayer from './SpotifyPlayer';
 import { userConfig } from '../../config/userConfig';
@@ -106,11 +106,40 @@ const DesktopDock = ({ onTerminalClick, onNotesClick, onGitHubClick, activeApps 
           <span>Email</span>
         </a>
         <a
-          href={`tel:${userConfig.contact.phone}`}
+          href={userConfig.social.twitch}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-2 text-gray-300 hover:text-white"
         >
-          <IoIosCall size={20} />
-          <span>Call</span>
+          <BsTwitch size={20} />
+          <span>Twitch</span>
+        </a>
+        <a
+          href={userConfig.social.gravatar}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-gray-300 hover:text-white"
+        >
+          <FaUser size={20} />
+          <span>Gravatar</span>
+        </a>
+        <a
+          href={userConfig.social.stackoverflow}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-gray-300 hover:text-white"
+        >
+          <BsStackOverflow size={20} />
+          <span>Stack Overflow</span>
+        </a>
+        <a
+          href={userConfig.social.bluesky}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-gray-300 hover:text-white"
+        >
+          <FaCloud size={20} />
+          <span>BlueSky</span>
         </a>
       </div>
     </div>
@@ -123,6 +152,7 @@ const DesktopDock = ({ onTerminalClick, onNotesClick, onGitHubClick, activeApps 
           <div className="flex space-x-2">
             {/* GitHub */}
             <button
+              type="button"
               onClick={onGitHubClick}
               onMouseEnter={() => setHoveredIcon('github')}
               onMouseLeave={() => setHoveredIcon(null)}
@@ -136,19 +166,21 @@ const DesktopDock = ({ onTerminalClick, onNotesClick, onGitHubClick, activeApps 
 
             {/* Notes */}
             <button
+              type="button"
               onClick={onNotesClick}
               onMouseEnter={() => setHoveredIcon('notes')}
               onMouseLeave={() => setHoveredIcon(null)}
               className="relative group"
             >
               <div className={`w-12 h-12 bg-gradient-to-t from-yellow-600 to-yellow-400 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 ease-out hover:scale-110 active:scale-95 ${activeApps.notes ? 'ring-2 ring-white/50' : ''}`}>
-                <BsStickyFill size={35} className='text-white' />
+                <BsJournalText size={35} className='text-white' />
               </div>
               {hoveredIcon === 'notes' && <Tooltip text='Resume Notes' />}
             </button>
 
             {/* Resume */}
             <button
+              type="button"
               onClick={handleResumeClick}
               onMouseEnter={() => setHoveredIcon('resume')}
               onMouseLeave={() => setHoveredIcon(null)}
@@ -162,6 +194,7 @@ const DesktopDock = ({ onTerminalClick, onNotesClick, onGitHubClick, activeApps 
 
             {/* Calendar */}
             <button
+              type="button"
               onClick={handleCalendarClick}
               onMouseEnter={() => setHoveredIcon('calendar')}
               onMouseLeave={() => setHoveredIcon(null)}
@@ -175,6 +208,7 @@ const DesktopDock = ({ onTerminalClick, onNotesClick, onGitHubClick, activeApps 
 
             {/* Spotify */}
             <button
+              type="button"
               onClick={handleSpotifyClick}
               onMouseEnter={() => setHoveredIcon('spotify')}
               onMouseLeave={() => setHoveredIcon(null)}
@@ -188,6 +222,7 @@ const DesktopDock = ({ onTerminalClick, onNotesClick, onGitHubClick, activeApps 
 
             {/* Email */}
             <button
+              type="button"
               onClick={handleEmailClick}
               onMouseEnter={() => setHoveredIcon('email')}
               onMouseLeave={() => setHoveredIcon(null)}
@@ -201,6 +236,7 @@ const DesktopDock = ({ onTerminalClick, onNotesClick, onGitHubClick, activeApps 
 
             {/* Links */}
             <button
+              type="button"
               onClick={handleLinksClick}
               onMouseEnter={() => setHoveredIcon('links')}
               onMouseLeave={() => setHoveredIcon(null)}
@@ -215,6 +251,7 @@ const DesktopDock = ({ onTerminalClick, onNotesClick, onGitHubClick, activeApps 
 
             {/* Terminal */}
             <button
+              type="button"
               onClick={onTerminalClick}
               onMouseEnter={() => setHoveredIcon('terminal')}
               onMouseLeave={() => setHoveredIcon(null)}

@@ -23,14 +23,17 @@ export default function DraggableWindow({
   initialPosition = { x: 0, y: 0 },
   initialSize = { width: 400, height: 300 },
   className = '',
-}: DraggableWindowProps) {
+}: Readonly<DraggableWindowProps>) {
   const [position, setPosition] = useState(initialPosition);
   const [size, setSize] = useState(initialSize);
   const [isDragging, setIsDragging] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
   const [resizeDirection, setResizeDirection] = useState<'bottom' | 'right' | 'bottom-right' | 'left' | 'bottom-left' | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const [zIndex, setZIndex] = useState(globalZIndex);
+  const [zIndex, setZIndex] = useState(() => {
+    globalZIndex += 1;
+    return globalZIndex;
+  });
   const [isMobile, setIsMobile] = useState(false);
   const windowRef = useRef<HTMLDivElement>(null);
 
@@ -81,8 +84,8 @@ export default function DraggableWindow({
       const newX = e.clientX - dragOffset.x;
       const newY = e.clientY - dragOffset.y;
       
-      const windowWidth = windowRef.current?.offsetWidth || 0;
-      const windowHeight = windowRef.current?.offsetHeight || 0;
+      const windowWidth = windowRef.current?.offsetWidth ?? 0;
+      const windowHeight = windowRef.current?.offsetHeight ?? 0;
       
       const maxX = window.innerWidth - (windowWidth / 2);
       const maxY = window.innerHeight - (windowHeight / 2);
@@ -134,7 +137,6 @@ export default function DraggableWindow({
   };
 
   useEffect(() => {
-    bringToFront();
     if (isMobile) return;
     
     if (isDragging || isResizing) {
@@ -174,6 +176,7 @@ export default function DraggableWindow({
     >
       <div className="window-header bg-gray-800 h-6 flex items-center space-x-2 px-4 rounded-t-xl sticky top-0 left-0 right-0 z-10">
         <button
+          type="button"
           onClick={onClose}
           className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors"
         />

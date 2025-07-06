@@ -12,7 +12,7 @@ interface MobileDockProps {
   onTerminalClick: () => void;
 }
 
-export default function MobileDock({ onGitHubClick, onNotesClick, onResumeClick, onTerminalClick }: MobileDockProps) {
+export default function MobileDock({ onGitHubClick, onNotesClick, onResumeClick, onTerminalClick }: Readonly<MobileDockProps>) {
   const handleEmailClick = () => {
     window.location.href = `mailto:${userConfig.contact.email}`;
   };
@@ -26,6 +26,7 @@ export default function MobileDock({ onGitHubClick, onNotesClick, onResumeClick,
       {/* Top row: viewer icons */}
       <div className='mx-4 mb-4 p-3 rounded-3xl space-x-4 flex justify-around items-center max-w-[400px] mx-auto'>
         <button
+          type="button"
           onClick={onGitHubClick}
           className='flex flex-col items-center cursor-pointer'
         >
@@ -34,6 +35,7 @@ export default function MobileDock({ onGitHubClick, onNotesClick, onResumeClick,
           </div>
         </button>
         <button
+          type="button"
           onClick={onNotesClick}
           className='flex flex-col items-center cursor-pointer'
         >
@@ -42,6 +44,7 @@ export default function MobileDock({ onGitHubClick, onNotesClick, onResumeClick,
           </div>
         </button>
         <button
+          type="button"
           onClick={onResumeClick}
           className='flex flex-col items-center cursor-pointer'
         >
@@ -50,6 +53,7 @@ export default function MobileDock({ onGitHubClick, onNotesClick, onResumeClick,
           </div>
         </button>
         <button
+          type="button"
           onClick={onTerminalClick}
           className='flex flex-col items-center cursor-pointer'
         >
@@ -68,6 +72,7 @@ export default function MobileDock({ onGitHubClick, onNotesClick, onResumeClick,
         </a>
 
         <button
+          type="button"
           onClick={handleEmailClick}
           className='flex flex-col items-center cursor-pointer'
         >
@@ -83,6 +88,7 @@ export default function MobileDock({ onGitHubClick, onNotesClick, onResumeClick,
         </a>
 
         <button
+          type="button"
           onClick={handleSpotifyClick}
           className='flex flex-col items-center cursor-pointer'
         >
