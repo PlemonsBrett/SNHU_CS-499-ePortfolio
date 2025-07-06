@@ -17,7 +17,7 @@ const FileTree = ({ structure }: FileTreeProps) => {
 				</div>
 				<div className="ml-4">
 					{structure.children.map((child) =>
-						renderFileTree(child, structure.root, expandedNodes, toggleNode),
+						renderFileTree(child, expandedNodes, toggleNode, structure.root),
 					)}
 				</div>
 			</div>

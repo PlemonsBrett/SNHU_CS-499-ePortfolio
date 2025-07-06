@@ -6,6 +6,7 @@ import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 import topLevelAwait from 'vite-plugin-top-level-await';
 import wasm from 'vite-plugin-wasm';
+import wasmMimePlugin from './vite-wasm-plugin.js';
 
 export default defineConfig({
   // Used for sitemap generation
@@ -20,6 +21,7 @@ export default defineConfig({
       tailwindcss(),
       wasm(),
       topLevelAwait(),
+      wasmMimePlugin(),
     ],
     optimizeDeps: {
       exclude: ['pyodide'],
