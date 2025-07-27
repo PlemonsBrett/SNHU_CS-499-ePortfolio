@@ -6,20 +6,25 @@
   
   const skills = [
     { name: 'Python', level: 'expert', category: 'language' },
-    { name: 'TypeScript', level: 'expert', category: 'language' },
-    { name: 'C++', level: 'intermediate', category: 'language' },
-    { name: 'AWS', level: 'expert', category: 'cloud' },
+    { name: 'JavaScript/Node.js', level: 'expert', category: 'language' },
+    { name: 'C# (.NET)', level: 'expert', category: 'language' },
+    { name: 'Go', level: 'advanced', category: 'language' },
+    { name: 'Rust', level: 'intermediate', category: 'language' },
+    { name: 'AWS (8+ years)', level: 'expert', category: 'cloud' },
     { name: 'Machine Learning', level: 'advanced', category: 'ml' },
     { name: 'System Architecture', level: 'expert', category: 'design' },
     { name: 'Team Leadership', level: 'expert', category: 'soft' },
     { name: 'Data Engineering', level: 'expert', category: 'data' },
-    { name: 'MLOps', level: 'advanced', category: 'ml' },
-    { name: 'React', level: 'advanced', category: 'frontend' },
-    { name: 'Svelte', level: 'intermediate', category: 'frontend' },
-    { name: 'Docker', level: 'advanced', category: 'devops' },
-    { name: 'Kubernetes', level: 'intermediate', category: 'devops' },
-    { name: 'TensorFlow', level: 'intermediate', category: 'ml' },
-    { name: 'Agile', level: 'expert', category: 'methodology' }
+    { name: 'React/Redux', level: 'expert', category: 'frontend' },
+    { name: 'React Native', level: 'advanced', category: 'mobile' },
+    { name: 'Vue.js/Nuxt', level: 'advanced', category: 'frontend' },
+    { name: 'PostgreSQL', level: 'expert', category: 'database' },
+    { name: 'MS SQL Server', level: 'expert', category: 'database' },
+    { name: 'MongoDB', level: 'advanced', category: 'database' },
+    { name: 'Terraform', level: 'advanced', category: 'devops' },
+    { name: 'Agile/Scrum', level: 'expert', category: 'methodology' },
+    { name: 'NLP/LLMs', level: 'advanced', category: 'ml' },
+    { name: 'Tableau/PowerBI', level: 'advanced', category: 'data' }
   ]
   
   const categoryColors = {
@@ -30,6 +35,8 @@
     soft: '#ef4444',
     data: '#06b6d4',
     frontend: '#ec4899',
+    mobile: '#f97316',
+    database: '#84cc16',
     devops: '#14b8a6',
     methodology: '#6366f1'
   }

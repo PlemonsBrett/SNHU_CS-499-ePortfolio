@@ -7,34 +7,52 @@
   
   const timeline = [
     {
-      year: '2014',
-      title: 'Full Stack Software Engineer',
-      description: 'Started my journey as a self-taught developer',
+      year: '2014-2018',
+      title: 'Geek Squad Consultant @ Best Buy',
+      description: 'Started journey as self-taught developer, created software solutions for system vulnerabilities',
+      icon: '🛠️'
+    },
+    {
+      year: '2018-2019',
+      title: 'Research Assistant & Data Specialist @ Kansas State',
+      description: 'Built OCR systems and streaming data pipelines with Airflow',
+      icon: '🎓'
+    },
+    {
+      year: '2019-2020',
+      title: 'Fullstack Engineer @ Hitchpin',
+      description: 'Automated financial verification with OCR, enhanced agricultural eCommerce platform',
       icon: '💻'
     },
     {
-      year: '2016',
-      title: 'Data Engineer',
-      description: 'Dove deep into data pipelines and system optimization',
+      year: '2020-2021',
+      title: 'Data Engineer @ Kansas DHEP & BCBS',
+      description: 'Led digital transformation, managed team of 12 data professionals',
       icon: '📊'
     },
     {
-      year: '2018',
-      title: 'Senior Software Engineer',
-      description: 'Led technical initiatives and mentored team members',
+      year: '2021-2022',
+      title: 'Engineering Lead @ RevLogical',
+      description: 'Led 8 engineers, built retail app for 10K+ concurrent users, IoT platform',
       icon: '🚀'
     },
     {
-      year: '2020',
-      title: 'Software Engineering Manager',
-      description: 'Transitioned to leadership, building high-performing teams',
-      icon: '👥'
+      year: '2022-2024',
+      title: 'Staff Engineer → Sr. Engineering Manager @ Dictionary.com',
+      description: '$500K cost savings, 86% performance gains, 2.5M user mobile app',
+      icon: '📈'
     },
     {
-      year: '2025',
-      title: 'Machine Learning Engineer',
-      description: 'Combining systems expertise with AI/ML capabilities',
-      icon: '🤖'
+      year: '2024-2025',
+      title: 'Senior Engineering Manager @ MFour',
+      description: '200% improvement in cycle time, comprehensive developer efficiency standards',
+      icon: '⚡'
+    },
+    {
+      year: '2025-Present',
+      title: 'Engineering Manager @ Propio',
+      description: 'Leading transformation initiatives, establishing technical strategy & team development',
+      icon: '🎯'
     }
   ]
   
