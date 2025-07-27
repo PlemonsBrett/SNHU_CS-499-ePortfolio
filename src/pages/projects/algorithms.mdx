@@ -1,0 +1,98 @@
+---
+layout: ../../layouts/BaseLayout.astro
+title: Algorithms & Data Structures | Brett Plemons
+---
+
+import CodePlayground from '../../components/CodePlayground.svelte'
+
+# Algorithms & Data Structures
+
+## Bayesian Inference Implementation
+
+This project demonstrates a practical implementation of Bayesian inference for A/B testing scenarios.
+
+<CodePlayground client:load>
+```javascript
+// Bayesian A/B Test Calculator
+class BayesianABTest {
+  constructor(alphaA = 1, betaA = 1, alphaB = 1, betaB = 1) {
+    this.priorA = { alpha: alphaA, beta: betaA }
+    this.priorB = { alpha: alphaB, beta: betaB }
+  }
+  
+  updatePosterior(conversions, trials, prior) {
+    return {
+      alpha: prior.alpha + conversions,
+      beta: prior.beta + (trials - conversions)
+    }
+  }
+  
+  calculateProbability(posteriorA, posteriorB, samples = 10000) {
+    let wins = 0
+    
+    for (let i = 0; i < samples; i++) {
+      const sampleA = this.betaSample(posteriorA.alpha, posteriorA.beta)
+      const sampleB = this.betaSample(posteriorB.alpha, posteriorB.beta)
+      if (sampleA > sampleB) wins++
+    }
+    
+    return wins / samples
+  }
+  
+  betaSample(alpha, beta) {
+    // Simplified beta distribution sampling
+    const x = this.gammaSample(alpha)
+    const y = this.gammaSample(beta)
+    return x / (x + y)
+  }
+  
+  gammaSample(shape) {
+    // Marsaglia and Tsang method (simplified)
+    let d = shape - 1/3
+    let c = 1 / Math.sqrt(9 * d)
+    
+    while (true) {
+      let x = this.normalRandom()
+      let v = Math.pow(1 + c * x, 3)
+      if (v > 0 && Math.log(Math.random()) < 0.5 * x * x + d - d * v + d * Math.log(v)) {
+        return d * v
+      }
+    }
+  }
+  
+  normalRandom() {
+    // Box-Muller transform
+    const u1 = Math.random()
+    const u2 = Math.random()
+    return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2)
+  }
+}
+
+// Example usage
+const test = new BayesianABTest()
+const posteriorA = test.updatePosterior(120, 1000, test.priorA)
+const posteriorB = test.updatePosterior(100, 1000, test.priorB)
+const probability = test.calculateProbability(posteriorA, posteriorB)
+
+console.log(`Probability that A is better than B: ${(probability * 100).toFixed(2)}%`)
+```
+</CodePlayground>
+
+## Key Features
+
+- **Real-time Bayesian Updates**: Updates posterior distributions as new data arrives
+- **Monte Carlo Sampling**: Uses sampling methods to estimate probabilities
+- **Flexible Priors**: Supports custom prior distributions for different scenarios
+
+## Technical Implementation
+
+The implementation uses:
+- Beta-Binomial conjugate priors for computational efficiency
+- Marsaglia and Tsang's method for gamma distribution sampling
+- Monte Carlo simulation for probability calculations
+
+## Performance Considerations
+
+- O(n) complexity for sampling operations
+- Memory-efficient streaming updates
+- Parallelizable Monte Carlo simulations

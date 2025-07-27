@@ -1,0 +1,39 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: Brett Plemons | AI Engineering Portfolio
+---
+
+import Hero from '../components/Hero.svelte'
+import ProjectCard from '../components/ProjectCard.svelte'
+
+<Hero client:load />
+
+## About Me
+
+Software Engineering Manager transitioning to AI/ML leadership. Capstone portfolio showcasing Bayesian inference, Monte Carlo simulation, and modern software architecture.
+
+## Featured Projects
+
+<div class="project-grid">
+  <ProjectCard 
+    title="Software Engineering & Design" 
+    description="Modern software architecture patterns and best practices"
+    link="/projects/software-engineering"
+    client:visible
+  />
+  
+  <ProjectCard 
+    title="Algorithms & Data Structures" 
+    description="Bayesian inference and Monte Carlo simulation implementations"
+    link="/projects/algorithms"
+    client:visible
+  />
+  
+  <ProjectCard 
+    title="Databases" 
+    description="Scalable database design and optimization techniques"
+    link="/projects/databases"
+    client:visible
+  />
+</div>
+
