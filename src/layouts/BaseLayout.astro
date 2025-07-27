@@ -18,52 +18,23 @@ const { title, description = 'CS 499 Computer Science Capstone Portfolio' } = As
     <title>{title}</title>
   </head>
   <body>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/#featured-projects">Projects</a>
-      <a href="https://www.linkedin.com/in/brettplemons" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://github.com/brettplemons" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </nav>
     <main>
       <slot />
     </main>
     <style>
       html {
         font-family: system-ui, sans-serif;
+        scroll-behavior: smooth;
       }
       body {
         margin: 0;
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      nav {
-        background: #f4f4f5;
-        padding: 1rem 2rem;
-        display: flex;
-        gap: 2rem;
-        border-bottom: 1px solid #e4e4e7;
-      }
-      nav a {
-        color: #18181b;
-        text-decoration: none;
-        font-weight: 500;
-      }
-      nav a:hover {
-        color: #2563eb;
+        overflow-x: hidden;
       }
       main {
-        flex: 1;
         width: 100%;
       }
       
-      main > :global(*:not(.hero)) {
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 2rem;
-        padding-right: 2rem;
-      }
       
       .project-grid {
         display: grid;

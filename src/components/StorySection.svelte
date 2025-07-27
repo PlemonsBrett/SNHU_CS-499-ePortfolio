@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
   import { fade, fly } from 'svelte/transition'
   
+  export let id = ''
   export let chapter = ''
   export let title = ''
   export let subtitle = ''
@@ -9,16 +10,39 @@
   
   let visible = false
   let element
+  let showChapter = false
+  let showTitle = false
+  let showContent = false
   
   onMount(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !visible) {
           visible = true
-          observer.disconnect()
+          
+          // Animate sequence for first chapter
+          if (chapter === '01') {
+            // Show chapter number first
+            showChapter = true
+            setTimeout(() => {
+              showChapter = false
+              // Then show title
+              setTimeout(() => {
+                showTitle = true
+                // Finally show content
+                setTimeout(() => {
+                  showContent = true
+                }, 800)
+              }, 300)
+            }, 1500)
+          } else {
+            // For other chapters, show normally
+            showTitle = true
+            setTimeout(() => showContent = true, 300)
+          }
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     )
     
     if (element) {
@@ -32,19 +56,35 @@
 </script>
 
 <section 
+  {id}
   bind:this={element}
   class="story-section {align}"
 >
   {#if visible}
-    <div class="section-header" transition:fly={{ y: 30, duration: 600 }}>
-      <span class="chapter-number">Chapter {chapter}</span>
-      <h2>{title}</h2>
-      <p class="subtitle">{subtitle}</p>
-    </div>
+    {#if showChapter && chapter === '01'}
+      <div class="chapter-intro" transition:fade={{ duration: 500 }}>
+        <span class="big-chapter">Chapter {chapter}</span>
+      </div>
+    {/if}
     
-    <div class="section-content" transition:fade={{ delay: 300, duration: 600 }}>
-      <slot />
-    </div>
+    {#if showTitle}
+      <div class="section-header" 
+        class:centered={chapter === '01' && !showContent}
+        transition:fly={{ y: showContent ? 0 : 50, duration: 600 }}
+      >
+        {#if chapter !== '01' || showContent}
+          <span class="chapter-number">Chapter {chapter}</span>
+        {/if}
+        <h2>{title}</h2>
+        <p class="subtitle">{subtitle}</p>
+      </div>
+    {/if}
+    
+    {#if showContent}
+      <div class="section-content" transition:fade={{ delay: 300, duration: 600 }}>
+        <slot />
+      </div>
+    {/if}
   {/if}
 </section>
 
@@ -53,6 +93,10 @@
     padding: 5rem 0;
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
   .story-section::before {
@@ -67,9 +111,35 @@
     z-index: -1;
   }
   
+  .chapter-intro {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .big-chapter {
+    font-size: 5rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #1f2937;
+    opacity: 0.8;
+  }
+  
   .section-header {
     text-align: center;
     margin-bottom: 3rem;
+    transition: all 0.8s ease;
+  }
+  
+  .section-header.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
   }
   
   .chapter-number {
@@ -200,6 +270,10 @@
   }
   
   @media (max-width: 768px) {
+    .big-chapter {
+      font-size: 3rem;
+    }
+    
     .section-header h2 {
       font-size: 2rem;
     }
@@ -211,6 +285,11 @@
     
     .section-content :global(.cta-section) {
       padding: 2rem 1.5rem;
+    }
+    
+    .story-section {
+      min-height: 100vh;
+      padding: 3rem 0;
     }
   }
 </style>
