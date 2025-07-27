@@ -1,39 +1,70 @@
 ---
 layout: ../layouts/BaseLayout.astro
-title: Brett Plemons | AI Engineering Portfolio
+title: Brett Plemons | Transforming Ideas Into Impact
 ---
 
 import Hero from '../components/Hero.svelte'
+import Timeline from '../components/Timeline.svelte'
 import ProjectCard from '../components/ProjectCard.svelte'
+import SkillCloud from '../components/SkillCloud.svelte'
 
 <Hero client:load />
 
-## About Me
+## From Curiosity to Code
 
-Software Engineering Manager transitioning to AI/ML leadership. Capstone portfolio showcasing Bayesian inference, Monte Carlo simulation, and modern software architecture.
+My journey in technology began with curiosity and a screwdriver—taking apart electronics as a kid to understand how they worked. That same drive to understand and improve systems has shaped my entire career, from my early days as a self-taught developer to leading engineering teams and now transitioning into Machine Learning Engineering.
+
+<Timeline client:visible />
+
+## Impact Through Innovation
+
+Over the past 10 years, I've delivered measurable results across diverse industries:
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-number">86%</div>
+    <div class="stat-label">Data Processing Efficiency Gain</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">$500K</div>
+    <div class="stat-label">Annual AWS Cost Reduction</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">102%</div>
+    <div class="stat-label">User Retention Increase</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">83%</div>
+    <div class="stat-label">Release Cycle Time Reduction</div>
+  </div>
+</div>
+
+## Technical Evolution
+
+<SkillCloud client:visible />
 
 ## Featured Projects
 
-<div class="project-grid">
+<div id="featured-projects" class="project-grid">
   <ProjectCard 
-    title="Software Engineering & Design" 
-    description="Modern software architecture patterns and best practices"
-    link="/projects/software-engineering"
+    title="Interactive Code Playground" 
+    description="Live JavaScript execution environment with real-time visualization, showcasing Bayesian inference and Monte Carlo simulations"
+    link="/projects/code-playground"
+    tags={['Svelte', 'MDX', 'Interactive']}
     client:visible
   />
   
   <ProjectCard 
-    title="Algorithms & Data Structures" 
-    description="Bayesian inference and Monte Carlo simulation implementations"
-    link="/projects/algorithms"
-    client:visible
-  />
-  
-  <ProjectCard 
-    title="Databases" 
-    description="Scalable database design and optimization techniques"
-    link="/projects/databases"
+    title="Liar's Dice" 
+    description="A strategic dice game implementation in C++ showcasing object-oriented design, AI opponents, and terminal-based UI"
+    link="/projects/liars-dice"
+    tags={['C++', 'OOP', 'Game Design']}
     client:visible
   />
 </div>
 
+## The Next Chapter
+
+As I complete my Computer Science degree at SNHU this August (specializing in ML & AI with a minor in Applied Mathematics), I'm excited to apply my systems architecture background to MLOps, audio processing, and speech synthesis challenges. The intersection of robust engineering practices and cutting-edge AI capabilities is where I see the future of technology—and where I want to make my next impact.
+
+When I'm not building systems or leading teams, you'll find me experimenting with game design, practicing crochet (yes, really), or exploring the latest developments in machine learning. I believe the best engineers are lifelong learners, and I'm always ready for the next challenge that will push both my technical and leadership skills forward.

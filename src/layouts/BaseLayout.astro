@@ -20,9 +20,9 @@ const { title, description = 'CS 499 Computer Science Capstone Portfolio' } = As
   <body>
     <nav>
       <a href="/">Home</a>
-      <a href="/projects">Projects</a>
-      <a href="/blog">Blog</a>
-      <a href="/contact">Contact</a>
+      <a href="/#featured-projects">Projects</a>
+      <a href="https://www.linkedin.com/in/brettplemons" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/brettplemons" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
     <main>
       <slot />
@@ -65,6 +65,43 @@ const { title, description = 'CS 499 Computer Science Capstone Portfolio' } = As
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         margin: 2rem 0;
+      }
+      
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      
+      .stat-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.2s ease;
+      }
+      
+      .stat-card:hover {
+        transform: translateY(-4px);
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+        color: #6b7280;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+      
+      #featured-projects {
+        scroll-margin-top: 2rem;
       }
     </style>
   </body>

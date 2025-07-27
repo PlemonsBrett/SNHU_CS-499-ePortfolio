@@ -2,6 +2,7 @@
   export let title = ''
   export let description = ''
   export let link = '#'
+  export let tags = []
   
   let hovered = false
 </script>
@@ -15,6 +16,13 @@
   <a href={link}>
     <h3>{title}</h3>
     <p>{description}</p>
+    {#if tags.length > 0}
+      <div class="tags">
+        {#each tags as tag}
+          <span class="tag">{tag}</span>
+        {/each}
+      </div>
+    {/if}
     <span class="read-more">Learn more →</span>
   </a>
 </article>
@@ -65,5 +73,21 @@
     font-size: 0.875rem;
     margin-top: 1rem;
     display: inline-block;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .tag {
+    background: #e0e7ff;
+    color: #4338ca;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 500;
   }
 </style>
