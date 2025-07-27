@@ -127,6 +127,7 @@
 
     </div>
 
+    {#if subtitleVisible}
     <a
       href="#chapter-01"
       class="scroll-arrow"
@@ -146,6 +147,7 @@
         <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
     </a>
+    {/if}
 
     <div class="hero-background">
       <div class="gradient-orb orb-1"></div>
@@ -168,6 +170,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    z-index: 1;
   }
 
   .hero-content {
@@ -275,7 +278,7 @@
 
   .scroll-arrow {
     position: absolute;
-    bottom: 4rem;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
     color: #60a5fa;
@@ -308,7 +311,7 @@
   .hero-background {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 0;
   }
 
   .gradient-orb {

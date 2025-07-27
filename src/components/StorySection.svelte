@@ -1,102 +1,46 @@
 <script>
-  import { onMount } from 'svelte'
-  import { fade, fly } from 'svelte/transition'
-  
   export let id = ''
   export let chapter = ''
   export let title = ''
   export let subtitle = ''
   export let align = 'left'
-  
-  let visible = false
-  let element
-  let showChapter = false
-  let showTitle = false
-  let showContent = false
-  
-  onMount(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !visible) {
-          visible = true
-          
-          // Animate sequence for first chapter
-          if (chapter === '01') {
-            // Show chapter number first
-            showChapter = true
-            setTimeout(() => {
-              showChapter = false
-              // Then show title
-              setTimeout(() => {
-                showTitle = true
-                // Finally show content
-                setTimeout(() => {
-                  showContent = true
-                }, 800)
-              }, 300)
-            }, 1500)
-          } else {
-            // For other chapters, show normally
-            showTitle = true
-            setTimeout(() => showContent = true, 300)
-          }
-        }
-      },
-      { threshold: 0.3 }
-    )
-    
-    if (element) {
-      observer.observe(element)
-    }
-    
-    return () => {
-      observer.disconnect()
-    }
-  })
 </script>
 
 <section 
   {id}
-  bind:this={element}
   class="story-section {align}"
 >
-  {#if visible}
-    {#if showChapter && chapter === '01'}
-      <div class="chapter-intro" transition:fade={{ duration: 500 }}>
-        <span class="big-chapter">Chapter {chapter}</span>
-      </div>
-    {/if}
-    
-    {#if showTitle}
-      <div class="section-header" 
-        class:centered={chapter === '01' && !showContent}
-        transition:fly={{ y: showContent ? 0 : 50, duration: 600 }}
-      >
-        {#if chapter !== '01' || showContent}
-          <span class="chapter-number">Chapter {chapter}</span>
-        {/if}
-        <h2>{title}</h2>
-        <p class="subtitle">{subtitle}</p>
-      </div>
-    {/if}
-    
-    {#if showContent}
-      <div class="section-content" transition:fade={{ delay: 300, duration: 600 }}>
-        <slot />
-      </div>
-    {/if}
+  {#if chapter}
+    <div class="chapter-intro">
+      <span class="big-chapter">Chapter {chapter}</span>
+    </div>
   {/if}
+  
+  <div class="section-header">
+    <span class="chapter-number">Chapter {chapter}</span>
+    <h2>{title}</h2>
+    <p class="subtitle">{subtitle}</p>
+  </div>
+  
+  <div class="section-content">
+    <slot />
+  </div>
 </section>
 
 <style>
   .story-section {
-    padding: 5rem 0;
+    padding: 10rem 0;
     position: relative;
     overflow: hidden;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 20vh; /* Add space between sections */
+  }
+  
+  #chapter-01 {
+    margin-top: 0; /* No margin for chapter 01 */
   }
   
   .story-section::before {
@@ -117,6 +61,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
   }
   
   .big-chapter {
@@ -131,15 +78,7 @@
   .section-header {
     text-align: center;
     margin-bottom: 3rem;
-    transition: all 0.8s ease;
-  }
-  
-  .section-header.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
+    opacity: 0;
   }
   
   .chapter-number {
@@ -175,6 +114,7 @@
     font-size: 1.125rem;
     line-height: 1.8;
     color: #374151;
+    opacity: 0;
   }
   
   .section-content :global(p) {
@@ -289,7 +229,8 @@
     
     .story-section {
       min-height: 100vh;
-      padding: 3rem 0;
+      padding: 5rem 0;
+      margin-top: 10vh;
     }
   }
 </style>

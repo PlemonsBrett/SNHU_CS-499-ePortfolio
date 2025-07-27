@@ -8,32 +8,39 @@ import Timeline from '../components/Timeline.svelte'
 import ProjectCard from '../components/ProjectCard.svelte'
 import SkillCloud from '../components/SkillCloud.svelte'
 import StorySection from '../components/StorySection.svelte'
+import ScrollController from '../components/ScrollController.svelte'
 
 <Hero client:only="svelte" />
+<ScrollController client:only="svelte" />
 
 <StorySection 
   id="chapter-01"
   chapter="01" 
   title="The Beginning"
-  subtitle="From Curiosity to Code"
+  subtitle="From Geek Squad to Engineering Leadership"
   client:visible
 >
-  My journey began not in a classroom, but with a screwdriver and an insatiable curiosity. As a kid, I couldn't resist taking apart electronics to understand their inner workings. That same drive—to understand, to build, to improve—has been the constant thread throughout my career.
+  My journey began not in a classroom, but with a screwdriver and an insatiable curiosity. While working at Best Buy's Geek Squad, I discovered that fixing computers wasn't enough—I wanted to create solutions, not just apply them.
 
-  While working at Best Buy's Geek Squad, I discovered that fixing computers wasn't enough. I wanted to create solutions, not just apply them. So I taught myself to code, spending nights and weekends transforming from a repair technician into a software engineer.
+  I taught myself to code, spending nights and weekends transforming from a repair technician into a software engineer. Along the way, I:
+  
+  - Created software solutions that streamlined vulnerability tracking and repair processes
+  - Developed comprehensive training programs that increased operational efficiency by 30%
+  - Trained over 50 employees, improving service delivery and technical expertise
+  
+  This foundation of continuous learning and improvement would become the cornerstone of my career—from those early days troubleshooting hardware to eventually leading engineering teams at scale.
 </StorySection>
 
-<Timeline client:visible />
 
 <StorySection 
   id="chapter-02"
   chapter="02" 
-  title="The Evolution"
-  subtitle="Building Impact at Scale"
+  title="Engineering Excellence"
+  subtitle="Transforming Dictionary.com"
   align="right"
   client:visible
 >
-  Each role has been a stepping stone, expanding my impact from individual contributions to organizational transformation. At Dictionary.com, I didn't just manage teams—I revolutionized how we built and delivered products, achieving:
+  At Dictionary.com, I didn't just manage teams—I revolutionized how we built and delivered products. As Staff Software Engineer and then Senior Engineering Manager, I led initiatives that transformed both technology and culture:
 
   <div class="stats-grid">
     <div class="stat-card">
@@ -54,69 +61,88 @@ import StorySection from '../components/StorySection.svelte'
     </div>
   </div>
 
-  But numbers only tell part of the story. The real impact came from building teams that could sustain and amplify these improvements long after implementation.
+  Beyond the metrics, I pioneered WebSocket integration for GrammarCoach, built NLP applications with GPT-4, and earned the Exceptional Engineering Award in both 2022 and 2023 for strategic vision and innovation.
 </StorySection>
 
 <StorySection 
   id="chapter-03"
   chapter="03" 
-  title="The Toolkit"
-  subtitle="Technologies That Drive Innovation"
+  title="Leadership Evolution"
+  subtitle="Scaling Teams & Impact"
   client:visible
 >
-  Over a decade of hands-on experience has equipped me with a diverse technical arsenal. From backend systems to machine learning, from team leadership to architectural design—each skill has been battle-tested in production environments serving millions of users.
+  My progression into engineering leadership has been marked by transformative results at every level. At MFour Mobile Research as Senior Engineering Manager, I didn't just lead—I revolutionized:
 
-  <SkillCloud client:visible />
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">200%</div>
+      <div class="stat-label">Issue Cycle Time Improvement</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">182%</div>
+      <div class="stat-label">Weekly Issue Resolution Increase</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">121%</div>
+      <div class="stat-label">PR Cycle Time Reduction</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">93.5%</div>
+      <div class="stat-label">Sprint Completion Rate</div>
+    </div>
+  </div>
+
+  Now at Propio Language Services, I'm leading engineering transformation initiatives focused on customer impact, operational excellence, and fostering innovation through audacious goal-setting and calculated risk-taking.
 </StorySection>
 
 <StorySection 
   id="chapter-04"
   chapter="04" 
-  title="The Showcase"
-  subtitle="Projects That Demonstrate Excellence"
+  title="Technical Arsenal"
+  subtitle="Battle-Tested in Production"
   align="right"
   client:visible
 >
-  Theory meets practice in these portfolio projects. Each represents not just technical capability, but the ability to create engaging, user-focused solutions that solve real problems.
+  Over a decade of hands-on experience has equipped me with a comprehensive technical toolkit. Every skill has been battle-tested in production environments serving millions of users:
 
-  <div id="featured-projects" class="project-grid">
-    <ProjectCard 
-      title="Interactive Code Playground" 
-      description="Live JavaScript execution environment with real-time visualization, showcasing Bayesian inference and Monte Carlo simulations"
-      link="/projects/code-playground"
-      tags={['Svelte', 'MDX', 'Interactive']}
-      client:visible
-    />
-    
-    <ProjectCard 
-      title="Liar's Dice" 
-      description="A strategic dice game implementation in C++ showcasing object-oriented design, AI opponents, and terminal-based UI"
-      link="/projects/liars-dice"
-      tags={['C++', 'OOP', 'Game Design']}
-      client:visible
-    />
-  </div>
+  **Cloud & Infrastructure**: 8+ years AWS expertise, Infrastructure as Code (Ansible, Terraform), DevOps & CI/CD
+  
+  **Languages & Frameworks**: Python, JavaScript/Node.js, Go, Rust, C# (.NET), Ruby on Rails, Java (Spring)
+  
+  **Frontend & Mobile**: React (Redux, Next.js), Angular, Vue.js, React Native, Flutter, iOS & Android native
+  
+  **Data & ML**: TensorFlow, PyTorch, Scikit-learn, Advanced Analytics, MLOps pipelines
+  
+  **Architecture**: Distributed systems, Microservices, API design, Performance optimization
+  
+  Each technology in my arsenal has been chosen and mastered to solve real business problems and deliver measurable impact.
 </StorySection>
 
 <StorySection 
   id="chapter-05"
   chapter="05" 
   title="The Next Chapter"
-  subtitle="Where Engineering Meets AI"
+  subtitle="Where Engineering Excellence Meets AI Innovation"
   client:visible
 >
-  As I complete my Computer Science degree at SNHU this August (specializing in ML & AI with a minor in Applied Mathematics), I'm not just adding credentials—I'm preparing for the next evolution of technology leadership.
+  As I complete my BS in Computer Science at SNHU this August (specializing in Machine Learning & AI with a minor in Applied Mathematics), I'm not just adding credentials—I'm preparing for the next evolution of technology leadership.
 
-  The intersection of robust engineering practices and cutting-edge AI capabilities isn't just where technology is heading—it's where I can make the most impact. Whether it's building MLOps pipelines, tackling audio synthesis challenges, or creating the next generation of intelligent systems, I bring both the technical depth and leadership experience to turn ambitious visions into reality.
+  With a foundation in calculus, differential equations, and advanced statistics, combined with over a decade of production engineering experience, I'm uniquely positioned to bridge the gap between theoretical AI and practical implementation.
+
+  The future isn't just about understanding AI—it's about building scalable, reliable systems that harness its power responsibly and effectively.
 
   <div class="cta-section">
-    <h3>Ready to Build Something Amazing Together?</h3>
+    <h3>Let's Build the Future Together</h3>
+    <p style="margin-bottom: 2rem; color: #6b7280;">Connect with me to explore opportunities, collaborate on projects, or discuss the intersection of engineering and AI.</p>
     <div class="cta-buttons">
       <a href="https://www.linkedin.com/in/brettplemons" target="_blank" rel="noopener noreferrer" class="cta-button primary">
-        Let's Connect
+        LinkedIn Profile
       </a>
-      <a href="mailto:brett@plemons.dev" class="cta-button secondary">
-        Email Me
+      <a href="https://github.com/bplemons" target="_blank" rel="noopener noreferrer" class="cta-button secondary">
+        GitHub Projects
+      </a>
+      <a href="/projects" class="cta-button secondary">
+        View My Work
       </a>
     </div>
   </div>

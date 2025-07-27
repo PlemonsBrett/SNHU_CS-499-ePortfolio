@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
   
   // Version control integration
   "vcs": {
@@ -10,7 +10,8 @@
   
   // File handling configuration
   "files": {
-    "ignore": [
+    "includes": ["src/**/*", "*.{json,md,mdx,astro}"],
+    "experimentalScannerIgnores": [
       "dist",        // Build output
       "node_modules", // Dependencies
       ".astro"       // Astro cache directory
