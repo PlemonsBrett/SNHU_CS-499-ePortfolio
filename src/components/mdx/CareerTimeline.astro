@@ -1,0 +1,18 @@
+---
+import CareerTimelineComponent from '../CareerTimeline.svelte'
+
+export interface Props {
+  events: Array<{
+    date: string
+    title: string
+    company: string
+    description?: string
+  }>
+  id?: string
+}
+
+const { events, id = `career-timeline-${Math.random().toString(36).substring(2, 11)}` } =
+  Astro.props
+---
+
+<CareerTimelineComponent id={id} events={events} client:visible />

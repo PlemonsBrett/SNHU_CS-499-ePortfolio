@@ -1,39 +1,33 @@
 ---
 layout: ../layouts/BaseLayout.astro
-title: Brett Plemons | AI Engineering Portfolio
+title: Brett Plemons | Transforming Ideas Into Impact
 ---
 
-import Hero from '../components/Hero.svelte'
-import ProjectCard from '../components/ProjectCard.svelte'
+import Hero from '../sections/Hero.mdx'
+import Chapter1 from '../sections/Chapter1.mdx'
+import Chapter2 from '../sections/Chapter2.mdx'
+import Chapter3 from '../sections/Chapter3.mdx'
+import Chapter4 from '../sections/Chapter4.mdx'
+import Chapter5 from '../sections/Chapter5.mdx'
+import CTASection from '../components/mdx/CTASection.astro'
 
-<Hero client:load />
+<Hero />
+<Chapter1 />
+<Chapter2 />
+<Chapter3 />
+<Chapter4 />
+<Chapter5 />
 
-## About Me
-
-Software Engineering Manager transitioning to AI/ML leadership. Capstone portfolio showcasing Bayesian inference, Monte Carlo simulation, and modern software architecture.
-
-## Featured Projects
-
-<div class="project-grid">
-  <ProjectCard 
-    title="Software Engineering & Design" 
-    description="Modern software architecture patterns and best practices"
-    link="/projects/software-engineering"
-    client:visible
-  />
-  
-  <ProjectCard 
-    title="Algorithms & Data Structures" 
-    description="Bayesian inference and Monte Carlo simulation implementations"
-    link="/projects/algorithms"
-    client:visible
-  />
-  
-  <ProjectCard 
-    title="Databases" 
-    description="Scalable database design and optimization techniques"
-    link="/projects/databases"
-    client:visible
-  />
-</div>
-
+<CTASection
+    title="Let's Connect"
+    subtitle="Ready for the Next Chapter"
+    description="Whether you're interested in discussing engineering leadership, exploring ML/AI innovations, or collaborating on projects that push the boundaries of what's possible, I'd love to connect."
+    quote={{
+        text: "The best way to predict the future is to invent it.",
+        author: "Alan Kay"
+    }}
+    finalCTA={{
+        text: "Ready to invent what comes next?",
+        href: "mailto:brett@plemons.dev"
+    }}
+/>

@@ -1,0 +1,16 @@
+import Hero from '../components/Hero.svelte'
+import ScrollController from '../components/ScrollController.svelte'
+
+<Hero
+    titles={["Engineer", "Leader", "Architect", "Mentor", "Builder", "Innovator", "Catalyst", "Pioneer", "Strategist"]}
+    client:only="svelte"
+/>
+<ScrollController client:only="svelte" />
+
+{/* 
+  You can customize the carousel titles by passing an array:
+  <Hero 
+    titles={["Engineer", "Leader", "Architect", "Mentor", "Builder", "Innovator", "Catalyst", "Pioneer", "Strategist"]} 
+    client:only="svelte" 
+  />
+*/}

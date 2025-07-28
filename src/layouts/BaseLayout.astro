@@ -4,67 +4,110 @@ export interface Props {
   description?: string
 }
 
-const { title, description = 'CS 499 Computer Science Capstone Portfolio' } = Astro.props
+const { title: _title, description: _description = 'CS 499 Computer Science Capstone Portfolio' } =
+  Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
+    <meta name="description" content={_description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <title>{_title}</title>
   </head>
   <body>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/projects">Projects</a>
-      <a href="/blog">Blog</a>
-      <a href="/contact">Contact</a>
-    </nav>
     <main>
       <slot />
     </main>
     <style>
       html {
-        font-family: system-ui, sans-serif;
+        font-family: 'Inter', system-ui, sans-serif;
+        scroll-behavior: smooth;
       }
       body {
         margin: 0;
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      nav {
-        background: #f4f4f5;
-        padding: 1rem 2rem;
-        display: flex;
-        gap: 2rem;
-        border-bottom: 1px solid #e4e4e7;
-      }
-      nav a {
-        color: #18181b;
-        text-decoration: none;
-        font-weight: 500;
-      }
-      nav a:hover {
-        color: #2563eb;
+        overflow-x: hidden;
       }
       main {
-        flex: 1;
-        padding: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
         width: 100%;
       }
+      
       
       .project-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         margin: 2rem 0;
+      }
+      
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      
+      .stat-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.2s ease;
+      }
+      
+      .stat-card:hover {
+        transform: translateY(-4px);
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+        color: #6b7280;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+      
+      #featured-projects {
+        scroll-margin-top: 2rem;
+      }
+      
+      /* Side-by-side layout when AchievementsCard follows StorySection */
+      @media (min-width: 1024px) {
+        .story-section + .achievements-card {
+          margin-top: -15rem;
+          position: relative;
+          z-index: 10;
+        }
+        
+        .story-section.left + .achievements-card {
+          margin-left: 52%;
+          margin-right: 10%;
+          max-width: 400px;
+        }
+        
+        .story-section.right + .achievements-card {
+          margin-right: 52%;
+          margin-left: 10%;
+          max-width: 400px;
+        }
+        
+        /* Add extra padding to story sections that are followed by achievements */
+        .story-section:has(+ .achievements-card) {
+          padding-bottom: 18rem;
+        }
       }
     </style>
   </body>

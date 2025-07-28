@@ -1,0 +1,14 @@
+---
+import AchievementsCardComponent from '../AchievementsCard.svelte'
+
+export interface Props {
+  align?: 'left' | 'right'
+  title?: string
+}
+
+const { align = 'left', title = 'Achievements' } = Astro.props
+---
+
+<AchievementsCardComponent align={align} title={title} client:visible>
+  <slot />
+</AchievementsCardComponent>
