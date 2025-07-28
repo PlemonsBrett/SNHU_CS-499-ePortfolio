@@ -1,5 +1,5 @@
 ---
-import VisionCard from '../VisionCard.svelte'
+import VisionCardComponent from '../VisionCard.svelte'
 
 export interface Props {
   title?: string
@@ -11,15 +11,10 @@ export interface Props {
   }>
 }
 
-const { 
-  title = "My Next Chapter",
-  goal = "",
-  subtitle = "Combining:",
-  items = []
-} = Astro.props
+const { title = 'My Next Chapter', goal = '', subtitle = 'Combining:', items = [] } = Astro.props
 ---
 
-<VisionCard 
+<VisionCardComponent
   title={title}
   goal={goal}
   subtitle={subtitle}

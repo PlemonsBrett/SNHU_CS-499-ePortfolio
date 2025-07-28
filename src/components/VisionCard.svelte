@@ -1,10 +1,5 @@
 <script>
-  let { 
-    title = "My Next Chapter",
-    goal = "",
-    subtitle = "Combining:",
-    items = []
-  } = $props()
+const { title = 'My Next Chapter', goal = '', subtitle = 'Combining:', items = [] } = $props()
 </script>
 
 <div class="vision-card">

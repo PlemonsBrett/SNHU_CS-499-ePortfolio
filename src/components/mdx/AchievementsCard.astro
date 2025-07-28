@@ -1,5 +1,5 @@
 ---
-import AchievementsCard from '../AchievementsCard.svelte'
+import AchievementsCardComponent from '../AchievementsCard.svelte'
 
 export interface Props {
   align?: 'left' | 'right'
@@ -9,6 +9,6 @@ export interface Props {
 const { align = 'left', title = 'Achievements' } = Astro.props
 ---
 
-<AchievementsCard align={align} title={title} client:visible>
+<AchievementsCardComponent align={align} title={title} client:visible>
   <slot />
-</AchievementsCard>
+</AchievementsCardComponent>

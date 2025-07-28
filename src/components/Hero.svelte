@@ -1,96 +1,82 @@
 <script>
-  import { onMount } from "svelte";
-  import { fade, fly } from "svelte/transition";
-  import emblaCarouselSvelte from "embla-carousel-svelte";
-  import Autoplay from "embla-carousel-autoplay";
+import { onMount } from 'svelte'
+import { fade, fly } from 'svelte/transition'
+import emblaCarouselSvelte from 'embla-carousel-svelte'
+import Autoplay from 'embla-carousel-autoplay'
 
-  let { 
-    titles = [
-      "Leader",
-      "Engineer",
-      "Architect",
-      "Mentor",
-      "Builder",
-      "Innovator",
-    ]
-  } = $props();
+const { titles = ['Leader', 'Engineer', 'Architect', 'Mentor', 'Builder', 'Innovator'] } = $props()
 
-  let _visible = $state(false);
-  let _titleVisible = $state(false);
-  let _subtitleVisible = $state(false);
-  let _emblaApi = $state(null);
-  let selectedIndex = $state(0);
+let _visible = $state(false)
+let _titleVisible = $state(false)
+let _subtitleVisible = $state(false)
+let _emblaApi = $state(null)
+let selectedIndex = $state(0)
 
-  // Embla carousel options
-  const _emblaOptions = {
-    align: "center",
-    loop: true,
-    skipSnaps: false,
-    containScroll: false, // Allow infinite scrolling
-  };
+// Embla carousel options
+const _emblaOptions = {
+  align: 'center',
+  loop: true,
+  skipSnaps: false,
+  containScroll: false, // Allow infinite scrolling
+}
 
-  // Autoplay plugin options
-  const _autoplayOptions = {
-    delay: 3000,
-    stopOnInteraction: false,
-    stopOnMouseEnter: true,
-    playOnInit: true,
-    stopOnLastSnap: false, // Don't stop at the end
-  };
+// Autoplay plugin options
+const _autoplayOptions = {
+  delay: 3000,
+  stopOnInteraction: false,
+  stopOnMouseEnter: true,
+  playOnInit: true,
+  stopOnLastSnap: false, // Don't stop at the end
+}
 
-  onMount(() => {
-    console.log("Hero component mounted");
-    _visible = true;
-    setTimeout(() => {
-      _titleVisible = true;
-    }, 300);
-    setTimeout(() => {
-      _subtitleVisible = true;
-    }, 600);
-  });
+onMount(() => {
+  console.log('Hero component mounted')
+  _visible = true
+  setTimeout(() => {
+    _titleVisible = true
+  }, 300)
+  setTimeout(() => {
+    _subtitleVisible = true
+  }, 600)
+})
 
-  // Handle carousel initialization
-  function _onInit(event) {
-    console.log("onInit called", event);
-    if (event?.detail) {
-      // The detail object contains all the Embla methods
-      const api = event.detail;
-      console.log("Embla detail:", api);
+// Handle carousel initialization
+function _onInit(event) {
+  console.log('onInit called', event)
+  if (event?.detail) {
+    // The detail object contains all the Embla methods
+    const api = event.detail
+    console.log('Embla detail:', api)
 
-      // Check if we have the necessary methods
-      if (api?.slidesInView && api.on) {
-        _emblaApi = api;
+    // Check if we have the necessary methods
+    if (api?.slidesInView && api.on) {
+      _emblaApi = api
 
-        // Debug: Check what Embla sees
-        console.log("Total slides:", api.slideNodes().length);
-        console.log("Scroll snaps:", api.scrollSnapList());
-        console.log("Selected snap:", api.selectedScrollSnap());
+      // Debug: Check what Embla sees
+      console.log('Total slides:', api.slideNodes().length)
+      console.log('Scroll snaps:', api.scrollSnapList())
+      console.log('Selected snap:', api.selectedScrollSnap())
 
-        // Function to update selected slide based on Embla's selection
-        const updateCenteredSlide = () => {
-          // Use Embla's selected snap directly
-          const selectedSnap = api.selectedScrollSnap();
+      // Function to update selected slide based on Embla's selection
+      const updateCenteredSlide = () => {
+        // Use Embla's selected snap directly
+        const selectedSnap = api.selectedScrollSnap()
 
-          if (selectedSnap !== selectedIndex) {
-            selectedIndex = selectedSnap;
-            console.log(
-              "Selected snap:",
-              selectedSnap,
-              "title:",
-              titles[selectedIndex],
-            );
-          }
-        };
-
-        // Listen to scroll events
-        api.on("scroll", updateCenteredSlide);
-        api.on("select", updateCenteredSlide);
-
-        // Set initial selected index
-        updateCenteredSlide();
+        if (selectedSnap !== selectedIndex) {
+          selectedIndex = selectedSnap
+          console.log('Selected snap:', selectedSnap, 'title:', titles[selectedIndex])
+        }
       }
+
+      // Listen to scroll events
+      api.on('scroll', updateCenteredSlide)
+      api.on('select', updateCenteredSlide)
+
+      // Set initial selected index
+      updateCenteredSlide()
     }
   }
+}
 </script>
 
 {#if _visible}

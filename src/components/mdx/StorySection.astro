@@ -1,5 +1,5 @@
 ---
-import StorySection from '../StorySection.svelte'
+import StorySectionComponent from '../StorySection.svelte'
 
 export interface Props {
   id?: string
@@ -15,20 +15,15 @@ const { id = '', chapter = '', title = '', subtitle = '', align = 'left' } = Ast
 const achievementsSlot = Astro.slots.has('achievements') ? Astro.slots.render('achievements') : null
 ---
 
-<StorySection 
-  {id}
-  {chapter}
-  {title}
-  {subtitle}
-  {align}
-  client:visible
->
+<StorySectionComponent {id} {chapter} {title} {subtitle} {align} client:visible>
   <Fragment slot="children">
     <slot />
   </Fragment>
-  {achievementsSlot && (
-    <Fragment slot="achievements">
-      <slot name="achievements" />
-    </Fragment>
-  )}
-</StorySection>
+  {
+    achievementsSlot && (
+      <Fragment slot="achievements">
+        <slot name="achievements" />
+      </Fragment>
+    )
+  }
+</StorySectionComponent>

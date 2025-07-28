@@ -1,56 +1,52 @@
 <script>
-  import { onMount } from "svelte";
+import { onMount } from 'svelte'
 
-  let code = "";
-  let output = [];
-  let _running = false;
+let code = ''
+let output = []
+let _running = false
 
-  onMount(() => {
-    // Extract code from slot content
-    const slot = document.querySelector(".code-slot");
-    if (slot) {
-      const codeBlock = slot.querySelector("pre code");
-      if (codeBlock) {
-        code = codeBlock.textContent.trim();
-      }
-    }
-  });
-
-  function _runCode() {
-    output = [];
-    _running = true;
-
-    // Override console.log to capture output
-    const originalLog = console.log;
-    console.log = (...args) => {
-      output = [
-        ...output,
-        args
-          .map((arg) =>
-            typeof arg === "object"
-              ? JSON.stringify(arg, null, 2)
-              : String(arg),
-          )
-          .join(" "),
-      ];
-    };
-
-    try {
-      // Create a new function from the code string and execute it
-      const func = new Function(code);
-      func();
-    } catch (error) {
-      output = [...output, `Error: ${error.message}`];
-    } finally {
-      // Restore original console.log
-      console.log = originalLog;
-      _running = false;
+onMount(() => {
+  // Extract code from slot content
+  const slot = document.querySelector('.code-slot')
+  if (slot) {
+    const codeBlock = slot.querySelector('pre code')
+    if (codeBlock) {
+      code = codeBlock.textContent.trim()
     }
   }
+})
 
-  function _clearOutput() {
-    output = [];
+function _runCode() {
+  output = []
+  _running = true
+
+  // Override console.log to capture output
+  const originalLog = console.log
+  console.log = (...args) => {
+    output = [
+      ...output,
+      args
+        .map((arg) => (typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)))
+        .join(' '),
+    ]
   }
+
+  try {
+    // Create a new function from the code string and execute it
+    const func = new Function(code)
+    func()
+  } catch (error) {
+    output = [...output, `Error: ${error.message}`]
+  } finally {
+    // Restore original console.log
+    console.log = originalLog
+    _running = false
+  }
+}
+
+function _clearOutput() {
+  output = []
+}
 </script>
 
 <div class="playground">
@@ -68,12 +64,8 @@
       </button>
     </div>
 
-    <textarea
-      bind:value={code}
-      class="code-input"
-      spellcheck="false"
-      rows="20"
-    />
+    <textarea bind:value={code} class="code-input" spellcheck="false" rows="20"
+    ></textarea>
   </div>
 
   {#if output.length > 0}

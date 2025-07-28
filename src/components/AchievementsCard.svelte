@@ -1,8 +1,8 @@
 <script>
-  let { 
-    align = 'left', // 'left' or 'right'
-    title = 'Achievements'
-  } = $props()
+const {
+  align = 'left', // 'left' or 'right'
+  title = 'Achievements',
+} = $props()
 </script>
 
 <div class="achievements-card {align}">

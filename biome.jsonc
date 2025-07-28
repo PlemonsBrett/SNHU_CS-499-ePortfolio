@@ -1,47 +1,40 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
-  
   // Version control integration
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true // Respects .gitignore patterns
   },
-  
   // File handling configuration
   "files": {
-    "includes": ["src/**/*", "*.{json,md,mdx,astro}"],
+    "includes": ["src/**/*", "*.{json,md,mdx}"],
     "experimentalScannerIgnores": [
-      "dist",        // Build output
+      "dist", // Build output
       "node_modules", // Dependencies
-      ".astro"       // Astro cache directory
+      ".astro" // Astro cache directory
     ]
   },
-  
   // Code formatting settings
   "formatter": {
     "enabled": true,
     "indentStyle": "space", // Use spaces instead of tabs
-    "indentWidth": 2,       // 2 spaces per indent level
-    "lineWidth": 100        // Max line length before wrapping
+    "indentWidth": 2, // 2 spaces per indent level
+    "lineWidth": 100 // Max line length before wrapping
   },
-  
   // Linting configuration
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true, // Enable all recommended rules
-      
       // TypeScript-specific rules
       "suspicious": {
         "noExplicitAny": "warn" // Warn on 'any' type usage (not error)
       },
-      
       // Code complexity rules
       "complexity": {
         "noForEach": "off" // Allow forEach (personal preference)
       },
-      
       // Style rules
       "style": {
         "useConst": "error", // Prefer const over let when possible
@@ -49,21 +42,37 @@
       }
     }
   },
-  
   // JavaScript/TypeScript specific formatting
   "javascript": {
     "formatter": {
-      "quoteStyle": "single",    // Use single quotes
-      "semicolons": "asNeeded",  // Only add semicolons when necessary
-      "trailingCommas": "es5",   // Add trailing commas where valid in ES5
+      "quoteStyle": "single", // Use single quotes
+      "semicolons": "asNeeded", // Only add semicolons when necessary
+      "trailingCommas": "es5", // Add trailing commas where valid in ES5
       "arrowParentheses": "always" // Always use parentheses in arrow functions
     }
   },
-  
   // JSON specific formatting
   "json": {
     "formatter": {
       "trailingCommas": "none" // No trailing commas in JSON
     }
-  }
+  },
+  // Overrides for special file types with partial support
+  "overrides": [
+    {
+      "includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off",
+            "useImportType": "off"
+          },
+          "correctness": {
+            "noUnusedVariables": "off",
+            "noUnusedImports": "off"
+          }
+        }
+      }
+    }
+  ]
 }

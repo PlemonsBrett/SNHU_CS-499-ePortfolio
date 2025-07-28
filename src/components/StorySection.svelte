@@ -1,12 +1,5 @@
 <script>
-  let { 
-    id = '', 
-    chapter = '', 
-    title = '', 
-    subtitle = '', 
-    align = 'left',
-    children
-  } = $props()
+const { id = '', chapter = '', title = '', subtitle = '', align = 'left', children } = $props()
 </script>
 
 <section 

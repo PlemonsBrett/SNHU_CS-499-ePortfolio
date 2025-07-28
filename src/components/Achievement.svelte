@@ -1,9 +1,5 @@
 <script>
-  let { 
-    icon = '🏆',
-    metric = '',
-    highlight = false
-  } = $props()
+const { icon = '🏆', metric = '', highlight = false } = $props()
 </script>
 
 <div class="achievement" class:highlight>

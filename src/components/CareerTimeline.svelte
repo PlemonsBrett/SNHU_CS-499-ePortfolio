@@ -1,61 +1,61 @@
 <script>
-  import { onMount } from "svelte";
+import { onMount } from 'svelte'
 
-  const { events: _events = [], id = "" } = $props();
+const { events: _events = [], id = '' } = $props()
 
-  onMount(async () => {
-    const { gsap } = await import("gsap");
-    const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+onMount(async () => {
+  const { gsap } = await import('gsap')
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger')
 
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger)
 
-    // Animate timeline line
-    const line = document.querySelector(`#${id} .timeline-line`);
-    gsap.fromTo(
-      line,
-      { scaleY: 0 },
-      {
-        scaleY: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: `#${id}`,
-          start: "top 80%",
-          end: "top 50%",
-          scrub: 1,
-        },
-      },
-    );
-
-    // Animate timeline events
-    const eventElements = document.querySelectorAll(`#${id} .timeline-event`);
-    gsap.fromTo(
-      eventElements,
-      { opacity: 0, x: -50 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.5,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: `#${id}`,
-          start: "top 70%",
-          end: "bottom 70%",
-          scrub: 1,
-        },
-      },
-    );
-
-    // Fade out the entire timeline
-    gsap.to(`#${id}`, {
-      opacity: 0,
+  // Animate timeline line
+  const line = document.querySelector(`#${id} .timeline-line`)
+  gsap.fromTo(
+    line,
+    { scaleY: 0 },
+    {
+      scaleY: 1,
+      duration: 1,
       scrollTrigger: {
         trigger: `#${id}`,
-        start: "bottom 30%",
-        end: "bottom top",
+        start: 'top 80%',
+        end: 'top 50%',
         scrub: 1,
       },
-    });
-  });
+    }
+  )
+
+  // Animate timeline events
+  const eventElements = document.querySelectorAll(`#${id} .timeline-event`)
+  gsap.fromTo(
+    eventElements,
+    { opacity: 0, x: -50 },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 0.5,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: `#${id}`,
+        start: 'top 70%',
+        end: 'bottom 70%',
+        scrub: 1,
+      },
+    }
+  )
+
+  // Fade out the entire timeline
+  gsap.to(`#${id}`, {
+    opacity: 0,
+    scrollTrigger: {
+      trigger: `#${id}`,
+      start: 'bottom 30%',
+      end: 'bottom top',
+      scrub: 1,
+    },
+  })
+})
 </script>
 
 <section {id} class="career-timeline">

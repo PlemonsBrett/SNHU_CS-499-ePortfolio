@@ -1,5 +1,5 @@
 ---
-import CareerTimeline from '../CareerTimeline.svelte'
+import CareerTimelineComponent from '../CareerTimeline.svelte'
 
 export interface Props {
   events: Array<{
@@ -11,11 +11,8 @@ export interface Props {
   id?: string
 }
 
-const { events, id = `career-timeline-${Math.random().toString(36).substr(2, 9)}` } = Astro.props
+const { events, id = `career-timeline-${Math.random().toString(36).substring(2, 11)}` } =
+  Astro.props
 ---
 
-<CareerTimeline
-  id={id}
-  events={events}
-  client:visible
-/>
+<CareerTimelineComponent id={id} events={events} client:visible />

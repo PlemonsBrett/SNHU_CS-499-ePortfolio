@@ -1,34 +1,34 @@
 <script>
-  let { 
-    title = "Let's Build the Future Together",
-    subtitle = "Ready to Transform Ideas Into Impact",
-    description = "I'm passionate about solving complex problems at the intersection of engineering excellence and artificial intelligence.",
-    links = [
-      {
-        text: "LinkedIn",
-        href: "https://www.linkedin.com/in/brettplemons",
-        primary: true
-      },
-      {
-        text: "GitHub", 
-        href: "https://github.com/bplemons",
-        primary: false
-      },
-      {
-        text: "Projects",
-        href: "/projects",
-        primary: false
-      }
-    ],
-    quote = {
-      text: "The best way to predict the future is to build it.",
-      author: "Alan Kay"
+const {
+  title = "Let's Build the Future Together",
+  subtitle = 'Ready to Transform Ideas Into Impact',
+  description = "I'm passionate about solving complex problems at the intersection of engineering excellence and artificial intelligence.",
+  links = [
+    {
+      text: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/brettplemons',
+      primary: true,
     },
-    finalCTA = {
-      text: "Start a Conversation",
-      href: "mailto:brett@plemons.dev"
-    }
-  } = $props()
+    {
+      text: 'GitHub',
+      href: 'https://github.com/bplemons',
+      primary: false,
+    },
+    {
+      text: 'Projects',
+      href: '/projects',
+      primary: false,
+    },
+  ],
+  quote = {
+    text: 'The best way to predict the future is to build it.',
+    author: 'Alan Kay',
+  },
+  finalCTA = {
+    text: 'Start a Conversation',
+    href: 'mailto:brett@plemons.dev',
+  },
+} = $props()
 </script>
 
 <div class="cta-section">

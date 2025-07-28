@@ -1,77 +1,77 @@
 <script>
-  import { onMount } from "svelte";
+import { onMount } from 'svelte'
 
-  const { skills: _skills = [], id = "" } = $props();
+const { skills: _skills = [], id = '' } = $props()
 
-  let _mounted = $state(false);
+let _mounted = $state(false)
 
-  onMount(async () => {
-    _mounted = true;
-    const { gsap } = await import("gsap");
-    const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+onMount(async () => {
+  _mounted = true
+  const { gsap } = await import('gsap')
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger')
 
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger)
 
-    // Animate skills flying upward
-    const skillElements = document.querySelectorAll(`#${id} .skill-item`);
+  // Animate skills flying upward
+  const skillElements = document.querySelectorAll(`#${id} .skill-item`)
 
-    // Position skills randomly across the viewport
-    skillElements.forEach((el, i) => {
-      gsap.set(el, {
-        opacity: 0,
-        y: 100,
-        scale: 0.5,
-        rotation: Math.random() * 30 - 15,
-        left: `${10 + (i % 5) * 18}%`,
-        top: `${80 + Math.floor(i / 5) * 10}%`,
-      });
-    });
+  // Position skills randomly across the viewport
+  skillElements.forEach((el, i) => {
+    gsap.set(el, {
+      opacity: 0,
+      y: 100,
+      scale: 0.5,
+      rotation: Math.random() * 30 - 15,
+      left: `${10 + (i % 5) * 18}%`,
+      top: `${80 + Math.floor(i / 5) * 10}%`,
+    })
+  })
 
+  gsap.to(skillElements, {
+    opacity: 1,
+    y: -600,
+    scale: 1,
+    rotation: 0,
+    duration: 2,
+    stagger: {
+      each: 0.1,
+      from: 'random',
+    },
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: `#${id}`,
+      start: 'top 80%',
+      end: 'bottom 20%',
+      scrub: 1,
+    },
+  })
+
+  // Keep skills visible until timeline appears
+  // Find the next timeline element
+  const nextTimeline = document.querySelector(`#${id} ~ .career-timeline`)
+  if (nextTimeline) {
     gsap.to(skillElements, {
-      opacity: 1,
-      y: -600,
-      scale: 1,
-      rotation: 0,
-      duration: 2,
-      stagger: {
-        each: 0.1,
-        from: "random",
-      },
-      ease: "power2.out",
+      opacity: 0,
       scrollTrigger: {
-        trigger: `#${id}`,
-        start: "top 80%",
-        end: "bottom 20%",
+        trigger: nextTimeline,
+        start: 'top bottom',
+        end: 'top 80%',
         scrub: 1,
       },
-    });
-
-    // Keep skills visible until timeline appears
-    // Find the next timeline element
-    const nextTimeline = document.querySelector(`#${id} ~ .career-timeline`);
-    if (nextTimeline) {
-      gsap.to(skillElements, {
-        opacity: 0,
-        scrollTrigger: {
-          trigger: nextTimeline,
-          start: "top bottom",
-          end: "top 80%",
-          scrub: 1,
-        },
-      });
-    } else {
-      // Fallback if no timeline found
-      gsap.to(skillElements, {
-        opacity: 0,
-        scrollTrigger: {
-          trigger: `#${id}`,
-          start: "bottom 20%",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
-    }
-  });
+    })
+  } else {
+    // Fallback if no timeline found
+    gsap.to(skillElements, {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: `#${id}`,
+        start: 'bottom 20%',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    })
+  }
+})
 </script>
 
 <section {id} class="skills-transition">
