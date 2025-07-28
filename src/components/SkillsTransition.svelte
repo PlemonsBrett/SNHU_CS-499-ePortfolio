@@ -94,8 +94,8 @@ onMount(async () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 25vh; /* Add even more space before skills transition */
-    margin-bottom: 10vh; /* Add space after skills transition */
+    margin-top: 20vh; /* Moderate space before skills transition */
+    margin-bottom: 15vh; /* Moderate space after skills transition */
     contain: layout; /* Contain layout to prevent overflow */
   }
 

@@ -86,6 +86,7 @@ onMount(async () => {
     align-items: center;
     justify-content: center;
     background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+    margin-bottom: 10vh; /* Add space after timeline */
   }
 
   .timeline-container {

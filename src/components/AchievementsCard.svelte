@@ -2,13 +2,14 @@
 const {
   align = 'left', // 'left' or 'right'
   title = 'Achievements',
+  children,
 } = $props()
 </script>
 
 <div class="achievements-card {align}">
   <h3 class="achievements-title">{title}</h3>
   <div class="achievements-list">
-    <slot />
+    {@render children?.()}
   </div>
 </div>
 

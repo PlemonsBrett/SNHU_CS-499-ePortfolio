@@ -1,5 +1,5 @@
 <script>
-const { icon = '🏆', metric = '', highlight = false } = $props()
+const { icon = '🏆', metric = '', highlight = false, children } = $props()
 </script>
 
 <div class="achievement" class:highlight>
@@ -9,7 +9,7 @@ const { icon = '🏆', metric = '', highlight = false } = $props()
       <div class="achievement-metric">{metric}</div>
     {/if}
     <div class="achievement-description">
-      <slot />
+      {@render children?.()}
     </div>
   </div>
 </div>

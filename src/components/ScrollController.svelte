@@ -48,126 +48,6 @@ onMount(async () => {
     },
   })
 
-  // Chapter 01 special entrance - show during Hero fade
-  const chapter01 = document.querySelector('#chapter-01')
-  if (chapter01) {
-    // Show "Chapter 01" text during hero fade
-    const bigChapter = chapter01.querySelector('.big-chapter')
-    if (bigChapter) {
-      gsap.fromTo(
-        bigChapter,
-        {
-          opacity: 0,
-          scale: 0.8,
-          position: 'fixed',
-          top: '50%',
-          left: '50%',
-          xPercent: -50,
-          yPercent: -50,
-          zIndex: 100,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          scrollTrigger: {
-            trigger: '.hero',
-            start: '80% top',
-            end: '100% top',
-            scrub: true,
-          },
-        }
-      )
-
-      // Fade out as we approach the actual section
-      gsap.to(bigChapter, {
-        opacity: 0,
-        scale: 1.2,
-        scrollTrigger: {
-          trigger: '#chapter-01',
-          start: 'top 80%',
-          end: 'top 50%',
-          scrub: true,
-          onComplete: () => {
-            gsap.set(bigChapter, {
-              position: 'absolute',
-              top: 'auto',
-              left: 'auto',
-              xPercent: 0,
-              yPercent: 0,
-              zIndex: 1,
-            })
-          },
-        },
-      })
-    }
-
-    // Reduced pinning for Chapter 01
-    ScrollTrigger.create({
-      trigger: '#chapter-01',
-      start: 'top top',
-      end: '+=50%',
-      pin: true,
-      pinSpacing: false,
-    })
-
-    // Create timeline for content reveal
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '#chapter-01',
-        start: 'top top',
-        end: '+=100%',
-        scrub: 1,
-      },
-    })
-
-    // Content animations are handled separately now
-
-    // Title and content reveal with movement
-    const header = chapter01.querySelector('.section-header')
-    if (header) {
-      // Set header visible initially
-      gsap.set(header, { opacity: 1 })
-
-      // Initially hide the chapter chip
-      const chapterChip = header.querySelector('.chapter-number')
-      if (chapterChip) {
-        gsap.set(chapterChip, { opacity: 0 })
-      }
-
-      tl.from(
-        header,
-        {
-          opacity: 0,
-          y: 100,
-          duration: 0.3,
-          onComplete: () => {
-            // Show the chapter chip when the header appears
-            if (chapterChip) {
-              gsap.to(chapterChip, { opacity: 1, duration: 0.3 })
-            }
-          },
-        },
-        '-=0.1'
-      )
-    }
-
-    const content = chapter01.querySelector('.section-content')
-    if (content) {
-      // Set content visible initially
-      gsap.set(content, { opacity: 1 })
-
-      tl.from(
-        content,
-        {
-          opacity: 0,
-          y: 50,
-          duration: 0.3,
-        },
-        '-=0.1'
-      )
-    }
-  }
-
   // Timeline section - just fade in
   const timeline = document.querySelector('.timeline-container')
   if (timeline) {
@@ -188,16 +68,12 @@ onMount(async () => {
     )
   }
 
-  // Apply similar treatment to all other chapters dynamically
+  // Apply animations to all chapters
   const allChapters = document.querySelectorAll('.story-section[id^="chapter-"]')
-  const chapterNumbers = Array.from(allChapters)
-    .map((el) => el.id.match(/chapter-(\d+)/)?.[1])
-    .filter((num) => num && num !== '01') // Exclude chapter 01 as it's handled separately
-
-  chapterNumbers.forEach((chapterNum) => {
-    const chapter = document.querySelector(`#chapter-${chapterNum}`)
-    if (chapter) {
-      const bigChapter = chapter.querySelector('.big-chapter')
+  allChapters.forEach((section, index) => {
+    // Handle big chapter animations for chapters 2+
+    if (index > 0) {
+      const bigChapter = section.querySelector('.big-chapter')
       if (bigChapter) {
         // Show chapter number during previous section fade
         gsap.fromTo(
@@ -216,7 +92,7 @@ onMount(async () => {
             opacity: 1,
             scale: 1,
             scrollTrigger: {
-              trigger: chapter,
+              trigger: section,
               start: 'top 120%',
               end: 'top 100%',
               scrub: true,
@@ -229,7 +105,7 @@ onMount(async () => {
           opacity: 0,
           scale: 1.2,
           scrollTrigger: {
-            trigger: chapter,
+            trigger: section,
             start: 'top 80%',
             end: 'top 50%',
             scrub: true,
@@ -247,11 +123,7 @@ onMount(async () => {
         })
       }
     }
-  })
 
-  // Remove pinning for now to avoid empty sections
-  const otherChapters = document.querySelectorAll('.story-section:not(#chapter-01)')
-  otherChapters.forEach((section, _index) => {
     // Animate header
     const header = section.querySelector('.section-header')
     if (header) {
@@ -345,7 +217,3 @@ onMount(async () => {
   }
 })
 </script>
-
-<style>
-  /* This component has no visual elements, only controls animations */
-</style>

@@ -83,7 +83,7 @@ const {
 </div>
 
 <style>
-  .cta-section {
+  :global(.cta-section) {
     text-align: center;
     margin: 3rem auto 4rem;
     padding: 3rem;
@@ -94,27 +94,27 @@ const {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
   }
   
-  .cta-title {
+  :global(.cta-title) {
     font-size: 2.25rem;
     font-weight: 700;
     color: #1f2937;
     margin: 0 0 1rem;
   }
   
-  .cta-subtitle {
+  :global(.cta-subtitle) {
     font-size: 1.875rem;
     font-weight: 700;
     color: #1f2937;
     margin: 0 0 1rem;
   }
   
-  .cta-description {
+  :global(.cta-description) {
     margin-bottom: 2rem;
     color: #6b7280;
     font-size: 1.125rem;
   }
   
-  .cta-links {
+  :global(.cta-links) {
     display: flex;
     gap: 1rem;
     justify-content: center;
@@ -122,7 +122,7 @@ const {
     margin-bottom: 2rem;
   }
   
-  .cta-link {
+  :global(.cta-link) {
     padding: 0.875rem 2rem;
     border-radius: 0.5rem;
     text-decoration: none;
@@ -131,30 +131,30 @@ const {
     display: inline-block;
   }
   
-  .cta-link.primary {
+  :global(.cta-link.primary) {
     background: #6366f1;
     color: white;
   }
   
-  .cta-link.primary:hover {
+  :global(.cta-link.primary:hover) {
     background: #4f46e5;
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
   }
   
-  .cta-link.secondary {
+  :global(.cta-link.secondary) {
     background: white;
     color: #6366f1;
     border: 2px solid #6366f1;
   }
   
-  .cta-link.secondary:hover {
+  :global(.cta-link.secondary:hover) {
     background: #6366f1;
     color: white;
     transform: translateY(-2px);
   }
   
-  .cta-quote {
+  :global(.cta-quote) {
     margin: 2rem auto;
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.8);
@@ -164,24 +164,24 @@ const {
     max-width: 600px;
   }
   
-  .cta-quote p {
+  :global(.cta-quote p) {
     margin: 0 0 0.5rem;
     font-size: 1.125rem;
     color: #374151;
   }
   
-  .cta-quote cite {
+  :global(.cta-quote cite) {
     font-size: 0.875rem;
     color: #6b7280;
     font-style: normal;
     font-weight: 500;
   }
   
-  .final-cta {
+  :global(.final-cta) {
     margin-top: 2rem;
   }
   
-  .final-cta-button {
+  :global(.final-cta-button) {
     padding: 1rem 2.5rem;
     border-radius: 0.75rem;
     text-decoration: none;
@@ -194,86 +194,70 @@ const {
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
   }
   
-  .final-cta-button:hover {
+  :global(.final-cta-button:hover) {
     transform: translateY(-3px);
     box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
   }
   
   @media (max-width: 768px) {
-    .cta-section {
-      width: 100%;
-      margin: 0;
-      margin-top: 3rem;
-      border-radius: 0;
-      box-shadow: none;
-      background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-      color: white;
-      padding: 3rem 2rem;
+    :global(.cta-section) {
+      width: 90%;
+      padding: 2.5rem 1.5rem;
     }
     
-    .cta-title,
-    .cta-subtitle {
-      color: white;
+    :global(.cta-title) {
+      font-size: 2rem;
     }
     
-    .cta-description {
-      color: #d1d5db;
+    :global(.cta-subtitle) {
+      font-size: 1.625rem;
     }
     
-    .cta-quote {
-      background: rgba(255, 255, 255, 0.1);
-      border-left-color: #a5b4fc;
-      color: #e5e7eb;
-    }
-    
-    .cta-quote p {
-      color: #e5e7eb;
-    }
-    
-    .cta-quote cite {
-      color: #9ca3af;
+    :global(.cta-quote) {
+      margin: 1.5rem auto;
+      padding: 1.25rem;
     }
   }
 
   @media (max-width: 640px) {
-    .cta-section {
+    :global(.cta-section) {
       padding: 2rem 1.5rem;
     }
     
-    .cta-title {
+    :global(.cta-title) {
       font-size: 1.75rem;
     }
     
-    .cta-subtitle {
+    :global(.cta-subtitle) {
       font-size: 1.5rem;
     }
     
-    .cta-description {
+    :global(.cta-description) {
       font-size: 1rem;
     }
     
-    .cta-links {
+    :global(.cta-links) {
       flex-direction: column;
       width: 100%;
       max-width: 300px;
       margin: 0 auto 2rem;
     }
     
-    .cta-link {
+    :global(.cta-link) {
       width: 100%;
       text-align: center;
     }
     
-    .cta-quote {
+    :global(.cta-quote) {
       margin: 1.5rem auto;
       padding: 1rem;
     }
     
-    .cta-quote p {
+    :global(.cta-quote p) {
       font-size: 1rem;
     }
     
-    .final-cta-button {
+    :global(.final-cta-button) {
       padding: 0.875rem 2rem;
       font-size: 1rem;
     }
