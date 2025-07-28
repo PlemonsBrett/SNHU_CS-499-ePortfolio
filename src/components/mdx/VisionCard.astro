@@ -1,0 +1,28 @@
+---
+import VisionCard from '../VisionCard.svelte'
+
+export interface Props {
+  title?: string
+  goal?: string
+  subtitle?: string
+  items?: Array<{
+    icon: string
+    text: string
+  }>
+}
+
+const { 
+  title = "My Next Chapter",
+  goal = "",
+  subtitle = "Combining:",
+  items = []
+} = Astro.props
+---
+
+<VisionCard 
+  title={title}
+  goal={goal}
+  subtitle={subtitle}
+  items={items}
+  client:visible
+/>

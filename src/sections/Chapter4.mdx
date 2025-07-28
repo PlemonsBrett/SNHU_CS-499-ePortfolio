@@ -1,4 +1,5 @@
 import StorySection from '../components/StorySection.svelte'
+import VisionCard from '../components/mdx/VisionCard.astro'
 import CTASection from '../components/mdx/CTASection.astro'
 
 <StorySection 
@@ -17,3 +18,31 @@ import CTASection from '../components/mdx/CTASection.astro'
 
   *Curious about the technical experiments and research that fuel this transition? <a href="">Dive into my project portfolio</a> where you'll find everything from NLP implementations to audio processing prototypes, complete with code walkthroughs and technical insights.*
 </StorySection>
+
+<VisionCard 
+  title="My Next Chapter"
+  goal="Machine Learning Engineer specializing in Audio Processing and Speech Synthesis"
+  subtitle="Combining:"
+  items={[
+    {
+      icon: "✨",
+      text: "10+ years of production engineering excellence"
+    },
+    {
+      icon: "🧠",
+      text: "Advanced mathematical foundation (Calculus through Differential Equations)"
+    },
+    {
+      icon: "🎯",
+      text: "Strategic leadership experience across multiple domains"
+    },
+    {
+      icon: "🔊",
+      text: "Passion for audio processing and speech synthesis"
+    },
+    {
+      icon: "🌍",
+      text: "Global perspective shaped by experiences across 3 countries and 7 states"
+    }
+  ]}
+/>
