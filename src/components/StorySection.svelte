@@ -1,9 +1,9 @@
 <script>
-  export let id = ''
-  export let chapter = ''
-  export let title = ''
-  export let subtitle = ''
-  export let align = 'left'
+  export const id = ''
+  export const chapter = ''
+  export const title = ''
+  export const subtitle = ''
+  export const align = 'left'
 </script>
 
 <section 
@@ -43,17 +43,10 @@
     margin-top: 0; /* No margin for chapter 01 */
   }
   
-  .story-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent 0%, #e5e7eb 20%, #e5e7eb 80%, transparent 100%);
-    z-index: -1;
+  #chapter-02 {
+    margin-top: 5vh; /* Smaller margin after timeline */
   }
+  
   
   .chapter-intro {
     position: absolute;

@@ -1,13 +1,10 @@
 <script>
   import { onMount } from "svelte";
-  import { fade, fly } from "svelte/transition";
-  import emblaCarouselSvelte from "embla-carousel-svelte";
-  import Autoplay from "embla-carousel-autoplay";
 
-  let visible = $state(false);
-  let titleVisible = $state(false);
-  let subtitleVisible = $state(false);
-  let emblaApi = $state(null);
+  let _visible = $state(false);
+  let _titleVisible = $state(false);
+  let _subtitleVisible = $state(false);
+  let _emblaApi = $state(null);
   let selectedIndex = $state(0);
 
   const titles = [
@@ -20,7 +17,7 @@
   ];
 
   // Embla carousel options
-  const emblaOptions = {
+  const _emblaOptions = {
     align: "center",
     loop: true,
     skipSnaps: false,
@@ -28,7 +25,7 @@
   };
 
   // Autoplay plugin options
-  const autoplayOptions = {
+  const _autoplayOptions = {
     delay: 3000,
     stopOnInteraction: false,
     stopOnMouseEnter: true,
@@ -38,22 +35,26 @@
 
   onMount(() => {
     console.log("Hero component mounted");
-    visible = true;
-    setTimeout(() => (titleVisible = true), 300);
-    setTimeout(() => (subtitleVisible = true), 600);
+    _visible = true;
+    setTimeout(() => {
+      _titleVisible = true;
+    }, 300);
+    setTimeout(() => {
+      _subtitleVisible = true;
+    }, 600);
   });
 
   // Handle carousel initialization
-  function onInit(event) {
+  function _onInit(event) {
     console.log("onInit called", event);
-    if (event && event.detail) {
+    if (event?.detail) {
       // The detail object contains all the Embla methods
       const api = event.detail;
       console.log("Embla detail:", api);
 
       // Check if we have the necessary methods
-      if (api && api.slidesInView && api.on) {
-        emblaApi = api;
+      if (api?.slidesInView && api.on) {
+        _emblaApi = api;
 
         // Debug: Check what Embla sees
         console.log("Total slides:", api.slideNodes().length);
@@ -87,14 +88,14 @@
   }
 </script>
 
-{#if visible}
+{#if _visible}
   <section class="hero" transition:fade={{ duration: 500 }}>
     <div class="hero-content">
-      {#if titleVisible}
+      {#if _titleVisible}
         <h1 transition:fly={{ y: 20, duration: 500 }}>Brett Plemons</h1>
       {/if}
 
-      {#if subtitleVisible}
+      {#if _subtitleVisible}
         <div
           class="subtitle-container"
           transition:fly={{ y: 20, duration: 500, delay: 200 }}
@@ -104,10 +105,10 @@
           <div
             class="embla"
             use:emblaCarouselSvelte={{
-              options: emblaOptions,
-              plugins: [Autoplay(autoplayOptions)],
+              options: _emblaOptions,
+              plugins: [Autoplay(_autoplayOptions)],
             }}
-            onemblaInit={onInit}
+            onemblaInit={_onInit}
           >
             <div class="embla__container">
               {#each titles as title, i}
@@ -124,29 +125,28 @@
           </div>
         </div>
       {/if}
-
     </div>
 
-    {#if subtitleVisible}
-    <a
-      href="#chapter-01"
-      class="scroll-arrow"
-      aria-label="Scroll to next section"
-      transition:fly={{ y: 20, duration: 500, delay: 600 }}
-    >
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+    {#if _subtitleVisible}
+      <a
+        href="#chapter-01"
+        class="scroll-arrow"
+        aria-label="Scroll to next section"
+        transition:fly={{ y: 20, duration: 500, delay: 600 }}
       >
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </a>
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
     {/if}
 
     <div class="hero-background">

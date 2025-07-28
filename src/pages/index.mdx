@@ -4,11 +4,11 @@ title: Brett Plemons | Transforming Ideas Into Impact
 ---
 
 import Hero from '../components/Hero.svelte'
-import Timeline from '../components/Timeline.svelte'
-import ProjectCard from '../components/ProjectCard.svelte'
 import SkillCloud from '../components/SkillCloud.svelte'
 import StorySection from '../components/StorySection.svelte'
 import ScrollController from '../components/ScrollController.svelte'
+import SkillsTransition from '../components/SkillsTransition.svelte'
+import CareerTimeline from '../components/CareerTimeline.svelte'
 
 <Hero client:only="svelte" />
 <ScrollController client:only="svelte" />
@@ -17,132 +17,129 @@ import ScrollController from '../components/ScrollController.svelte'
   id="chapter-01"
   chapter="01" 
   title="The Beginning"
-  subtitle="From Geek Squad to Engineering Leadership"
+  subtitle="From Curiosity to Code"
   client:visible
 >
-  My journey began not in a classroom, but with a screwdriver and an insatiable curiosity. While working at Best Buy's Geek Squad, I discovered that fixing computers wasn't enough—I wanted to create solutions, not just apply them.
+  My journey began not in a classroom, but with a screwdriver and an insatiable curiosity. As a kid, I couldn't resist taking apart electronics to understand their inner workings. That same drive—to understand, to build, to improve—has been the constant thread throughout my career.
 
-  I taught myself to code, spending nights and weekends transforming from a repair technician into a software engineer. Along the way, I:
-  
-  - Created software solutions that streamlined vulnerability tracking and repair processes
-  - Developed comprehensive training programs that increased operational efficiency by 30%
-  - Trained over 50 employees, improving service delivery and technical expertise
-  
-  This foundation of continuous learning and improvement would become the cornerstone of my career—from those early days troubleshooting hardware to eventually leading engineering teams at scale.
+  While working at Best Buy's Geek Squad, I discovered that fixing computers wasn't enough. I wanted to create solutions, not just apply them. So I taught myself to code, spending nights and weekends transforming from a repair technician into a software engineer.
 </StorySection>
+
+<SkillsTransition 
+  id="skills-transition-1"
+  skills={['React', 'Python', 'JavaScript', 'TypeScript', 'CSS', 'Django', 'NumPy', 'Pandas', 'HTML5', 'Node.js', 'Git', 'Linux']}
+  client:visible
+/>
+
+<CareerTimeline
+  id="career-timeline-1"
+  events={[
+    {
+      date: "2014 - 2018",
+      title: "Geek Squad Consultant",
+      company: "Best Buy",
+      description: "Created software solutions, trained 50+ employees"
+    },
+    {
+      date: "2018 - 2019",
+      title: "Research Assistant",
+      company: "Kansas State University",
+      description: "Automated invoice digitization with OCR"
+    },
+    {
+      date: "2019 - 2020",
+      title: "Fullstack Engineer",
+      company: "HitchPin Inc",
+      description: "Agricultural eCommerce platform development"
+    },
+    {
+      date: "2020",
+      title: "Software Engineer",
+      company: "Blue Cross Blue Shield",
+      description: "Healthcare web services & ETL pipelines"
+    },
+    {
+      date: "2020 - 2021",
+      title: "Data Engineer",
+      company: "Kansas Dept of Health",
+      description: "Digital transformation & data visualization"
+    }
+  ]}
+  client:visible
+/>
 
 
 <StorySection 
   id="chapter-02"
   chapter="02" 
-  title="Engineering Excellence"
-  subtitle="Transforming Dictionary.com"
+  title="The Early Years"
+  subtitle="From Contracting to Leadership"
   align="right"
   client:visible
 >
-  At Dictionary.com, I didn't just manage teams—I revolutionized how we built and delivered products. As Staff Software Engineer and then Senior Engineering Manager, I led initiatives that transformed both technology and culture:
+  I reached out to HitchPin asking if they needed a developer even though they weren't hiring—and they took a chance on me. As I grew, I wanted more experiences, so I started contracting. First with Blue Cross Blue Shield, then the State of Kansas. But I didn't like the instability of contract work. I decided to look for something more...
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-number">86%</div>
-      <div class="stat-label">Data Processing Efficiency Gain</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">$500K</div>
-      <div class="stat-label">Annual AWS Cost Reduction</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">102%</div>
-      <div class="stat-label">User Retention Increase</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">83%</div>
-      <div class="stat-label">Release Cycle Time Reduction</div>
-    </div>
-  </div>
+  I found RevLogical, where I moved quickly and learned so much:
+  - How to develop mobile apps in React Native, then Flutter
+  - How to build real-time applications through an auction platform
+  - How retail works by building a point-of-sale system
+  - How systems and hardware programming work with drones, RFID, and LiDAR
 
-  Beyond the metrics, I pioneered WebSocket integration for GrammarCoach, built NLP applications with GPT-4, and earned the Exceptional Engineering Award in both 2022 and 2023 for strategic vision and innovation.
+  But it wasn't sustainable. I was working 120+ hours per week, and even on "vacation" I was called constantly and berated.
+
+  Then a recruiter from Dictionary.com found me—and saved me. They took in an engineer with lots of exposure and a hard work ethic, and helped mold me into an engineer who cared and wanted to mentor others. I started as a Senior Engineer, and through happenstance moved quickly—within 6 months into leadership, within a year managing Platform, Core Systems, Mobile, and Machine Learning.
 </StorySection>
+
+<SkillsTransition 
+  id="skills-transition-2"
+  skills={['C#', '.NET', 'jQuery', 'Entity Framework', 'Angular', 'Healthcare', 'System Design', 'IIS', 'ASP.NET', 'ASP Core', 'Tableau', 'PHP', 'Vue', 'Svelte', 'AWS', 'Data Engineering', 'React Native', 'Flutter', 'IoT', 'RFID', 'LiDAR', 'Computer Vision', 'Real-time Systems', 'WebSockets', 'Docker', 'Kubernetes']}
+  client:visible
+/>
 
 <StorySection 
   id="chapter-03"
   chapter="03" 
-  title="Leadership Evolution"
-  subtitle="Scaling Teams & Impact"
+  title="Finding My Path Again"
+  subtitle="The Road to Machine Learning & AI"
   client:visible
 >
-  My progression into engineering leadership has been marked by transformative results at every level. At MFour Mobile Research as Senior Engineering Manager, I didn't just lead—I revolutionized:
+  Then Dictionary.com was purchased by IXL, and they decided to lay off our entire staff. During this time, my team was fortunate to have essentially a 90-day notice, and Analytics was moved under me. I started the job hunt, saddened by having to leave the team and company I had grown with over two years. Even now I almost tear up thinking about it—nothing has been the same since.
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-number">200%</div>
-      <div class="stat-label">Issue Cycle Time Improvement</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">182%</div>
-      <div class="stat-label">Weekly Issue Resolution Increase</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">121%</div>
-      <div class="stat-label">PR Cycle Time Reduction</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">93.5%</div>
-      <div class="stat-label">Sprint Completion Rate</div>
-    </div>
-  </div>
+  A recruiter reached out about MFour Mobile Research, hiring me as an Engineering Manager to help grow their team toward a Director/VP role. But in the 9 months I was there, we only laid off employees. Discussions of hiring were out of the question, which eventually led to me parting ways after finding Propio Language Services.
 
-  Now at Propio Language Services, I'm leading engineering transformation initiatives focused on customer impact, operational excellence, and fostering innovation through audacious goal-setting and calculated risk-taking.
+  At Propio, I realized this might be the first time I was actually just a manager. I spend more than 80% of my time in meetings and planning. Previously, even as a manager, I could still contribute 30-40% of what my senior developers did. I started thinking: maybe I don't like being a manager this much. I feel more like a Product Manager.
+
+  Then I met our newly hired VP of ML and AI. We hit it off immediately through my passion for ML/AI and the ideas I'd been experimenting with on weekends. He was super excited and has started pushing to get me on his team as an MLE, working toward my goal of specializing in Audio Processing and Speech Synthesis!
 </StorySection>
+
+<SkillCloud 
+  client:visible
+/>
 
 <StorySection 
   id="chapter-04"
   chapter="04" 
-  title="Technical Arsenal"
-  subtitle="Battle-Tested in Production"
+  title="The Future"
+  subtitle="Where I'm Headed"
   align="right"
   client:visible
 >
-  Over a decade of hands-on experience has equipped me with a comprehensive technical toolkit. Every skill has been battle-tested in production environments serving millions of users:
+  As I complete my BS in Computer Science at SNHU this August (specializing in Machine Learning & AI with a minor in Applied Mathematics), I'm preparing for the next evolution of my career. With a foundation in calculus, differential equations, and advanced statistics, combined with over a decade of production engineering experience, I'm uniquely positioned to make an impact in ML/AI.
 
-  **Cloud & Infrastructure**: 8+ years AWS expertise, Infrastructure as Code (Ansible, Terraform), DevOps & CI/CD
-  
-  **Languages & Frameworks**: Python, JavaScript/Node.js, Go, Rust, C# (.NET), Ruby on Rails, Java (Spring)
-  
-  **Frontend & Mobile**: React (Redux, Next.js), Angular, Vue.js, React Native, Flutter, iOS & Android native
-  
-  **Data & ML**: TensorFlow, PyTorch, Scikit-learn, Advanced Analytics, MLOps pipelines
-  
-  **Architecture**: Distributed systems, Microservices, API design, Performance optimization
-  
-  Each technology in my arsenal has been chosen and mastered to solve real business problems and deliver measurable impact.
-</StorySection>
-
-<StorySection 
-  id="chapter-05"
-  chapter="05" 
-  title="The Next Chapter"
-  subtitle="Where Engineering Excellence Meets AI Innovation"
-  client:visible
->
-  As I complete my BS in Computer Science at SNHU this August (specializing in Machine Learning & AI with a minor in Applied Mathematics), I'm not just adding credentials—I'm preparing for the next evolution of technology leadership.
-
-  With a foundation in calculus, differential equations, and advanced statistics, combined with over a decade of production engineering experience, I'm uniquely positioned to bridge the gap between theoretical AI and practical implementation.
-
-  The future isn't just about understanding AI—it's about building scalable, reliable systems that harness its power responsibly and effectively.
+  My goal is clear: to become a Machine Learning Engineer specializing in Audio Processing and Speech Synthesis, combining my passion for AI with practical engineering excellence.
 
   <div class="cta-section">
-    <h3>Let's Build the Future Together</h3>
-    <p style="margin-bottom: 2rem; color: #6b7280;">Connect with me to explore opportunities, collaborate on projects, or discuss the intersection of engineering and AI.</p>
+    <h3>Let's Connect</h3>
+    <p style="margin-bottom: 2rem; color: #6b7280;">Explore my work, connect on social media, or reach out to discuss opportunities.</p>
     <div class="cta-buttons">
       <a href="https://www.linkedin.com/in/brettplemons" target="_blank" rel="noopener noreferrer" class="cta-button primary">
-        LinkedIn Profile
+        LinkedIn
       </a>
       <a href="https://github.com/bplemons" target="_blank" rel="noopener noreferrer" class="cta-button secondary">
-        GitHub Projects
+        GitHub
       </a>
       <a href="/projects" class="cta-button secondary">
-        View My Work
+        Projects
       </a>
     </div>
   </div>
