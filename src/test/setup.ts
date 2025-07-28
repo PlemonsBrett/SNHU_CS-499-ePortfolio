@@ -3,10 +3,14 @@ import { vi } from 'vitest'
 
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
-  constructor() {}
-  disconnect() {}
-  observe() {}
-  unobserve() {}
+  constructor(_callback: IntersectionObserverCallback, _options?: IntersectionObserverInit) { }
+  disconnect() { }
+  observe(_target: Element) { }
+  unobserve(_target: Element) { }
+  takeRecords(): IntersectionObserverEntry[] { return [] }
+  readonly root: Element | null = null
+  readonly rootMargin: string = ''
+  readonly thresholds: ReadonlyArray<number> = []
 }
 
 // Mock window.matchMedia
