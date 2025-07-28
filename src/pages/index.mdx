@@ -10,6 +10,7 @@ import Chapter3 from '../sections/Chapter3.mdx'
 import Chapter4 from '../sections/Chapter4.mdx'
 import Chapter5 from '../sections/Chapter5.mdx'
 import CTASection from '../components/mdx/CTASection.astro'
+import FeaturedProjects from '../components/FeaturedProjects.svelte'
 
 <Hero />
 <Chapter1 />
@@ -18,6 +19,7 @@ import CTASection from '../components/mdx/CTASection.astro'
 <Chapter4 />
 <Chapter5 />
 
+<div id="contact">
 <CTASection
     title="Let's Connect"
     subtitle="Ready for the Next Chapter"
@@ -31,3 +33,6 @@ import CTASection from '../components/mdx/CTASection.astro'
         href: "mailto:brett@plemons.dev"
     }}
 />
+</div>
+
+<FeaturedProjects client:visible />

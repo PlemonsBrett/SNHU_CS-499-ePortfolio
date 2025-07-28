@@ -1,4 +1,6 @@
 ---
+import Navigation from '../components/Navigation.svelte'
+
 export interface Props {
   title: string
   description?: string
@@ -6,6 +8,8 @@ export interface Props {
 
 const { title: _title, description: _description = 'CS 499 Computer Science Capstone Portfolio' } =
   Astro.props
+
+const isHomePage = Astro.url.pathname === '/'
 ---
 
 <!doctype html>
@@ -22,7 +26,8 @@ const { title: _title, description: _description = 'CS 499 Computer Science Caps
     <title>{_title}</title>
   </head>
   <body>
-    <main>
+    <Navigation client:load />
+    <main class={isHomePage ? '' : 'with-nav'}>
       <slot />
     </main>
     <style>
@@ -37,6 +42,10 @@ const { title: _title, description: _description = 'CS 499 Computer Science Caps
       }
       main {
         width: 100%;
+      }
+      
+      main.with-nav {
+        padding-top: 4rem; /* Account for fixed navigation */
       }
       
       
