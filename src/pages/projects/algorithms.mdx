@@ -5,6 +5,8 @@ title: Algorithms & Data Structures | Brett Plemons
 
 import CodePlayground from '../../components/CodePlayground.svelte'
 
+<div class="content-wrapper">
+
 # Algorithms & Data Structures
 
 ## Bayesian Inference Implementation
@@ -70,10 +72,19 @@ class BayesianABTest {
 
 // Example usage
 const test = new BayesianABTest()
+
+// Simulate A/B test results
+// Variant A: 120 conversions out of 1000 trials
 const posteriorA = test.updatePosterior(120, 1000, test.priorA)
+
+// Variant B: 100 conversions out of 1000 trials  
 const posteriorB = test.updatePosterior(100, 1000, test.priorB)
+
+// Calculate probability that A is better than B
 const probability = test.calculateProbability(posteriorA, posteriorB)
 
+console.log(`Posterior A: α=${posteriorA.alpha}, β=${posteriorA.beta}`)
+console.log(`Posterior B: α=${posteriorB.alpha}, β=${posteriorB.beta}`)
 console.log(`Probability that A is better than B: ${(probability * 100).toFixed(2)}%`)
 ```
 </CodePlayground>
@@ -96,3 +107,5 @@ The implementation uses:
 - O(n) complexity for sampling operations
 - Memory-efficient streaming updates
 - Parallelizable Monte Carlo simulations
+
+</div>

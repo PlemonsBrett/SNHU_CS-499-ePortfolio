@@ -1,15 +1,17 @@
 ---
-import Navigation from '../components/Navigation.svelte'
+import Navigation from "../components/Navigation.svelte";
 
 export interface Props {
-  title: string
-  description?: string
+  title: string;
+  description?: string;
 }
 
-const { title: _title, description: _description = 'CS 499 Computer Science Capstone Portfolio' } =
-  Astro.props
+const {
+  title: _title,
+  description: _description = "CS 499 Computer Science Capstone Portfolio",
+} = Astro.props;
 
-const isHomePage = Astro.url.pathname === '/'
+const isHomePage = Astro.url.pathname === "/";
 ---
 
 <!doctype html>
@@ -22,17 +24,20 @@ const isHomePage = Astro.url.pathname === '/'
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <title>{_title}</title>
   </head>
   <body>
     <Navigation client:load />
-    <main class={isHomePage ? '' : 'with-nav'}>
+    <main class={isHomePage ? "" : "with-nav"}>
       <slot />
     </main>
     <style>
       html {
-        font-family: 'Inter', system-ui, sans-serif;
+        font-family: "Inter", system-ui, sans-serif;
         scroll-behavior: smooth;
       }
       body {
@@ -42,27 +47,44 @@ const isHomePage = Astro.url.pathname === '/'
       }
       main {
         width: 100%;
+        padding: 0 2rem;
       }
-      
+
       main.with-nav {
-        padding-top: 4rem; /* Account for fixed navigation */
+        padding-top: 6rem; /* Account for fixed navigation + spacing */
       }
-      
-      
+
+      /* Responsive padding */
+      @media (max-width: 768px) {
+        main {
+          padding: 0 1rem;
+        }
+
+        main.with-nav {
+          padding-top: 5rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        main {
+          padding: 0 0.75rem;
+        }
+      }
+
       .project-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
         margin: 2rem 0;
       }
-      
+
       .stats-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 1.5rem;
         margin: 2rem 0;
       }
-      
+
       .stat-card {
         background: white;
         padding: 2rem;
@@ -71,28 +93,28 @@ const isHomePage = Astro.url.pathname === '/'
         text-align: center;
         transition: transform 0.2s ease;
       }
-      
+
       .stat-card:hover {
         transform: translateY(-4px);
       }
-      
+
       .stat-number {
         font-size: 2.5rem;
         font-weight: 800;
         color: #1f2937;
         margin-bottom: 0.5rem;
       }
-      
+
       .stat-label {
         color: #6b7280;
         font-size: 0.875rem;
         font-weight: 500;
       }
-      
+
       #featured-projects {
         scroll-margin-top: 2rem;
       }
-      
+
       /* Side-by-side layout when AchievementsCard follows StorySection */
       @media (min-width: 1024px) {
         .story-section + .achievements-card {
@@ -100,19 +122,19 @@ const isHomePage = Astro.url.pathname === '/'
           position: relative;
           z-index: 10;
         }
-        
+
         .story-section.left + .achievements-card {
           margin-left: 52%;
           margin-right: 10%;
           max-width: 400px;
         }
-        
+
         .story-section.right + .achievements-card {
           margin-right: 52%;
           margin-left: 10%;
           max-width: 400px;
         }
-        
+
         /* Add extra padding to story sections that are followed by achievements */
         .story-section:has(+ .achievements-card) {
           padding-bottom: 18rem;
