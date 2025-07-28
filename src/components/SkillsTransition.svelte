@@ -23,7 +23,7 @@
         scale: 0.5,
         rotation: Math.random() * 30 - 15,
         left: `${10 + (i % 5) * 18}%`,
-        top: `${60 + Math.floor(i / 5) * 15}%`,
+        top: `${80 + Math.floor(i / 5) * 10}%`,
       });
     });
 
@@ -40,8 +40,8 @@
       ease: "power2.out",
       scrollTrigger: {
         trigger: `#${id}`,
-        start: "top bottom",
-        end: "bottom top",
+        start: "top 80%",
+        end: "bottom 20%",
         scrub: 1,
       },
     });
@@ -94,6 +94,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 25vh; /* Add even more space before skills transition */
+    margin-bottom: 10vh; /* Add space after skills transition */
+    contain: layout; /* Contain layout to prevent overflow */
   }
 
   .skills-container {
@@ -107,6 +110,7 @@
     justify-content: center;
     gap: 2rem;
     padding: 2rem;
+    overflow: hidden;
   }
 
   .skill-item {

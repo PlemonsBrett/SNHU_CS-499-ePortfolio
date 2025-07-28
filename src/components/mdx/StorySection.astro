@@ -1,0 +1,34 @@
+---
+import StorySection from '../StorySection.svelte'
+
+export interface Props {
+  id?: string
+  chapter?: string
+  title?: string
+  subtitle?: string
+  align?: 'left' | 'right'
+}
+
+const { id = '', chapter = '', title = '', subtitle = '', align = 'left' } = Astro.props
+
+// Extract achievements slot if it exists
+const achievementsSlot = Astro.slots.has('achievements') ? Astro.slots.render('achievements') : null
+---
+
+<StorySection 
+  {id}
+  {chapter}
+  {title}
+  {subtitle}
+  {align}
+  client:visible
+>
+  <Fragment slot="children">
+    <slot />
+  </Fragment>
+  {achievementsSlot && (
+    <Fragment slot="achievements">
+      <slot name="achievements" />
+    </Fragment>
+  )}
+</StorySection>

@@ -1,0 +1,54 @@
+import StorySection from '../components/StorySection.svelte'
+import SkillsTransition from '../components/mdx/SkillsTransition.astro'
+import CareerTimeline from '../components/mdx/CareerTimeline.astro'
+
+<StorySection 
+  id="chapter-01"
+  chapter="01" 
+  title="The Spark"
+  subtitle="From Curiosity to Code"
+  client:visible
+>
+  My journey began not in a classroom, but with a screwdriver and an insatiable curiosity. As a kid, I couldn't resist taking apart electronics—not to break them, but to understand the magic happening inside. That same drive to understand, to build, to improve has been the constant thread weaving through every chapter of my career.
+
+  While working at Best Buy's Geek Squad, I discovered that fixing computers wasn't enough. I craved creation, not just restoration. So I embarked on a transformative journey, spending nights and weekends evolving from someone who repaired technology to someone who architected it. Self-taught and relentless, I turned curiosity into capability, one line of code at a time.
+</StorySection>
+
+<SkillsTransition 
+  skills={['React', 'Python', 'JavaScript', 'TypeScript', 'CSS', 'Django', 'NumPy', 'Pandas', 'HTML5', 'Node.js', 'Git', 'Linux']}
+/>
+
+<CareerTimeline
+  events={[
+    {
+      date: "2014 - 2018",
+      title: "Geek Squad Consultant",
+      company: "Best Buy",
+      description: "Created software solutions, trained 50+ employees, discovered my passion for building"
+    },
+    {
+      date: "2018 - 2019",
+      title: "Research Assistant",
+      company: "Kansas State University",
+      description: "Automated invoice digitization with OCR, first taste of data transformation"
+    },
+    {
+      date: "2019 - 2020",
+      title: "Fullstack Engineer",
+      company: "HitchPin Inc",
+      description: "Agricultural eCommerce platform, learned to take calculated risks"
+    },
+    {
+      date: "2020",
+      title: "Software Engineer",
+      company: "Blue Cross Blue Shield",
+      description: "Healthcare web services, discovered the power of scalable systems"
+    },
+    {
+      date: "2020 - 2021",
+      title: "Data Engineer",
+      company: "Kansas Dept of Health & Environment",
+      description: "Digital transformation at scale, first leadership glimpses"
+    }
+  ]}
+/>

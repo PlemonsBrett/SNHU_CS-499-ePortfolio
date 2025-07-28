@@ -125,18 +125,20 @@
       // Title and content reveal with movement
       const header = chapter01.querySelector(".section-header");
       if (header) {
+        // Set header visible initially
+        gsap.set(header, { opacity: 1 });
+        
         // Initially hide the chapter chip
         const chapterChip = header.querySelector(".chapter-number");
         if (chapterChip) {
           gsap.set(chapterChip, { opacity: 0 });
         }
-
-        tl.fromTo(
+        
+        tl.from(
           header,
-          { opacity: 0, y: 100 },
           {
-            opacity: 1,
-            y: 0,
+            opacity: 0,
+            y: 100,
             duration: 0.3,
             onComplete: () => {
               // Show the chapter chip when the header appears
@@ -151,12 +153,14 @@
 
       const content = chapter01.querySelector(".section-content");
       if (content) {
-        tl.fromTo(
+        // Set content visible initially
+        gsap.set(content, { opacity: 1 });
+        
+        tl.from(
           content,
-          { opacity: 0, y: 50 },
           {
-            opacity: 1,
-            y: 0,
+            opacity: 0,
+            y: 50,
             duration: 0.3,
           },
           "-=0.1",
@@ -184,9 +188,13 @@
       );
     }
 
-    // Apply similar treatment to all other chapters
-    const chapters = ["02", "03", "04"];
-    chapters.forEach((chapterNum) => {
+    // Apply similar treatment to all other chapters dynamically
+    const allChapters = document.querySelectorAll('.story-section[id^="chapter-"]');
+    const chapterNumbers = Array.from(allChapters)
+      .map(el => el.id.match(/chapter-(\d+)/)?.[1])
+      .filter(num => num && num !== '01'); // Exclude chapter 01 as it's handled separately
+    
+    chapterNumbers.forEach((chapterNum) => {
       const chapter = document.querySelector(`#chapter-${chapterNum}`);
       if (chapter) {
         const bigChapter = chapter.querySelector(".big-chapter");
@@ -249,12 +257,12 @@
       // Animate header
       const header = section.querySelector(".section-header");
       if (header) {
-        gsap.fromTo(
+        gsap.set(header, { opacity: 1 });
+        gsap.from(
           header,
-          { opacity: 0, y: 100 },
           {
-            opacity: 1,
-            y: 0,
+            opacity: 0,
+            y: 100,
             duration: 1,
             scrollTrigger: {
               trigger: section,
@@ -269,12 +277,12 @@
       // Animate content
       const content = section.querySelector(".section-content");
       if (content) {
-        gsap.fromTo(
+        gsap.set(content, { opacity: 1 });
+        gsap.from(
           content,
-          { opacity: 0, y: 50 },
           {
-            opacity: 1,
-            y: 0,
+            opacity: 0,
+            y: 50,
             duration: 1,
             scrollTrigger: {
               trigger: section,

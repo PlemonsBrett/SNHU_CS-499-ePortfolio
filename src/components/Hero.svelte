@@ -1,20 +1,25 @@
 <script>
   import { onMount } from "svelte";
+  import { fade, fly } from "svelte/transition";
+  import emblaCarouselSvelte from "embla-carousel-svelte";
+  import Autoplay from "embla-carousel-autoplay";
+
+  let { 
+    titles = [
+      "Leader",
+      "Engineer",
+      "Architect",
+      "Mentor",
+      "Builder",
+      "Innovator",
+    ]
+  } = $props();
 
   let _visible = $state(false);
   let _titleVisible = $state(false);
   let _subtitleVisible = $state(false);
   let _emblaApi = $state(null);
   let selectedIndex = $state(0);
-
-  const titles = [
-    "Leader",
-    "Engineer",
-    "Architect",
-    "Mentor",
-    "Builder",
-    "Innovator",
-  ];
 
   // Embla carousel options
   const _emblaOptions = {

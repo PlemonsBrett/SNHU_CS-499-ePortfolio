@@ -61,7 +61,7 @@
 <section {id} class="career-timeline">
   <div class="timeline-container">
     <div class="timeline-line"></div>
-    {#each events as event, i}
+    {#each _events as event, i}
       <div class="timeline-event {i % 2 === 0 ? 'left' : 'right'}">
         <div class="event-dot"></div>
         <div class="event-content">

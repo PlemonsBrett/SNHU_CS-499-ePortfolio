@@ -1,0 +1,43 @@
+import AchievementsCard from '../components/AchievementsCard.svelte'
+import Achievement from '../components/Achievement.svelte'
+import StorySection from '../components/StorySection.svelte'
+import SkillCloud from '../components/SkillCloud.svelte'
+
+<StorySection 
+  id="chapter-03"
+  chapter="03" 
+  title="The Evolution"
+  align="left"
+  subtitle="From Engineering Excellence to Transformational Leadership"
+  client:visible
+>
+  The acquisition of Dictionary.com by IXL marked both an ending and a beginning. Saying goodbye to the team I'd helped build was one of the hardest professional moments of my career—but it crystallized something important: I wasn't just building software anymore. I was building people, processes, and possibilities.
+
+  At MFour Mobile Research, I discovered the power of metrics-driven engineering excellence. My focus on data-driven transformation led to breakthrough improvements across every dimension of team performance.
+
+  But I also learned that growth isn't always upward. Sometimes markets shift, priorities change, and even the best-laid plans must adapt. The experience taught me resilience and reinforced my commitment to sustainable, people-first leadership.
+
+  At Propio Language Services, I've found my stride as an engineering leader who bridges the gap between strategic vision and tactical execution. But something else emerged during this journey—a deep fascination with the intersection of language, technology, and human connection that's pulling me toward my next evolution.
+</StorySection>
+
+<AchievementsCard title="Key Achievements at MFour Mobile Research" >
+    <Achievement icon="⚡" metric="200% improvement in Issue Cycle time" highlight={true}>
+      reduced to 4 days
+    </Achievement>
+    <Achievement icon="🚀" metric="182% increase in weekly issue resolution">
+      9 issues per week average
+    </Achievement>
+    <Achievement icon="⏱️" metric="121% reduction in PR Cycle times">
+      down to 0.42 days
+    </Achievement>
+    <Achievement icon="📊" metric="69% enhancement in sprint completion">
+      93.5% completion rate
+    </Achievement>
+    <Achievement icon="🎯" metric="265% decrease in sprint carryover">
+      improved predictability
+    </Achievement>
+  </AchievementsCard>
+
+<SkillCloud 
+  client:visible
+/>

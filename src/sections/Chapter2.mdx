@@ -1,0 +1,42 @@
+import AchievementsCard from '../components/mdx/AchievementsCard.astro'
+import Achievement from '../components/Achievement.svelte'
+import StorySection from '../components/StorySection.svelte'
+import SkillsTransition from '../components/mdx/SkillsTransition.astro'
+
+<StorySection 
+  id="chapter-02"
+  chapter="02" 
+  title="The Crucible"
+  subtitle="Forged by Fire, Tempered by Challenge"
+  align="right"
+  client:visible
+>
+  Sometimes the most valuable lessons come wrapped in the most difficult experiences. At RevLogical, I dove headfirst into the deep end of software engineering—mobile apps, real-time systems, IoT integration with drones and LiDAR. I was learning exponentially, but paying a steep price: 120+ hour weeks, no boundaries, constant pressure.
+
+  It wasn't sustainable, but it was transformational. I emerged with battle-tested skills and an unshakeable understanding of what great engineering culture should—and shouldn't—look like. Every sleepless night taught me resilience. Every impossible deadline taught me prioritization. Every system I built taught me the elegance of well-architected solutions.
+
+  Then Dictionary.com found me. They didn't just hire an engineer with broad exposure—they invested in someone who could grow, lead, and inspire others. Within six months, I was leading teams. Within a year, I was managing Platform, Core Systems, Mobile, and Machine Learning engineering across the organization.
+</StorySection>
+
+
+<AchievementsCard align="right" title="Key Achievements at Dictionary.com">
+  <Achievement icon="📈" metric="200% improvement in data ingestion speed" highlight={true}>
+    through architectural innovation
+  </Achievement>
+  <Achievement icon="💰" metric="$500K+ Annual AWS cost reduction">
+    through infrastructure optimization
+  </Achievement>
+  <Achievement icon="📱" metric="2.5M users on mobile platform">
+  with 102% increase in retention
+  </Achievement>
+  <Achievement icon="🤖" metric="86% reduction in content release cycles">
+    from 6 weeks to 1 week
+  </Achievement>
+  <Achievement icon="🏆" metric="2x Exceptional Engineering Awards">
+    2022 & 2023 for strategic vision
+  </Achievement>
+</AchievementsCard>
+
+<SkillsTransition 
+  skills={['C#', '.NET Core', 'Machine Learning', 'NLP', 'AWS Architecture', 'Team Leadership', 'System Design', 'Performance Optimization', 'Mobile Development', 'IoT Integration', 'Tableau', 'PHP', 'Vue', 'Svelte', 'Data Engineering', 'React Native', 'Flutter', 'RFID', 'LiDAR', 'Computer Vision', 'Real-time Systems', 'WebSockets', 'Docker', 'Kubernetes']}
+/>

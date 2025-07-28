@@ -1,9 +1,12 @@
 <script>
-  export const id = ''
-  export const chapter = ''
-  export const title = ''
-  export const subtitle = ''
-  export const align = 'left'
+  let { 
+    id = '', 
+    chapter = '', 
+    title = '', 
+    subtitle = '', 
+    align = 'left',
+    children
+  } = $props()
 </script>
 
 <section 
@@ -23,20 +26,20 @@
   </div>
   
   <div class="section-content">
-    <slot />
+    {@render children?.()}
   </div>
 </section>
 
 <style>
   .story-section {
-    padding: 10rem 0;
+    padding: 5rem 0;
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 20vh; /* Add space between sections */
+    margin-top: 10vh; /* Add space between sections */
   }
   
   #chapter-01 {
@@ -70,7 +73,7 @@
   
   .section-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     opacity: 0;
   }
   
@@ -185,20 +188,24 @@
   @media (min-width: 1024px) {
     .story-section.left .section-header {
       text-align: left;
-      padding-left: 15%;
+      max-width: 800px;
+      margin: 0 auto 2rem 15%;
+    }
+    
+    .story-section.left .section-content {
+      max-width: 800px;
+      margin: 0 15% 0 auto;
     }
     
     .story-section.right .section-header {
       text-align: right;
-      padding-right: 15%;
-    }
-    
-    .story-section.left .section-content {
-      padding-left: 15%;
+      max-width: 800px;
+      margin: 0 15% 2rem auto;
     }
     
     .story-section.right .section-content {
-      padding-right: 15%;
+      max-width: 800px;
+      margin: 0 auto 0 15%;
     }
   }
   
@@ -221,9 +228,9 @@
     }
     
     .story-section {
-      min-height: 100vh;
-      padding: 5rem 0;
-      margin-top: 10vh;
+      min-height: auto;
+      padding: 3rem 0;
+      margin-top: 5vh;
     }
   }
 </style>

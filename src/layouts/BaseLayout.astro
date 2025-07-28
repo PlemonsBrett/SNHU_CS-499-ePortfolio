@@ -11,11 +11,11 @@ const { title: _title, description: _description = 'CS 499 Computer Science Caps
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
+    <meta name="description" content={_description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{_title}</title>
   </head>
   <body>
     <main>
@@ -78,6 +78,32 @@ const { title: _title, description: _description = 'CS 499 Computer Science Caps
       
       #featured-projects {
         scroll-margin-top: 2rem;
+      }
+      
+      /* Side-by-side layout when AchievementsCard follows StorySection */
+      @media (min-width: 1024px) {
+        .story-section + .achievements-card {
+          margin-top: -15rem;
+          position: relative;
+          z-index: 10;
+        }
+        
+        .story-section.left + .achievements-card {
+          margin-left: 52%;
+          margin-right: 10%;
+          max-width: 400px;
+        }
+        
+        .story-section.right + .achievements-card {
+          margin-right: 52%;
+          margin-left: 10%;
+          max-width: 400px;
+        }
+        
+        /* Add extra padding to story sections that are followed by achievements */
+        .story-section:has(+ .achievements-card) {
+          padding-bottom: 18rem;
+        }
       }
     </style>
   </body>

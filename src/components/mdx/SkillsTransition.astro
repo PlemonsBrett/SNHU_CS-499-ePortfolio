@@ -1,0 +1,16 @@
+---
+import SkillsTransition from '../SkillsTransition.svelte'
+
+export interface Props {
+  skills: string[]
+  id?: string
+}
+
+const { skills, id = `skills-transition-${Math.random().toString(36).substr(2, 9)}` } = Astro.props
+---
+
+<SkillsTransition 
+  id={id}
+  skills={skills}
+  client:visible
+/>
