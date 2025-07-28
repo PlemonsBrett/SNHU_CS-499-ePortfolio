@@ -1,9 +1,12 @@
 <script>
 import { onMount } from 'svelte'
 
-let code = ''
-let output = []
-let _running = false
+let code = $state('')
+let output = $state([])
+let running = $state(false)
+let iframe = null
+
+const { children } = $props()
 
 onMount(() => {
   // Extract code from slot content
@@ -16,50 +19,135 @@ onMount(() => {
   }
 })
 
-function _runCode() {
+function runCode() {
   output = []
-  _running = true
+  running = true
 
-  // Override console.log to capture output
-  const originalLog = console.log
-  console.log = (...args) => {
-    output = [
-      ...output,
-      args
-        .map((arg) => (typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)))
-        .join(' '),
-    ]
+  // Create a sandboxed iframe for code execution
+  if (iframe) {
+    iframe.remove()
   }
 
-  try {
-    // Create a new function from the code string and execute it
-    const func = new Function(code)
-    func()
-  } catch (error) {
-    output = [...output, `Error: ${error.message}`]
-  } finally {
-    // Restore original console.log
-    console.log = originalLog
-    _running = false
+  iframe = document.createElement('iframe')
+  iframe.style.display = 'none'
+  iframe.sandbox = 'allow-scripts' // Restricted sandbox - no network, forms, etc.
+  document.body.appendChild(iframe)
+
+  const sandboxCode = `
+    <script>
+      // Override console.log to send output to parent
+      const outputs = [];
+      console.log = (...args) => {
+        const message = args
+          .map(arg => {
+            if (typeof arg === 'object') {
+              try {
+                return JSON.stringify(arg, null, 2);
+              } catch (e) {
+                return String(arg);
+              }
+            }
+            return String(arg);
+          })
+          .join(' ');
+        outputs.push(message);
+        parent.postMessage({ type: 'log', message }, '*');
+      };
+
+      // Capture errors
+      window.onerror = (message, source, lineno, colno, error) => {
+        parent.postMessage({ 
+          type: 'error', 
+          message: error ? error.message : message 
+        }, '*');
+        return true;
+      };
+
+      // Execute user code
+      try {
+        ${code}
+        parent.postMessage({ type: 'done' }, '*');
+      } catch (error) {
+        parent.postMessage({ 
+          type: 'error', 
+          message: error.message 
+        }, '*');
+      }
+    <\/script>
+  `
+
+  // Set up message listener
+  const messageHandler = (event) => {
+    if (event.source !== iframe.contentWindow) return
+
+    switch (event.data.type) {
+      case 'log':
+        output = [...output, event.data.message]
+        break
+      case 'error':
+        output = [...output, `Error: ${event.data.message}`]
+        running = false
+        window.removeEventListener('message', messageHandler)
+        if (iframe) {
+          iframe.remove()
+          iframe = null
+        }
+        break
+      case 'done':
+        running = false
+        window.removeEventListener('message', messageHandler)
+        if (iframe) {
+          iframe.remove()
+          iframe = null
+        }
+        break
+    }
   }
+
+  window.addEventListener('message', messageHandler)
+
+  // Write sandboxed code to iframe
+  iframe.srcdoc = sandboxCode
+
+  // Timeout after 5 seconds to prevent infinite loops
+  setTimeout(() => {
+    if (running) {
+      output = [...output, 'Error: Code execution timeout (5 seconds)']
+      running = false
+      window.removeEventListener('message', messageHandler)
+      if (iframe) {
+        iframe.remove()
+        iframe = null
+      }
+    }
+  }, 5000)
 }
 
-function _clearOutput() {
+function clearOutput() {
   output = []
 }
+
+// Clean up on unmount
+$effect(() => {
+  return () => {
+    if (iframe) {
+      iframe.remove()
+    }
+  }
+})
 </script>
 
 <div class="playground">
   <div class="code-slot" style="display: none;">
-    <slot />
+    {@render children?.()}
   </div>
 
   <div class="editor">
     <div class="toolbar">
-      <button on:click={_runCode} disabled={_running}>
-        {_running ? "Running..." : "Run Code"}
+      <button onclick={runCode} disabled={running}>
+        {running ? "Running..." : "Run Code"}
       </button>
-      <button on:click={_clearOutput} disabled={output.length === 0}>
+      <button onclick={clearOutput} disabled={output.length === 0}>
         Clear Output
       </button>
     </div>

@@ -30,7 +30,6 @@ const _autoplayOptions = {
 }
 
 onMount(() => {
-  console.log('Hero component mounted')
   _visible = true
   setTimeout(() => {
     _titleVisible = true
@@ -42,20 +41,13 @@ onMount(() => {
 
 // Handle carousel initialization
 function _onInit(event) {
-  console.log('onInit called', event)
   if (event?.detail) {
     // The detail object contains all the Embla methods
     const api = event.detail
-    console.log('Embla detail:', api)
 
     // Check if we have the necessary methods
     if (api?.slidesInView && api.on) {
       _emblaApi = api
-
-      // Debug: Check what Embla sees
-      console.log('Total slides:', api.slideNodes().length)
-      console.log('Scroll snaps:', api.scrollSnapList())
-      console.log('Selected snap:', api.selectedScrollSnap())
 
       // Function to update selected slide based on Embla's selection
       const updateCenteredSlide = () => {
@@ -64,7 +56,6 @@ function _onInit(event) {
 
         if (selectedSnap !== selectedIndex) {
           selectedIndex = selectedSnap
-          console.log('Selected snap:', selectedSnap, 'title:', titles[selectedIndex])
         }
       }
 

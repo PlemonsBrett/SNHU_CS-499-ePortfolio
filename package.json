@@ -10,7 +10,10 @@
     "check": "astro check && biome check .",
     "lint": "astro check && biome lint .",
     "format": "astro check && biome format --write .",
-    "typecheck": "astro check"
+    "typecheck": "astro check",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -25,6 +28,11 @@
     "@astrojs/mdx": "^4.3.1",
     "@astrojs/svelte": "^7.1.0",
     "@biomejs/biome": "^2.1.2",
-    "svelte": "^5.37.0"
+    "@sveltejs/vite-plugin-svelte-inspector": "^5.0.0",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/svelte": "^5.2.8",
+    "jsdom": "^26.1.0",
+    "svelte": "^5.37.0",
+    "vitest": "^3.2.4"
   }
 }

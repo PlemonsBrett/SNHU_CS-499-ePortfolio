@@ -83,7 +83,7 @@ const {
 </div>
 
 <style>
-  :global(.cta-section) {
+  .cta-section {
     text-align: center;
     margin: 3rem auto 4rem;
     padding: 3rem;
@@ -94,27 +94,27 @@ const {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
   }
   
-  :global(.cta-title) {
+  .cta-title {
     font-size: 2.25rem;
     font-weight: 700;
     color: #1f2937;
     margin: 0 0 1rem;
   }
   
-  :global(.cta-subtitle) {
+  .cta-subtitle {
     font-size: 1.875rem;
     font-weight: 700;
     color: #1f2937;
     margin: 0 0 1rem;
   }
   
-  :global(.cta-description) {
+  .cta-description {
     margin-bottom: 2rem;
     color: #6b7280;
     font-size: 1.125rem;
   }
   
-  :global(.cta-links) {
+  .cta-links {
     display: flex;
     gap: 1rem;
     justify-content: center;
@@ -122,7 +122,7 @@ const {
     margin-bottom: 2rem;
   }
   
-  :global(.cta-link) {
+  .cta-link {
     padding: 0.875rem 2rem;
     border-radius: 0.5rem;
     text-decoration: none;
@@ -131,30 +131,30 @@ const {
     display: inline-block;
   }
   
-  :global(.cta-link.primary) {
+  .cta-link.primary {
     background: #6366f1;
     color: white;
   }
   
-  :global(.cta-link.primary:hover) {
+  .cta-link.primary:hover {
     background: #4f46e5;
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
   }
   
-  :global(.cta-link.secondary) {
+  .cta-link.secondary {
     background: white;
     color: #6366f1;
     border: 2px solid #6366f1;
   }
   
-  :global(.cta-link.secondary:hover) {
+  .cta-link.secondary:hover {
     background: #6366f1;
     color: white;
     transform: translateY(-2px);
   }
   
-  :global(.cta-quote) {
+  .cta-quote {
     margin: 2rem auto;
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.8);
@@ -164,24 +164,24 @@ const {
     max-width: 600px;
   }
   
-  :global(.cta-quote p) {
+  .cta-quote p {
     margin: 0 0 0.5rem;
     font-size: 1.125rem;
     color: #374151;
   }
   
-  :global(.cta-quote cite) {
+  .cta-quote cite {
     font-size: 0.875rem;
     color: #6b7280;
     font-style: normal;
     font-weight: 500;
   }
   
-  :global(.final-cta) {
+  .final-cta {
     margin-top: 2rem;
   }
   
-  :global(.final-cta-button) {
+  .final-cta-button {
     padding: 1rem 2.5rem;
     border-radius: 0.75rem;
     text-decoration: none;
@@ -194,70 +194,70 @@ const {
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
   }
   
-  :global(.final-cta-button:hover) {
+  .final-cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
   }
   
   @media (max-width: 768px) {
-    :global(.cta-section) {
+    .cta-section {
       width: 90%;
       padding: 2.5rem 1.5rem;
     }
     
-    :global(.cta-title) {
+    .cta-title {
       font-size: 2rem;
     }
     
-    :global(.cta-subtitle) {
+    .cta-subtitle {
       font-size: 1.625rem;
     }
     
-    :global(.cta-quote) {
+    .cta-quote {
       margin: 1.5rem auto;
       padding: 1.25rem;
     }
   }
 
   @media (max-width: 640px) {
-    :global(.cta-section) {
+    .cta-section {
       padding: 2rem 1.5rem;
     }
     
-    :global(.cta-title) {
+    .cta-title {
       font-size: 1.75rem;
     }
     
-    :global(.cta-subtitle) {
+    .cta-subtitle {
       font-size: 1.5rem;
     }
     
-    :global(.cta-description) {
+    .cta-description {
       font-size: 1rem;
     }
     
-    :global(.cta-links) {
+    .cta-links {
       flex-direction: column;
       width: 100%;
       max-width: 300px;
       margin: 0 auto 2rem;
     }
     
-    :global(.cta-link) {
+    .cta-link {
       width: 100%;
       text-align: center;
     }
     
-    :global(.cta-quote) {
+    .cta-quote {
       margin: 1.5rem auto;
       padding: 1rem;
     }
     
-    :global(.cta-quote p) {
+    .cta-quote p {
       font-size: 1rem;
     }
     
-    :global(.final-cta-button) {
+    .final-cta-button {
       padding: 0.875rem 2rem;
       font-size: 1rem;
     }
