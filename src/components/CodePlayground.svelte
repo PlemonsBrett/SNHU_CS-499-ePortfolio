@@ -8,6 +8,38 @@ let iframe = null
 
 const { children } = $props()
 
+// Whitelist of allowed global objects/functions for sandboxed code
+const ALLOWED_GLOBALS = [
+  'console', 'Math', 'Date', 'Array', 'Object', 'String', 'Number', 
+  'Boolean', 'RegExp', 'JSON', 'parseInt', 'parseFloat', 'isNaN', 
+  'isFinite', 'encodeURI', 'decodeURI', 'encodeURIComponent', 
+  'decodeURIComponent'
+]
+
+// Patterns that indicate potentially dangerous code
+const DANGEROUS_PATTERNS = [
+  /eval\s*\(/,
+  /new\s+Function/,
+  /document\./,
+  /window\./,
+  /global\./,
+  /process\./,
+  /require\s*\(/,
+  /import\s+/,
+  /export\s+/,
+  /fetch\s*\(/,
+  /XMLHttpRequest/,
+  /\.innerHTML/,
+  /\.outerHTML/,
+  /addEventListener/,
+  /setTimeout/,
+  /setInterval/,
+  /setImmediate/,
+  /__proto__/,
+  /constructor\s*\[/,
+  /\[\s*['"`]constructor['"`]\s*\]/
+]
+
 onMount(() => {
   // Extract code from slot content
   const slot = document.querySelector('.code-slot')
@@ -19,9 +51,40 @@ onMount(() => {
   }
 })
 
+function validateCode(codeStr) {
+  // Check for dangerous patterns
+  for (const pattern of DANGEROUS_PATTERNS) {
+    if (pattern.test(codeStr)) {
+      return {
+        valid: false,
+        error: `Security Error: Potentially dangerous code pattern detected: ${pattern.toString()}`
+      }
+    }
+  }
+  
+  // Basic syntax check
+  try {
+    new Function(codeStr) // Only for syntax validation, not executed
+    return { valid: true }
+  } catch (e) {
+    return {
+      valid: false,
+      error: `Syntax Error: ${e.message}`
+    }
+  }
+}
+
 function runCode() {
   output = []
   running = true
+
+  // Validate code before execution
+  const validation = validateCode(code)
+  if (!validation.valid) {
+    output = [validation.error]
+    running = false
+    return
+  }
 
   // Create a sandboxed iframe for code execution
   if (iframe) {
@@ -30,31 +93,59 @@ function runCode() {
 
   iframe = document.createElement('iframe')
   iframe.style.display = 'none'
-  iframe.sandbox = 'allow-scripts' // Restricted sandbox - no network, forms, etc.
+  // Even more restrictive sandbox
+  iframe.sandbox = 'allow-scripts'
+  iframe.setAttribute('csp', "default-src 'none'; script-src 'unsafe-inline'")
   document.body.appendChild(iframe)
 
   const sandboxCode = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline';">
+    </head>
+    <body>
     <script>
-      // Override console.log to send output to parent
-      const outputs = [];
-      console.log = (...args) => {
-        const message = args
-          .map(arg => {
-            if (typeof arg === 'object') {
-              try {
-                return JSON.stringify(arg, null, 2);
-              } catch (e) {
+      // Create a restricted global scope
+      const restrictedGlobal = {
+        console: {
+          log: (...args) => {
+            const message = args
+              .map(arg => {
+                if (typeof arg === 'object') {
+                  try {
+                    return JSON.stringify(arg, null, 2);
+                  } catch (e) {
+                    return String(arg);
+                  }
+                }
                 return String(arg);
-              }
-            }
-            return String(arg);
-          })
-          .join(' ');
-        outputs.push(message);
-        parent.postMessage({ type: 'log', message }, '*');
+              })
+              .join(' ');
+            parent.postMessage({ type: 'log', message }, '*');
+          }
+        },
+        Math: Math,
+        Date: Date,
+        Array: Array,
+        Object: Object,
+        String: String,
+        Number: Number,
+        Boolean: Boolean,
+        RegExp: RegExp,
+        JSON: JSON,
+        parseInt: parseInt,
+        parseFloat: parseFloat,
+        isNaN: isNaN,
+        isFinite: isFinite,
+        encodeURI: encodeURI,
+        decodeURI: decodeURI,
+        encodeURIComponent: encodeURIComponent,
+        decodeURIComponent: decodeURIComponent
       };
 
-      // Capture errors
+      // Override global error handler
       window.onerror = (message, source, lineno, colno, error) => {
         parent.postMessage({ 
           type: 'error', 
@@ -63,9 +154,37 @@ function runCode() {
         return true;
       };
 
-      // Execute user code
+      // Execute user code in restricted context
       try {
-        ${code}
+        // Wrap code in a function with restricted scope
+        const wrappedCode = \`
+          (function(console, Math, Date, Array, Object, String, Number, Boolean, RegExp, JSON, parseInt, parseFloat, isNaN, isFinite, encodeURI, decodeURI, encodeURIComponent, decodeURIComponent) {
+            "use strict";
+            ${code.replace(/`/g, '\\`')}
+          }).call(
+            {}, 
+            restrictedGlobal.console,
+            restrictedGlobal.Math,
+            restrictedGlobal.Date,
+            restrictedGlobal.Array,
+            restrictedGlobal.Object,
+            restrictedGlobal.String,
+            restrictedGlobal.Number,
+            restrictedGlobal.Boolean,
+            restrictedGlobal.RegExp,
+            restrictedGlobal.JSON,
+            restrictedGlobal.parseInt,
+            restrictedGlobal.parseFloat,
+            restrictedGlobal.isNaN,
+            restrictedGlobal.isFinite,
+            restrictedGlobal.encodeURI,
+            restrictedGlobal.decodeURI,
+            restrictedGlobal.encodeURIComponent,
+            restrictedGlobal.decodeURIComponent
+          );
+        \`;
+        
+        eval(wrappedCode);
         parent.postMessage({ type: 'done' }, '*');
       } catch (error) {
         parent.postMessage({ 
@@ -74,6 +193,8 @@ function runCode() {
         }, '*');
       }
     <\/script>
+    </body>
+    </html>
   `
 
   // Set up message listener
@@ -154,6 +275,10 @@ $effect(() => {
 
     <textarea bind:value={code} class="code-input" spellcheck="false" rows="20"
     ></textarea>
+    
+    <div class="security-notice">
+      ⚠️ This playground runs code in a restricted sandbox. Access to browser APIs, network requests, and DOM manipulation is disabled for security.
+    </div>
   </div>
 
   {#if output.length > 0}
@@ -223,6 +348,14 @@ $effect(() => {
 
   .code-input:focus {
     outline: none;
+  }
+
+  .security-notice {
+    padding: 0.75rem 1rem;
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.75rem;
+    border-top: 1px solid #fbbf24;
   }
 
   .output {
