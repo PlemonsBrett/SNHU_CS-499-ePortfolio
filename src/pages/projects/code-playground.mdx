@@ -5,74 +5,98 @@ title: Interactive Code Playground | Brett Plemons
 
 import CodePlayground from '../../components/CodePlayground.svelte'
 
+<div class="content-wrapper">
+
 # Interactive Code Playground
 
 Experience algorithms and data structures in action with this live JavaScript execution environment.
 
-<CodePlayground client:load>
+<CodePlayground client:load title="Binary Search Tree Implementation" description="Interactive implementation of a binary search tree with insert, search, and traversal methods">
 ```javascript
-// Bayesian A/B Test Calculator
-class BayesianABTest {
-  constructor(alphaA = 1, betaA = 1, alphaB = 1, betaB = 1) {
-    this.priorA = { alpha: alphaA, beta: betaA }
-    this.priorB = { alpha: alphaB, beta: betaB }
+// Binary Search Tree Implementation
+class TreeNode {
+  constructor(value) {
+    this.value = value
+    this.left = null
+    this.right = null
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null
   }
   
-  updatePosterior(conversions, trials, prior) {
-    return {
-      alpha: prior.alpha + conversions,
-      beta: prior.beta + (trials - conversions)
+  insert(value) {
+    const newNode = new TreeNode(value)
+    
+    if (!this.root) {
+      this.root = newNode
+      return this
     }
-  }
-  
-  calculateProbability(posteriorA, posteriorB, samples = 10000) {
-    let wins = 0
     
-    for (let i = 0; i < samples; i++) {
-      const sampleA = this.betaSample(posteriorA.alpha, posteriorA.beta)
-      const sampleB = this.betaSample(posteriorB.alpha, posteriorB.beta)
-      if (sampleA > sampleB) wins++
-    }
-    
-    return wins / samples
-  }
-  
-  betaSample(alpha, beta) {
-    // Simplified beta distribution sampling
-    const x = this.gammaSample(alpha)
-    const y = this.gammaSample(beta)
-    return x / (x + y)
-  }
-  
-  gammaSample(shape) {
-    // Marsaglia and Tsang method (simplified)
-    let d = shape - 1/3
-    let c = 1 / Math.sqrt(9 * d)
-    
+    let current = this.root
     while (true) {
-      let x = this.normalRandom()
-      let v = Math.pow(1 + c * x, 3)
-      if (v > 0 && Math.log(Math.random()) < 0.5 * x * x + d - d * v + d * Math.log(v)) {
-        return d * v
+      if (value === current.value) return this
+      
+      if (value < current.value) {
+        if (!current.left) {
+          current.left = newNode
+          return this
+        }
+        current = current.left
+      } else {
+        if (!current.right) {
+          current.right = newNode
+          return this
+        }
+        current = current.right
       }
     }
   }
   
-  normalRandom() {
-    // Box-Muller transform
-    const u1 = Math.random()
-    const u2 = Math.random()
-    return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2)
+  find(value) {
+    let current = this.root
+    while (current) {
+      if (value === current.value) return true
+      if (value < current.value) {
+        current = current.left
+      } else {
+        current = current.right
+      }
+    }
+    return false
+  }
+  
+  inOrderTraversal(node = this.root, result = []) {
+    if (node) {
+      this.inOrderTraversal(node.left, result)
+      result.push(node.value)
+      this.inOrderTraversal(node.right, result)
+    }
+    return result
+  }
+  
+  getHeight(node = this.root) {
+    if (!node) return -1
+    return 1 + Math.max(this.getHeight(node.left), this.getHeight(node.right))
   }
 }
 
 // Example usage
-const test = new BayesianABTest()
-const posteriorA = test.updatePosterior(120, 1000, test.priorA)
-const posteriorB = test.updatePosterior(100, 1000, test.priorB)
-const probability = test.calculateProbability(posteriorA, posteriorB)
+const bst = new BinarySearchTree()
+const values = [10, 5, 15, 3, 7, 12, 20]
 
-console.log(`Probability that A is better than B: ${(probability * 100).toFixed(2)}%`)
+console.log('Inserting values:', values)
+values.forEach(val => bst.insert(val))
+
+console.log('\nIn-order traversal:', bst.inOrderTraversal())
+console.log('Tree height:', bst.getHeight())
+
+console.log('\nSearching for values:')
+console.log('Find 7:', bst.find(7))
+console.log('Find 9:', bst.find(9))
+console.log('Find 15:', bst.find(15))
 ```
 </CodePlayground>
 
@@ -145,8 +169,11 @@ console.log(`\nSorted array: [${sorted}]`)
 
 This playground is built with:
 - **Svelte** for reactive UI components
-- **Function Constructor** for safe code execution
+- **AST Validation** with Acorn for security
+- **Sandboxed iframe execution** for safe code running
 - **Real-time console capture** for immediate feedback
-- **Syntax highlighting** for better code readability
+- **Syntax highlighting** with Prism.js
 
 Try modifying the code above or write your own algorithms to see them in action!
+
+</div>

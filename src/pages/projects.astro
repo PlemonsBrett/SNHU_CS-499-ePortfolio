@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ProjectsPage from '../components/ProjectsPage.svelte'
+import { projects } from '../data/projects'
+
+// Extract unique filter values from projects
+const filters = {
+  tags: [...new Set(projects.flatMap(p => p.tags || []))].sort(),
+  language: [...new Set(projects.flatMap(p => p.language || []))].sort(),
+  technology: [...new Set(projects.flatMap(p => p.technology || []))].sort(),
+  category: [...new Set(projects.map(p => p.category).filter(Boolean))].sort(),
+}
+---
+
+<BaseLayout title="Projects | Brett Plemons">
+  <div class="projects-page">
+    <div class="page-header">
+      <h1 class="page-title">Projects</h1>
+      <p class="page-description">
+        A collection of my work spanning web development, machine learning, and software engineering.
+        Each project represents a unique challenge and learning opportunity.
+      </p>
+    </div>
+    
+    <ProjectsPage 
+      client:load 
+      projects={projects}
+      filters={filters}
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .projects-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin: 0 0 1rem;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .page-description {
+    font-size: 1.125rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 1024px) {
+    .projects-page {
+      padding: 1.5rem;
+    }
+    
+    .page-title {
+      font-size: 2.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2rem;
+    }
+    
+    .page-description {
+      font-size: 1rem;
+    }
+  }
+</style>
