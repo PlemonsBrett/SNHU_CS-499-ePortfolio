@@ -6,7 +6,7 @@ export const projects = [
     image: '/images/projects/liars-dice.png',
     imageAlt: "Liar's Dice game interface",
     link: '/projects/liars-dice',
-    github: 'https://github.com/bplemons/liars-dice',
+    github: 'https://github.com/plemonsBrett/liars-dice',
     tags: ['C++', 'Game Development', 'AI', 'OOP'],
     language: ['C++'],
     technology: ['Terminal UI', 'Game AI'],
@@ -25,7 +25,7 @@ export const projects = [
     language: ['JavaScript'],
     technology: ['Web', 'Interactive'],
     category: 'Education',
-    featured: true
+    featured: false
   },
   {
     id: 'code-playground',
@@ -38,7 +38,7 @@ export const projects = [
     language: ['JavaScript', 'Svelte'],
     technology: ['Web', 'Sandbox'],
     category: 'Developer Tools',
-    featured: false
+    featured: true
   },
   {
     id: 'portfolio-site',
