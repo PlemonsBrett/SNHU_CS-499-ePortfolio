@@ -1,0 +1,251 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BlogSidebar from '../components/BlogSidebar.svelte';
+import BlogNavigation from '../components/BlogNavigation.svelte';
+
+export interface Props {
+  title: string;
+  description?: string;
+  date?: string;
+  category?: string;
+  tags?: string[];
+}
+
+const { title, description, date, category, tags } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<BaseLayout title={title}>
+  <div class="blog-layout">
+    <BlogSidebar currentPath={currentPath} client:load />
+    
+    <article class="blog-content">
+      <header class="blog-header">
+        <h1>{title}</h1>
+        {description && <p class="description">{description}</p>}
+        <div class="meta">
+          {date && <time datetime={date}>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>}
+          {category && <span class="category">{category}</span>}
+        </div>
+        {tags && (
+          <div class="tags">
+            {tags.map(tag => <span class="tag">{tag}</span>)}
+          </div>
+        )}
+      </header>
+      
+      <div class="blog-post-content">
+        <slot />
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-layout {
+    display: flex;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .blog-content {
+    flex: 1;
+    min-width: 0;
+    max-width: 900px;
+  }
+  
+  .blog-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  }
+  
+  .blog-header h1 {
+    margin: 0 0 1rem;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--text-primary, #fff);
+  }
+  
+  .description {
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+    line-height: 1.5;
+  }
+  
+  .meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.6));
+    margin-bottom: 1rem;
+  }
+  
+  .category {
+    padding: 0.25rem 0.75rem;
+    background: var(--accent-bg, rgba(0, 122, 204, 0.1));
+    color: var(--accent-color, #007acc);
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tag {
+    padding: 0.25rem 0.75rem;
+    background: var(--card-bg, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  }
+  
+  .blog-post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #1a1a1a;
+  }
+  
+  .blog-post-content :global(p) {
+    color: #1a1a1a;
+    margin: 1rem 0;
+  }
+  
+  .blog-post-content :global(li) {
+    color: #1a1a1a;
+  }
+  
+  .blog-post-content :global(strong) {
+    color: #000000;
+    font-weight: 600;
+  }
+  
+  .blog-post-content :global(h2) {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color, #007acc);
+  }
+  
+  .blog-post-content :global(h3) {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #333333;
+  }
+  
+  .blog-post-content :global(pre) {
+    background: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+  
+  .blog-post-content :global(code) {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #d73a49;
+    background: #f6f8fa;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+  }
+  
+  .blog-post-content :global(pre code) {
+    color: #d4d4d4;
+    background: none;
+    padding: 0;
+  }
+  
+  .blog-post-content :global(blockquote) {
+    border-left: 4px solid var(--accent-color, #007acc);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #555555;
+  }
+  
+  .blog-post-content :global(table) {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e1e4e8;
+  }
+  
+  .blog-post-content :global(th), 
+  .blog-post-content :global(td) {
+    padding: 0.75rem;
+    border-right: 1px solid #e1e4e8;
+    border-bottom: 1px solid #e1e4e8;
+    text-align: left;
+  }
+  
+  .blog-post-content :global(th:last-child),
+  .blog-post-content :global(td:last-child) {
+    border-right: none;
+  }
+  
+  .blog-post-content :global(tr:last-child td) {
+    border-bottom: none;
+  }
+  
+  .blog-post-content :global(td) {
+    color: #1a1a1a;
+  }
+  
+  .blog-post-content :global(th) {
+    background: #f5f5f5;
+    font-weight: bold;
+    color: var(--accent-color, #007acc);
+  }
+  
+  .blog-post-content :global(thead tr:first-child th:first-child) {
+    border-top-left-radius: 8px;
+  }
+  
+  .blog-post-content :global(thead tr:first-child th:last-child) {
+    border-top-right-radius: 8px;
+  }
+  
+  .blog-post-content :global(tbody tr:last-child td:first-child) {
+    border-bottom-left-radius: 8px;
+  }
+  
+  .blog-post-content :global(tbody tr:last-child td:last-child) {
+    border-bottom-right-radius: 8px;
+  }
+  
+  @media (max-width: 1024px) {
+    .blog-layout {
+      flex-direction: column;
+    }
+    
+    .blog-content {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .blog-header h1 {
+      font-size: 2rem;
+    }
+    
+    .description {
+      font-size: 1.1rem;
+    }
+    
+    .blog-layout {
+      padding: 1rem;
+    }
+  }
+</style>

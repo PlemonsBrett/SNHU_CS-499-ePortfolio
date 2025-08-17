@@ -30,7 +30,7 @@ const { icon = '🏆', metric = '', highlight = false, children } = $props()
   
   .achievement.highlight {
     background-color: #eef2ff;
-    border-left: 4px solid #6366f1;
+    border-left: 4px solid #007acc;
     padding-left: calc(1rem - 4px);
   }
   
@@ -47,7 +47,7 @@ const { icon = '🏆', metric = '', highlight = false, children } = $props()
   }
   
   .achievement.highlight .achievement-icon {
-    background: #6366f1;
+    background: #007acc;
     color: white;
   }
   

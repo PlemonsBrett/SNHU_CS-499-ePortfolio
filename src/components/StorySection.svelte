@@ -76,7 +76,7 @@ const { id = '', chapter = '', title = '', subtitle = '', align = 'left', childr
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #6366f1;
+    color: #007acc;
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
     background: #eef2ff;
@@ -150,24 +150,24 @@ const { id = '', chapter = '', title = '', subtitle = '', align = 'left', childr
   }
   
   .section-content :global(.cta-button.primary) {
-    background: #6366f1;
+    background: #007acc;
     color: white;
   }
   
   .section-content :global(.cta-button.primary:hover) {
-    background: #4f46e5;
+    background: #0062a3;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 122, 204, 0.3);
   }
   
   .section-content :global(.cta-button.secondary) {
     background: white;
-    color: #6366f1;
-    border: 2px solid #6366f1;
+    color: #007acc;
+    border: 2px solid #007acc;
   }
   
   .section-content :global(.cta-button.secondary:hover) {
-    background: #6366f1;
+    background: #007acc;
     color: white;
     transform: translateY(-2px);
   }

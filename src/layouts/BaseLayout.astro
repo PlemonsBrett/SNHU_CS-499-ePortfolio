@@ -1,5 +1,6 @@
 ---
 import Navigation from "../components/Navigation.svelte";
+import Footer from "../components/Footer.svelte";
 
 export interface Props {
   title: string;
@@ -36,6 +37,7 @@ const isHomePage = Astro.url.pathname === "/";
     <main class={isHomePage ? "" : "with-nav"}>
       <slot />
     </main>
+    <Footer client:visible />
     <style>
       html {
         font-family: "Inter", system-ui, sans-serif;
@@ -45,30 +47,29 @@ const isHomePage = Astro.url.pathname === "/";
         margin: 0;
         min-height: 100vh;
         overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
       }
       main {
         width: 100%;
-        padding: 0 2rem;
+        padding: 0;
+        flex: 1;
       }
 
       main.with-nav {
-        padding-top: 6rem; /* Account for fixed navigation + spacing */
+        padding: 6rem 2rem 0 2rem; /* Account for fixed navigation + spacing */
       }
 
       /* Responsive padding */
       @media (max-width: 768px) {
-        main {
-          padding: 0 1rem;
-        }
-
         main.with-nav {
-          padding-top: 5rem;
+          padding: 5rem 1rem 0 1rem;
         }
       }
 
       @media (max-width: 640px) {
-        main {
-          padding: 0 0.75rem;
+        main.with-nav {
+          padding: 5rem 0.75rem 0 0.75rem;
         }
       }
 

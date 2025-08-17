@@ -153,7 +153,7 @@ const {
     font-size: 0.75rem;
     padding: 0.25rem 0.75rem;
     background: #eef2ff;
-    color: #6366f1;
+    color: #007acc;
     border-radius: 9999px;
     font-weight: 500;
   }
@@ -175,7 +175,7 @@ const {
   }
   
   .action-link:hover {
-    color: #6366f1;
+    color: #007acc;
   }
   
   .action-link svg {

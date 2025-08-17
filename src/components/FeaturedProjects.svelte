@@ -70,7 +70,7 @@ const featuredProjects = getFeaturedProjects()
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 2rem;
-    background: #6366f1;
+    background: #007acc;
     color: white;
     text-decoration: none;
     border-radius: 0.5rem;
@@ -79,9 +79,9 @@ const featuredProjects = getFeaturedProjects()
   }
   
   .view-all-link:hover {
-    background: #4f46e5;
+    background: #0062a3;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 122, 204, 0.3);
   }
   
   .view-all-link svg {

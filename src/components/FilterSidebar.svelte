@@ -109,7 +109,7 @@ function hasActiveFilters() {
   
   .clear-button {
     font-size: 0.875rem;
-    color: #6366f1;
+    color: #007acc;
     background: none;
     border: none;
     cursor: pointer;
@@ -162,14 +162,14 @@ function hasActiveFilters() {
   
   .filter-option.selected {
     background: #eef2ff;
-    color: #6366f1;
+    color: #007acc;
   }
   
   .filter-option input[type="checkbox"] {
     width: 1rem;
     height: 1rem;
     cursor: pointer;
-    accent-color: #6366f1;
+    accent-color: #007acc;
   }
   
   .filter-label {
@@ -179,7 +179,7 @@ function hasActiveFilters() {
   }
   
   .filter-option.selected .filter-label {
-    color: #6366f1;
+    color: #007acc;
     font-weight: 500;
   }
   

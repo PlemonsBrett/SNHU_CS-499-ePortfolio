@@ -234,10 +234,10 @@ function _onInit(event) {
 
   /* Focus styling for selected slides */
   .embla__slide.is-selected .dynamic-title {
-    color: #60a5fa;
+    color: #007acc;
     transform: scale(1);
     opacity: 1;
-    text-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+    text-shadow: 0 0 20px rgba(0, 122, 204, 0.3);
   }
 
   /* Center highlight effect */
@@ -251,7 +251,7 @@ function _onInit(event) {
     height: 150%;
     background: radial-gradient(
       ellipse at center,
-      rgba(96, 165, 250, 0.1) 0%,
+      rgba(0, 122, 204, 0.1) 0%,
       transparent 60%
     );
     pointer-events: none;
@@ -263,7 +263,7 @@ function _onInit(event) {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    color: #60a5fa;
+    color: #007acc;
     text-decoration: none;
     animation: bounce 2s infinite;
     transition: opacity 0.3s ease;
@@ -315,7 +315,7 @@ function _onInit(event) {
   .orb-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+    background: radial-gradient(circle, #007acc 0%, transparent 70%);
     bottom: -250px;
     right: -250px;
     animation-delay: 7s;

@@ -29,7 +29,7 @@ const _skills = [
 const _categoryColors = {
   language: '#3b82f6',
   cloud: '#10b981',
-  ml: '#8b5cf6',
+  ml: '#007acc',
   design: '#f59e0b',
   soft: '#ef4444',
   data: '#06b6d4',
@@ -37,7 +37,7 @@ const _categoryColors = {
   mobile: '#f97316',
   database: '#84cc16',
   devops: '#14b8a6',
-  methodology: '#6366f1',
+  methodology: '#007acc',
 }
 
 const _sizeMap = {
