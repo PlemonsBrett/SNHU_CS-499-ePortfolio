@@ -26,7 +26,8 @@ function toggleMobileMenu() {
 <nav class="navbar" class:scrolled={isScrolled}>
   <div class="nav-container">
     <a href="/" class="nav-logo">
-      Brett Plemons
+      <img src="/Logo.png" alt="Logo" class="logo-img" />
+      <span>Brett Plemons</span>
     </a>
     
     <div class="nav-links desktop">
@@ -78,6 +79,9 @@ function toggleMobileMenu() {
   }
   
   .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     font-size: 1.25rem;
     font-weight: 700;
     text-decoration: none;
@@ -86,7 +90,13 @@ function toggleMobileMenu() {
   }
   
   .nav-logo:hover {
-    color: #6366f1;
+    color: #007acc;
+  }
+  
+  .logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
   }
   
   .nav-links {
@@ -123,7 +133,7 @@ function toggleMobileMenu() {
   }
   
   .nav-link:hover {
-    color: #6366f1;
+    color: #007acc;
   }
   
   .nav-link::after {
@@ -133,7 +143,7 @@ function toggleMobileMenu() {
     left: 0;
     right: 0;
     height: 2px;
-    background: #6366f1;
+    background: #007acc;
     transform: scaleX(0);
     transition: transform 0.2s ease;
   }

@@ -1,9 +1,13 @@
 {
     "cSpell.words": [
+        "constexpr",
         "embla",
         "esbuild",
         "gsap",
+        "liarsdice",
+        "metaprogramming",
         "onembla",
-        "Plemons"
+        "Plemons",
+        "RAII"
     ]
 }

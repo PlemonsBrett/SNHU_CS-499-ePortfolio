@@ -102,7 +102,7 @@ onMount(async () => {
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(180deg, #007acc 0%, #0062a3 100%);
     transform-origin: top;
   }
 
@@ -126,10 +126,10 @@ onMount(async () => {
     position: absolute;
     width: 20px;
     height: 20px;
-    background: #6366f1;
+    background: #007acc;
     border: 4px solid white;
     border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 0 0 4px rgba(0, 122, 204, 0.2);
   }
 
   .timeline-event.left .event-dot {
@@ -157,7 +157,7 @@ onMount(async () => {
 
   .event-date {
     font-size: 0.875rem;
-    color: #6366f1;
+    color: #007acc;
     font-weight: 600;
     margin-bottom: 0.5rem;
   }

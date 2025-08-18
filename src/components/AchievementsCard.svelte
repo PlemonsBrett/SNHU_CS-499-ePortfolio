@@ -49,7 +49,7 @@ const {
     transform: translateX(-50%);
     width: 50px;
     height: 3px;
-    background: #6366f1;
+    background: #007acc;
     border-radius: 2px;
   }
   

@@ -1,33 +1,13 @@
 <script>
+  import { siteConfig, getCTALinks } from '../config/site.js';
+  
   const {
-    title = "Let's Build the Future Together",
-    subtitle = "Ready to Transform Ideas Into Impact",
-    description = "I'm passionate about solving complex problems at the intersection of engineering excellence and artificial intelligence.",
-    links = [
-      {
-        text: "LinkedIn",
-        href: "https://www.linkedin.com/in/brettplemons",
-        primary: true,
-      },
-      {
-        text: "GitHub",
-        href: "https://github.com/plemonsBrett",
-        primary: false,
-      },
-      {
-        text: "Projects",
-        href: "/projects",
-        primary: false,
-      },
-    ],
-    quote = {
-      text: "The best way to predict the future is to build it.",
-      author: "Alan Kay",
-    },
-    finalCTA = {
-      text: "Start a Conversation",
-      href: "mailto:brett@plemons.dev",
-    },
+    title = siteConfig.cta.main.title,
+    subtitle = siteConfig.cta.main.subtitle,
+    description = siteConfig.cta.main.description,
+    links = getCTALinks(),
+    quote = siteConfig.cta.main.quote,
+    finalCTA = siteConfig.cta.main.finalButton,
   } = $props();
 </script>
 
@@ -136,24 +116,24 @@
   }
 
   .cta-link.primary {
-    background: #6366f1;
+    background: #007acc;
     color: white;
   }
 
   .cta-link.primary:hover {
-    background: #4f46e5;
+    background: #0062a3;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 122, 204, 0.3);
   }
 
   .cta-link.secondary {
     background: white;
-    color: #6366f1;
-    border: 2px solid #6366f1;
+    color: #007acc;
+    border: 2px solid #007acc;
   }
 
   .cta-link.secondary:hover {
-    background: #6366f1;
+    background: #007acc;
     color: white;
     transform: translateY(-2px);
   }
@@ -162,7 +142,7 @@
     margin: 2rem auto;
     padding: 1.5rem;
     background: rgba(255, 255, 255, 0.8);
-    border-left: 4px solid #6366f1;
+    border-left: 4px solid #007acc;
     border-radius: 0.5rem;
     font-style: italic;
     max-width: 600px;
@@ -191,16 +171,16 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 1.125rem;
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #007acc 0%, #0062a3 100%);
     color: white;
     transition: all 0.3s ease;
     display: inline-block;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 122, 204, 0.2);
   }
 
   .final-cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 122, 204, 0.4);
   }
 
   @media (max-width: 768px) {

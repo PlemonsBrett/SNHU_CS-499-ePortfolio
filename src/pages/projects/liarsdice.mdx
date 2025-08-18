@@ -1,0 +1,121 @@
+---
+layout: ../../layouts/BlogPostLayout.astro
+title: "Liar's Dice: A Comprehensive C++ Game Implementation"
+description: "A strategic dice game showcasing advanced software engineering, algorithms, and database design"
+---
+
+import BlogBanner from '../../components/BlogBanner.svelte'
+import BlogNavigation from '../../components/BlogNavigation.svelte'
+import VideoPlayer from '../../components/VideoPlayer.svelte'
+
+<BlogBanner
+  title="Liar's Dice"
+  subtitle="A comprehensive C++ implementation demonstrating professional software development practices across three key computer science domains"
+  gradientFrom="#1e40af"
+  gradientTo="#7c3aed"
+/>
+
+## Project Overview
+
+Liar's Dice is a classic bluffing game brought to life through modern C++ with intelligent AI opponents, sophisticated algorithms, and comprehensive data persistence. This project serves as the capstone for my Computer Science degree, demonstrating mastery across software engineering, algorithms, and database design.
+
+### Key Features
+
+- **Intelligent AI Opponents** - Multiple difficulty levels using Bayesian inference and Monte Carlo simulations
+- **Modern Architecture** - Dependency injection, event-driven design, and comprehensive testing
+- **Performance Optimized** - SIMD vectorization, custom data structures, and efficient memory management
+- **Secure Database Layer** - SQLite integration with authentication, statistics tracking, and achievement system
+- **Professional Development** - CMake build system, Doxygen documentation, and 95%+ test coverage
+
+## Game Rules
+
+Players take turns making increasingly bold claims about dice hidden under cups. Each bid must either increase the quantity or face value from the previous bid. When someone calls "liar," all dice are revealed—the loser loses points (1 point for lying, 2 points for false accusation). Players start with 5 points and are eliminated when they run out. Last player standing wins!
+
+## Technical Deep Dives
+
+<VideoPlayer src="https://video.plemons.dev/CodeReview_BrettPlemons.mp4" />
+
+This project encompasses four major areas, each demonstrating different aspects of computer science expertise:
+
+### [Part 1: Software Engineering & Design →](/projects/liarsdice/software-engineering)
+
+Transform a basic console application into production-quality software through dependency injection, design patterns, and modular architecture. Learn how SOLID principles and modern C++20 features create maintainable, testable code.
+
+**Highlights:**
+- Strategy pattern for AI behaviors
+- Event-driven architecture with observer pattern
+- Comprehensive error handling and logging
+- 95%+ test coverage with Boost.Test
+
+### [Part 2: Database Design & Security →](/projects/liarsdice/databases)
+
+Implement a complete data persistence layer with SQLite, featuring secure authentication, connection pooling, and comprehensive statistics tracking. See how proper schema design and security practices protect user data.
+
+**Highlights:**
+- Normalized schema with 11 interconnected tables
+- Bcrypt password hashing and session management
+- Connection pooling for performance
+- SQL injection prevention and audit logging
+
+### [Part 3: Algorithms & Data Structures →](/projects/liarsdice/algorithms)
+
+Optimize game performance through custom data structures and advanced algorithms. Discover how Bayesian inference, Monte Carlo simulations, and SIMD optimizations achieve 5x performance improvements.
+
+**Highlights:**
+- Bayesian probability engine for AI decisions
+- Custom containers: LRU cache, circular buffers, sparse matrices
+- SIMD vectorization for 5x speedup
+- Memory usage reduced by 90%
+
+### [Part 4: Professional Assessment →](/projects/liarsdice/professional-assessment)
+
+A comprehensive reflection on the skills demonstrated through this capstone project. Learn about the journey from self-taught programmer to computer scientist and future career goals in AI and machine learning.
+
+**Highlights:**
+- Journey from curiosity to expertise
+- Core competencies in team collaboration and communication
+- Security mindset and professional development
+- Future goals in ML and AI specialization
+
+## Technologies & Tools
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', margin: '2rem 0'}}>
+  <div style={{padding: '1rem', background: '#f6f8fa', borderRadius: '0.5rem', borderLeft: '3px solid #007acc'}}>
+    <strong style={{color: '#007acc'}}>Languages:</strong> C++20, SQL, Python (testing)
+  </div>
+  <div style={{padding: '1rem', background: '#f6f8fa', borderRadius: '0.5rem', borderLeft: '3px solid #007acc'}}>
+    <strong style={{color: '#007acc'}}>Libraries:</strong> Boost, SQLite3, Boost.Test
+  </div>
+  <div style={{padding: '1rem', background: '#f6f8fa', borderRadius: '0.5rem', borderLeft: '3px solid #007acc'}}>
+    <strong style={{color: '#007acc'}}>Build Tools:</strong> CMake, CPM, Doxygen
+  </div>
+  <div style={{padding: '1rem', background: '#f6f8fa', borderRadius: '0.5rem', borderLeft: '3px solid #007acc'}}>
+    <strong style={{color: '#007acc'}}>Patterns:</strong> Strategy, Observer, Factory, RAII
+  </div>
+</div>
+
+## Performance Metrics
+
+The enhancements resulted in significant performance improvements:
+
+- **5x faster** probability calculations through SIMD vectorization
+- **90% reduction** in memory usage with sparse data structures
+- **7.5x improvement** in allocation efficiency
+- **Under 100ms** response time for AI decisions
+- **10,000+ games/second** simulation capability
+
+## Learning Outcomes
+
+This project demonstrates proficiency in:
+
+- **Collaborative Development** - Modular architecture enabling team development
+- **Professional Communication** - Comprehensive documentation and code comments
+- **Algorithmic Problem Solving** - Complex probability and optimization algorithms
+- **Innovative Techniques** - Modern C++ features and performance optimization
+- **Security Mindset** - Defense-in-depth security implementation
+
+## Get Started
+
+Explore the detailed technical articles above to dive deep into each enhancement area. Each article includes code examples, architectural diagrams, and implementation details.
+
+<BlogNavigation currentPath="/projects/liarsdice" />

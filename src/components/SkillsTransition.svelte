@@ -116,12 +116,12 @@ onMount(async () => {
   .skill-item {
     position: absolute;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #007acc 0%, #0062a3 100%);
     color: white;
     border-radius: 2rem;
     font-weight: 600;
     font-size: 1.125rem;
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 122, 204, 0.3);
     white-space: nowrap;
   }
 
