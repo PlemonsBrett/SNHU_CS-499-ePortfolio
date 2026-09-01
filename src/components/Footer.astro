@@ -1,9 +1,9 @@
-<script>
-  import { siteConfig, getSocialLinks } from '../config/site.js';
-  
-  const currentYear = new Date().getFullYear();
-  const socialLinks = getSocialLinks();
-</script>
+---
+import { getSocialLinks, siteConfig } from '../config/site.js'
+
+const currentYear = new Date().getFullYear()
+const socialLinks = getSocialLinks()
+---
 
 <footer class="site-footer">
   <div class="footer-container">
@@ -14,34 +14,40 @@
           {siteConfig.owner.tagline}
         </p>
       </div>
-      
+
       <div class="footer-section">
         <h4 class="footer-subtitle">Connect</h4>
         <div class="social-links">
-          {#each socialLinks as link}
-            <a 
-              href={link.url}
-              class="social-link"
-              aria-label={link.name}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {@html link.icon}
-            </a>
-          {/each}
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.url}
+                class="social-link"
+                aria-label={link.name}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="social-icon" set:html={link.icon} />
+              </a>
+            ))
+          }
         </div>
       </div>
-      
+
       <div class="footer-section">
         <h4 class="footer-subtitle">Quick Links</h4>
         <nav class="footer-nav">
-          {#each siteConfig.navigation.footer as link}
-            <a href={link.href} class="footer-link">{link.label}</a>
-          {/each}
+          {
+            siteConfig.navigation.footer.map((link) => (
+              <a href={link.href} class="footer-link">
+                {link.label}
+              </a>
+            ))
+          }
         </nav>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
       <p class="copyright">
         © {currentYear} {siteConfig.owner.name}. All rights reserved.
@@ -60,6 +66,7 @@
     color: #e0e0e0;
     padding: 3rem 0 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
   }
 
   .footer-container {
@@ -123,6 +130,12 @@
     color: #e0e0e0;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .social-link:hover {

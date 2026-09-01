@@ -9,7 +9,7 @@ onMount(async () => {
 
   gsap.registerPlugin(ScrollTrigger)
 
-  // Animate timeline line
+  // Animate timeline line. Centering uses left/margin, so GSAP can own transform.
   const line = document.querySelector(`#${id} .timeline-line`)
   gsap.fromTo(
     line,
@@ -26,11 +26,14 @@ onMount(async () => {
     }
   )
 
-  // Animate timeline events
-  const eventElements = document.querySelectorAll(`#${id} .timeline-event`)
+  // Animate cards only so dots stay locked to the center line
+  const eventContents = document.querySelectorAll(`#${id} .event-content`)
   gsap.fromTo(
-    eventElements,
-    { opacity: 0, x: -50 },
+    eventContents,
+    {
+      opacity: 0,
+      x: (index) => (index % 2 === 0 ? -50 : 50),
+    },
     {
       opacity: 1,
       x: 0,
@@ -98,49 +101,51 @@ onMount(async () => {
 
   .timeline-line {
     position: absolute;
+    top: 0;
     left: 50%;
-    transform: translateX(-50%);
     width: 2px;
     height: 100%;
+    margin-left: -1px;
     background: linear-gradient(180deg, #007acc 0%, #0062a3 100%);
     transform-origin: top;
   }
 
   .timeline-event {
     position: relative;
-    width: 45%;
+    display: flex;
+    width: 100%;
     margin-bottom: 3rem;
   }
 
   .timeline-event.left {
-    left: 0;
+    justify-content: flex-start;
+    padding-right: calc(50% + 2rem);
     text-align: right;
   }
 
   .timeline-event.right {
-    left: 55%;
+    justify-content: flex-end;
+    padding-left: calc(50% + 2rem);
     text-align: left;
   }
 
   .event-dot {
     position: absolute;
+    top: 1.75rem;
+    left: 50%;
+    z-index: 1;
+    box-sizing: border-box;
     width: 20px;
     height: 20px;
+    margin-left: -10px;
     background: #007acc;
     border: 4px solid white;
     border-radius: 50%;
     box-shadow: 0 0 0 4px rgba(0, 122, 204, 0.2);
   }
 
-  .timeline-event.left .event-dot {
-    right: -12.5%;
-  }
-
-  .timeline-event.right .event-dot {
-    left: -12.5%;
-  }
-
   .event-content {
+    width: 100%;
     padding: 1.5rem;
     background: white;
     border-radius: 1rem;
@@ -184,17 +189,20 @@ onMount(async () => {
   @media (max-width: 768px) {
     .timeline-line {
       left: 20px;
+      margin-left: -1px;
     }
 
-    .timeline-event {
-      width: calc(100% - 40px);
-      left: 40px !important;
-      text-align: left !important;
+    .timeline-event.left,
+    .timeline-event.right {
+      justify-content: flex-start;
+      padding-left: 3rem;
+      padding-right: 0;
+      text-align: left;
     }
 
     .event-dot {
-      left: -30px !important;
-      right: auto !important;
+      left: 20px;
+      margin-left: -10px;
     }
   }
 </style>

@@ -1,18 +1,16 @@
 ---
-import Navigation from "../components/Navigation.svelte";
-import Footer from "../components/Footer.svelte";
+import Footer from '../components/Footer.astro'
+import Navigation from '../components/Navigation.svelte'
 
 export interface Props {
-  title: string;
-  description?: string;
+  title: string
+  description?: string
 }
 
-const {
-  title: _title,
-  description: _description = "CS 499 Computer Science Capstone Portfolio",
-} = Astro.props;
+const { title: _title, description: _description = 'CS 499 Computer Science Capstone Portfolio' } =
+  Astro.props
 
-const isHomePage = Astro.url.pathname === "/";
+const isHomePage = Astro.url.pathname === '/'
 ---
 
 <!doctype html>
@@ -37,8 +35,8 @@ const isHomePage = Astro.url.pathname === "/";
     <main class={isHomePage ? "" : "with-nav"}>
       <slot />
     </main>
-    <Footer client:visible />
-    <style>
+    <Footer />
+    <style is:global>
       html {
         font-family: "Inter", system-ui, sans-serif;
         scroll-behavior: smooth;

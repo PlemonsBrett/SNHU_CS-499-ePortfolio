@@ -3,8 +3,8 @@ export const siteConfig = {
     name: "Brett Plemons",
     firstName: "Brett",
     lastName: "Plemons",
-    title: "Senior Machine Learning Engineer",
-    tagline: "Senior Machine Learning Engineer crafting intelligent solutions",
+    title: "Principal Software Engineer",
+    tagline: "Principal Software Engineer with SME in Quality Estimation, Automated Post-Editing, Machine Translation, TBX, and Translation System Design",
     email: "brett@plemons.dev",
     location: "Kansas, United States"
   },
@@ -101,7 +101,7 @@ export const siteConfig = {
 
   branding: {
     siteName: "Brett Plemons Portfolio",
-    siteDescription: "Senior Machine Learning Engineer crafting intelligent solutions",
+    siteDescription: "Principal Software Engineer with SME in Quality Estimation, Automated Post-Editing, Machine Translation, TBX, and Translation System Design",
     techStack: "Built with Astro, Svelte, and ❤️"
   }
 };
