@@ -17,11 +17,11 @@ onMount(async () => {
     {
       scaleY: 1,
       duration: 1,
+      ease: 'power1.out',
       scrollTrigger: {
         trigger: `#${id}`,
         start: 'top 80%',
-        end: 'top 50%',
-        scrub: 1,
+        once: true,
       },
     }
   )
@@ -38,26 +38,15 @@ onMount(async () => {
       opacity: 1,
       x: 0,
       duration: 0.5,
-      stagger: 0.2,
+      stagger: 0.12,
+      ease: 'power1.out',
       scrollTrigger: {
         trigger: `#${id}`,
-        start: 'top 70%',
-        end: 'bottom 70%',
-        scrub: 1,
+        start: 'top 75%',
+        once: true,
       },
     }
   )
-
-  // Fade out the entire timeline
-  gsap.to(`#${id}`, {
-    opacity: 0,
-    scrollTrigger: {
-      trigger: `#${id}`,
-      start: 'bottom 30%',
-      end: 'bottom top',
-      scrub: 1,
-    },
-  })
 })
 </script>
 
@@ -94,6 +83,7 @@ onMount(async () => {
 
   .timeline-container {
     position: relative;
+    box-sizing: border-box;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -110,22 +100,20 @@ onMount(async () => {
     transform-origin: top;
   }
 
+  /* Keep the row exactly container-width so left: 50% on the dot matches the line.
+     Padding on this row would expand a content-box width: 100% and shift the dots. */
   .timeline-event {
     position: relative;
-    display: flex;
+    box-sizing: border-box;
     width: 100%;
     margin-bottom: 3rem;
   }
 
   .timeline-event.left {
-    justify-content: flex-start;
-    padding-right: calc(50% + 2rem);
     text-align: right;
   }
 
   .timeline-event.right {
-    justify-content: flex-end;
-    padding-left: calc(50% + 2rem);
     text-align: left;
   }
 
@@ -145,7 +133,8 @@ onMount(async () => {
   }
 
   .event-content {
-    width: 100%;
+    box-sizing: border-box;
+    width: calc(50% - 2rem);
     padding: 1.5rem;
     background: white;
     border-radius: 1rem;
@@ -153,6 +142,14 @@ onMount(async () => {
     transition:
       transform 0.3s ease,
       box-shadow 0.3s ease;
+  }
+
+  .timeline-event.left .event-content {
+    margin-right: auto;
+  }
+
+  .timeline-event.right .event-content {
+    margin-left: auto;
   }
 
   .event-content:hover {
@@ -194,10 +191,14 @@ onMount(async () => {
 
     .timeline-event.left,
     .timeline-event.right {
-      justify-content: flex-start;
-      padding-left: 3rem;
-      padding-right: 0;
       text-align: left;
+    }
+
+    .timeline-event.left .event-content,
+    .timeline-event.right .event-content {
+      width: calc(100% - 3rem);
+      margin-left: 3rem;
+      margin-right: 0;
     }
 
     .event-dot {

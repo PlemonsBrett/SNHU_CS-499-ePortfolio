@@ -17,6 +17,8 @@ describe('CareerTimeline alignment', () => {
   it('pins event dots to the center line instead of percentage offsets from each card', () => {
     expect(timelineSource).toMatch(/\.event-dot\s*\{[^}]*left:\s*50%;/s)
     expect(timelineSource).toMatch(/\.event-dot\s*\{[^}]*margin-left:\s*-10px;/s)
+    expect(timelineSource).toMatch(/\.timeline-event\s*\{[^}]*box-sizing:\s*border-box;/s)
+    expect(timelineSource).not.toMatch(/padding-right:\s*calc\(50%/)
     expect(timelineSource).not.toMatch(/right:\s*-12\.5%/)
     expect(timelineSource).not.toMatch(/left:\s*-12\.5%/)
   })
