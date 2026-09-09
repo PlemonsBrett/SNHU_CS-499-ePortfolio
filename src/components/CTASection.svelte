@@ -43,7 +43,7 @@
     <blockquote class="cta-quote">
       <p>"{quote.text}"</p>
       {#if quote.author}
-        <cite>— {quote.author}</cite>
+        <cite>{quote.author}</cite>
       {/if}
     </blockquote>
   {/if}
