@@ -44,4 +44,17 @@ describe('portfolio copy', () => {
     expect(combined).toContain('Quality Estimation')
     expect(combined).toContain('Automated Post-Editing')
   })
+
+  it('does not use em dashes or en dashes', () => {
+    expect(combined).not.toMatch(/\u2014/)
+    expect(combined).not.toMatch(/\u2013/)
+  })
+
+  it('presents the completed August 2025 degree and graduate school direction', () => {
+    expect(combined).toContain('August 2025')
+    expect(combined).toContain('Applied Mathematics')
+    expect(combined).toMatch(/graduate school in DSP/i)
+    expect(combined).not.toContain('As I complete my BS')
+    expect(combined).not.toContain('this August')
+  })
 })
