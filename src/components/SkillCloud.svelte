@@ -23,6 +23,10 @@ const _skills = [
   { name: 'Terraform', level: 'advanced', category: 'devops' },
   { name: 'Agile/Scrum', level: 'expert', category: 'methodology' },
   { name: 'NLP/LLMs', level: 'advanced', category: 'ml' },
+  { name: 'Machine Translation', level: 'expert', category: 'ml' },
+  { name: 'Quality Estimation', level: 'expert', category: 'ml' },
+  { name: 'Automated Post-Editing', level: 'expert', category: 'ml' },
+  { name: 'TBX / Terminology', level: 'advanced', category: 'ml' },
   { name: 'Tableau/PowerBI', level: 'advanced', category: 'data' },
 ]
 
